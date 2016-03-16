@@ -1,0 +1,190 @@
+" Install plugins with 'junegunn/vim-plug'
+call plug#begin("~/.vim/plugged")
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'rstacruz/sparkup'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-expand-region'
+Plug 'jimsei/winresizer'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'davidhalter/jedi-vim'
+Plug 'reedes/vim-colors-pencil'
+Plug 'vim-airline/vim-airline'
+call plug#end()
+
+" ======================
+"  VIM BUILDIN SETTINGS
+" ======================
+
+" Regular copy and paste
+set pastetoggle=<F2>
+set clipboard=unnamed
+
+" Automatic reloading of .vimrc file
+autocmd! bufwritepost .vimrc source %
+
+" Show line numbers
+set number
+
+" Show current position
+set ruler
+
+" Make backspace work as it should
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" Height of the command bar
+set cmdheight=1
+
+" Ignore case when doing searches
+set ignorecase
+
+" When I type upper letter in search disable ignorecase
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Show search results as I type
+set incsearch
+
+" Don't redraw screen when executing macros
+set lazyredraw
+
+" Blink to matching bracket when it can be seen on screen
+set showmatch
+set mat=2
+
+" Disable error sounds
+set noerrorbells
+
+" Enable syntax highlighting
+syntax enable
+
+" Show whitespace
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Color theme
+colorscheme pencil
+
+" Set UTF-8 encoding
+set encoding=utf8
+
+" Use Unix file type
+set ffs=unix,dos,mac
+
+" Disable backup and autosave files
+set nobackup
+set nowb
+set noswapfile
+
+" Use spaces instead of tabs
+set expandtab
+set smarttab
+
+" Disable use of spaces in make files
+autocmd FileType make setlocal noexpandtab
+
+" Set four spaces as one tab
+set shiftwidth=4
+set tabstop=4
+
+" Set autoindent, smart indent and wrap lines
+set ai
+set si
+set wrap
+
+" Reselect code after indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" It looks strange when skipping broken lines so treat them as regular lines
+map j gj
+map k gk
+
+" Remap 0 to first non-blank character
+map 0 ^
+
+" Enable mouse
+set mouse=a
+
+" Bind window movement keys to save some keystrokes
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" Rebind the leader key
+let mapleader = "\<Space>"
+
+" Visual line mode
+nmap <Leader>v V
+
+" No highlights of searches
+nnoremap <Leader>n :noh<CR>
+
+" Better tab navigation
+map <Leader>h :tabprevious<CR>
+map <Leader>l :tabnext<CR>
+map <Leader>j :tabclose<CR>
+map <Leader>k :tabnew<CR>
+
+" Quit with <Leader>q
+map <Leader>q :q!<CR>
+map <Leader>Q :qall!<CR>
+
+" Save with <Leader>w
+map <Leader>w :w<CR>
+
+
+" =============
+"  CUSTOM CODE
+" =============
+
+" Delete trailing white space on save.
+func! DeleteTrailingWhiteSpace()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
+autocmd BufWrite *.coffee :call DeleteTrailingWhiteSpace()
+autocmd BufWrite .vimrc :call DeleteTrailingWhiteSpace()
+
+
+" =================
+"  PLUGIN SETTINGS
+" =================
+
+"  Region expand binds
+" ---------------------
+map <Leader>e <Plug>(expand_region_expand)
+map <Leader>s <Plug>(expand_region_shrink)
+
+
+" Winresizer
+" -----------
+"
+"  Nice way to resize windows by pressing C-e and using hjkl.
+
+" Pencil color scheme
+" -------------------
+"  :set background=dark or :set background=white => to use dark or white color
+"  scheme, default is dark
+:set background=dark
+
+" Enable italics support
+let g:pencil_terminal_italivcs = 1
+
+" More contrast 0-low, 1-high
+let g:pencil_higher_contrast_ui = 1
+
+" Enable airline theme
+let g:airline_theme = 'pencil'
