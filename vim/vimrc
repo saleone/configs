@@ -23,7 +23,7 @@ call plug#end()
 
 " Regular copy and paste
 set pastetoggle=<F2>
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Automatic reloading of .vimrc file
 autocmd! bufwritepost .vimrc source %
