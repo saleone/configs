@@ -1,0 +1,26 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+##
+# Aliases
+alias v="vim"
+alias mkdir="mkdir -pv" # make parent directories when creating subdirectory
+alias listen="lsof -P -g -n" # list apps connected to network
+alias ls="ls --color=auto --classify" # more descriptive list
+alias rm="rm -i" # ask when deleting something
+
+##
+# Global variables
+EDITOR="vim"; export EDITOR;
+PS1="\e[0;36m\u@\h in \w \e[m\nexec \$ "
+
+##
+# My changes
+if [ ! -d ~/.my_bin/ ]; then mkdir ~/.my_bin; fi # create my bin folder
+export PATH=~/.my_bin:$PATH # add my bin folder to PATH
+
+
