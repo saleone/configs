@@ -15,7 +15,6 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'davidhalter/jedi-vim'
 Plug 'reedes/vim-colors-pencil'
-Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " ======================
@@ -181,10 +180,8 @@ map <Leader>s <Plug>(expand_region_shrink)
 :set background=dark
 
 " Enable italics support
-let g:pencil_terminal_italivcs = 1
+let g:pencil_terminal_italics = 1
 
 " More contrast 0-low, 1-high
 let g:pencil_higher_contrast_ui = 1
 
-" Enable airline theme
-let g:airline_theme = 'pencil'
