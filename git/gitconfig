@@ -1,0 +1,7 @@
+[user]
+	email = sasa.savic@protonmail.com
+	name = Sasa Savic
+[core]
+	editor = vim
+[push]
+	default = simple
