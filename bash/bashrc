@@ -12,6 +12,7 @@ alias mkdir="mkdir -pv" # make parent directories when creating subdirectory
 alias listen="lsof -P -g -n" # list apps connected to network
 alias ls="ls --color=auto --classify" # more descriptive list
 alias rm="rm -i" # ask when deleting something
+alias vim="gvim -v" # use terminal version with +clipboard support
 
 ##
 # Global variables
