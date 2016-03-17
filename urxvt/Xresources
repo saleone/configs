@@ -25,6 +25,12 @@ URxvt.color13: #FF54FF
 URxvt.color14: #54FFFF
 URxvt.color 15: #FFFFFF
 
+!Enable extensions
+URxvt.perl-ext-common: default, xkr-clipboard
+URxvt.iso14755: false
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Control-Insert: perl:clipboard:copy
+
 !Open links in firefox
 URxvt.urlLauncher: firefox
 
