@@ -7,3 +7,8 @@ The plan is to make a bash script that will execute all those bash scripts and t
 will link the files. Don't use .configxxx notation for config files in the repo but 
 name them without the dot (ex. ".vimrc" will be "vimrc").
 
+
+## LICENSE
+Config files are licensed under the [MIT license](./LICENSE.md).
+
+
