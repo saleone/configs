@@ -132,4 +132,4 @@ bar {
 }
 
 # start-up commands
-exec setxkbmap -layout "us,ba,rs" -option "grp:alt_shift_toggle"
+exec setxkbmap -layout "us,ba,rs" -option "grp:menu_toggle"
