@@ -133,5 +133,5 @@ bar {
 
 # start-up commands
 exec setxkbmap -layout "us,ba,rs" -option "grp:menu_toggle"
-exec_always --bg-scale ~/.wallpaper.jpg
+exec_always feh --bg-scale ~/.wallpaper.jpg
 
