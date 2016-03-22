@@ -130,3 +130,6 @@ bar {
         status_command i3status
         tray_output primary
 }
+
+# start-up commands
+exec setxkbmap -layout "us,ba,rs" -option "grp:alt_shift_toggle"
