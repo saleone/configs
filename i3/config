@@ -91,6 +91,16 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 5
 
+# colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #dddddd #dddddd #000000 #dddddd   #dddddd
+client.focused_inactive #000000 #333333 #aaaaaa #000000   #000000
+client.unfocused        #000000 #111111 #777777 #000000   #000000
+client.urgent           #ffffff #ffffff #000000 #ffffff   #ffffff
+client.placeholder      #111111 #111111 #ffffff #000000   #111111
+
+client.background       #444444
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
