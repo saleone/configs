@@ -17,7 +17,7 @@ alias vim="gvim -v" # use terminal version with +clipboard support
 ##
 # Global variables
 EDITOR="vim"; export EDITOR;
-PS1="\e[0;36m\u@\h in \w \e[m\nexec \$ "
+PS1="\u@\h in \w \nexec \$ "
 
 ##
 # My changes
