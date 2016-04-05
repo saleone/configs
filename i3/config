@@ -127,6 +127,7 @@ hide_edge_borders both
 # Status bar settings.
 bar {
         status_command i3status
+        position top
 
 # Status bar colors.
         colors {
