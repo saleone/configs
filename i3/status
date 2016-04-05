@@ -13,10 +13,9 @@
 # More edits by Sasa Savic 
 #   https://github.com/saleone
 
-battery=/sys/class/power_supply/BAT1
 FULL=${FULL-█}
 EMPTY=${EMPTY-░}
-SIZE=${SIZE-15}
+SIZE=${SIZE-10}
 
 draw()
 {
@@ -41,18 +40,18 @@ cpu()
 		awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')"
 	cpu=$(printf "%.0f" $cpu)
 
-	printf 'cpu %-2s %s' "$cpu%" "$(draw $cpu $SIZE)"
+	printf 'cpu %s' "$(draw $cpu $SIZE)"
 }
 
 ram()
 {
 	ram="$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')"
 
-	printf "ram %-2s %s" "$ram%" "$(draw $ram $SIZE)"
+	printf "ram %s" "$(draw $ram $SIZE)"
 }
 while :
 do
     printf ' %s  %s  %s  %s  \n' \
-        "$(cpu)" "$(ram)" "$(date +"%d.%m.%Y")"
+        "$(cpu)" "$(ram)" "$(date +"%d.%m.%Y  %R")"
     sleep 1
 done
