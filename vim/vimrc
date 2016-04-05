@@ -14,7 +14,6 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'davidhalter/jedi-vim'
-Plug 'reedes/vim-colors-pencil'
 call plug#end()
 
 " ======================
@@ -65,13 +64,6 @@ set noerrorbells
 
 " Enable syntax highlighting
 syntax enable
-
-" Show whitespace
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-" Color theme
-colorscheme pencil
 
 " Set UTF-8 encoding
 set encoding=utf8
@@ -172,16 +164,4 @@ map <Leader>s <Plug>(expand_region_shrink)
 " -----------
 "
 "  Nice way to resize windows by pressing C-e and using hjkl.
-
-" Pencil color scheme
-" -------------------
-"  :set background=dark or :set background=white => to use dark or white color
-"  scheme, default is dark
-:set background=dark
-
-" Enable italics support
-let g:pencil_terminal_italics = 1
-
-" More contrast 0-low, 1-high
-let g:pencil_higher_contrast_ui = 1
 
