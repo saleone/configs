@@ -2,7 +2,6 @@
 call plug#begin("~/.vim/plugged")
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'rstacruz/sparkup'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'easymotion/vim-easymotion'
