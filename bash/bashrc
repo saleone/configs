@@ -14,6 +14,14 @@ alias ls="ls --color=auto --classify" # more descriptive list
 alias rm="rm -i" # ask when deleting something
 alias vim="gvim -v" # use terminal version with +clipboard support
 
+# Git aliases
+alias gits="git status"
+alias gitc="git commit"
+alias gita="git add"
+alias gitl="git log"
+alias gitlo="git log --pretty=oneline"
+alias gitd="git diff"
+
 ##
 # Ubuntu:
 # enable programmable completion features (you don't need to enable
