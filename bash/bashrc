@@ -45,4 +45,10 @@ PS1="\u@\h in \w \nexec \$ "
 if [ ! -d ~/.my_bin/ ]; then mkdir ~/.my_bin; fi # create my bin folder
 export PATH=~/.my_bin:$PATH # add my bin folder to PATH
 
-
+##
+# Bash git prompt
+if [ ! -d ~/.bash-git-prompt ]; then
+    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+fi
+source ~/.bash-git-prompt/gitprompt.sh
+GIT_PROMPT_ONLY_IN_REPO=1
