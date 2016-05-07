@@ -3,7 +3,6 @@ call plug#begin("~/.vim/plugged")
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'rstacruz/sparkup'
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-expand-region'
 Plug 'jimsei/winresizer'
@@ -13,6 +12,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 " ======================
@@ -144,9 +144,7 @@ func! DeleteTrailingWhiteSpace()
     %s/\s\+$//ge
     exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
-autocmd BufWrite *.coffee :call DeleteTrailingWhiteSpace()
-autocmd BufWrite .vimrc :call DeleteTrailingWhiteSpace()
+autocmd BufWrite * :call DeleteTrailingWhiteSpace()
 
 
 " =================
