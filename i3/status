@@ -10,7 +10,7 @@
 # Thank to z3bra's mkbar translated now in C
 #	http://git.z3bra.org/mkb/files.html
 
-# More edits by Sasa Savic 
+# More edits by Sasa Savic
 #   https://github.com/saleone
 
 FULL=${FULL-█}
@@ -49,9 +49,20 @@ ram()
 
 	printf "ram %s" "$(draw $ram $SIZE)"
 }
+
+battery()
+{
+    battery=/sys/class/power_supply/BAT1
+    b_full=$battery/energy_full
+    b_now=$battery/energy_now
+    bf=`cat $b_full`
+    bn=`cat $b_now`
+    charge=`printf $(( 100 * $bn / $bf ))`
+    printf "bat %s" "$(draw $charge $SIZE)"
+}
 while :
 do
     printf ' %s  %s  %s  %s  \n' \
-        "$(cpu)" "$(ram)" "$(date +"%d.%m.%Y  %R")"
+        "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")"
     sleep 1
 done
