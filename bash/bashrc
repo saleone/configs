@@ -13,6 +13,8 @@ alias listen="lsof -P -g -n" # list apps connected to network
 alias ls="ls --color=auto --classify" # more descriptive list
 alias rm="rm -i" # ask when deleting something
 alias vim="gvim -v" # use terminal version with +clipboard support
+alias dirs="dirs -v" # show directories with dirs
+alias h="history" # easily check command history
 
 # Git aliases
 alias gits="git status"
