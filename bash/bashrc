@@ -52,6 +52,15 @@ PS1="\u@\h in \w \nexec \$ "
 if [ ! -d ~/.my_bin/ ]; then mkdir ~/.my_bin; fi # create my bin folder
 export PATH=~/.my_bin:$PATH # add my bin folder to PATH
 
+# If there is a bin folder for PHPs composer add it to PATH
+if [ -d ~/.composer/vendor/bin ]; then
+    export PATH=~/.composer/vendor/bin:$PATH
+fi
+
+if [ -d ~/.config/composer/vendor/bin ]; then
+    export PATH=~/.config/composer/vendor/bin:$PATH
+fi
+
 ##
 # Bash git prompt
 if [ ! -d ~/.bash-git-prompt ]; then
