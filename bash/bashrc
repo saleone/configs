@@ -54,12 +54,43 @@ export PATH=~/.my_bin:$PATH # add my bin folder to PATH
 
 # If there is a bin folder for PHPs composer add it to PATH
 if [ -d ~/.composer/vendor/bin ]; then
-    export PATH=~/.composer/vendor/bin:$PATH
+    export PATH="~/.composer/vendor/bin:$PATH"
 fi
 
 if [ -d ~/.config/composer/vendor/bin ]; then
-    export PATH=~/.config/composer/vendor/bin:$PATH
+    export PATH="~/.config/composer/vendor/bin:$PATH"
 fi
+
+##
+# Custom funtions
+
+# List all custom apt repos
+function list_added_apt_repos {
+  for APT in `find /etc/apt/ -name \*.list`; do
+      grep -o "^deb http://ppa.launchpad.net/[a-z0-9\-]\+/[a-z0-9\-]\+" $APT | while read ENTRY ; do
+          USER=`echo $ENTRY | cut -d/ -f4`
+          PPA=`echo $ENTRY | cut -d/ -f5`
+          echo sudo apt-add-repository ppa:$USER/$PPA
+      done
+  done
+}
+
+# List all apt repos
+function list_all_apt_repos {
+  for APT in `find /etc/apt/ -name \*.list`; do
+      grep -Po "(?<=^deb\s).*?(?=#|$)" $APT | while read ENTRY ; do
+          HOST=`echo $ENTRY | cut -d/ -f3`
+          USER=`echo $ENTRY | cut -d/ -f4`
+          PPA=`echo $ENTRY | cut -d/ -f5`
+          #echo sudo apt-add-repository ppa:$USER/$PPA
+          if [ "ppa.launchpad.net" = "$HOST" ]; then
+              echo sudo apt-add-repository ppa:$USER/$PPA
+          else
+              echo sudo apt-add-repository \'${ENTRY}\'
+          fi
+      done
+  done
+}
 
 ##
 # Bash git prompt
