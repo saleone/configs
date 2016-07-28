@@ -45,7 +45,7 @@ fi
 ##
 # Global variables
 EDITOR="vim"; export EDITOR;
-PS1="\u@\h in \w \nexec \$ "
+PS1=" \W > "
 
 ##
 # My changes
@@ -99,3 +99,6 @@ if [ ! -d ~/.bash-git-prompt ]; then
 fi
 source ~/.bash-git-prompt/gitprompt.sh
 GIT_PROMPT_ONLY_IN_REPO=1
+GIT_PROMPT_FETCH_REMOTE_STATUS=0 
+GIT_PROMPT_START=" \W"
+GIT_PROMPT_END=" > "
