@@ -1,0 +1,94 @@
+// Place your settings in this file to overwrite the default settings
+{
+    // Editor
+
+    "editor.fontFamily": "'Source Code Pro', 'Ubuntu Mono'",
+
+    "editor.fontSize": 16,
+
+    "editor.lineHeight": 25,
+
+    "editor.rulers": [80, 100],
+
+    "editor.quickSuggestionsDelay": 20,
+
+    "editor.formatOnType": true,
+
+    "editor.acceptSuggestionOnEnter": false,
+
+    "editor.mouseWheelZoom": true,
+
+    "editor.renderWhitespace": true,
+
+    "editor.renderControlCharacters": true,
+
+    "editor.renderIndentGuides": true,
+
+    "editor.cursorBlinking": "visible",
+
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    // Window
+
+    "window.openFilesInNewWindow": false,
+
+    "window.reopenFolders": "all",
+
+    // Files
+
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.DS_Store": true
+    },
+
+    "file.associations": {},
+
+    "files.trimTrailingWhitespace": true,
+
+    "files.autoSave": "afterDelay",
+
+    "files.autoSaveDelay": 5000,
+
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/node_modules/**": true
+    },
+
+    // File explorer
+
+    "explorer.openEditors.visible": 5,
+
+    // Search
+
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true
+    },
+
+    // Git
+
+    "git.autofetch": false,
+
+    "git.allowLargeRepositories": true,
+
+    // JSON
+
+    "json.schemas": [],
+
+    // Markdown
+
+    "markdown.styles": [],
+
+    // Telemetry
+
+    "telemetry.enableTelemetry": false,
+
+    "telemetry.enableCrashReporter": false,
+
+    // EXTENSIONS
+
+    // amVim configuration
+
+    "amVim.bindCtrlCommands": false
+}
