@@ -3,6 +3,10 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 settings="$DIR/settings.json"
 
+if [ ! -d ~/.config/Code/User ]; then
+    mkdir --parents ~/.config/Code/User
+fi
+
 if [ -f ~/.config/Code/User/settings.json ]; then
     rm ~/.config/Code/User/settings.json
 fi
