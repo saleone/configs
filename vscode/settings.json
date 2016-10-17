@@ -2,11 +2,13 @@
 {
     // Editor
 
-    "editor.fontFamily": "'Source Code Pro', 'Ubuntu Mono'",
+    "editor.fontFamily": "'Fira Code Medium', 'Fira Mono Medium', 'Source Code Pro', 'Ubuntu Mono'",
 
-    "editor.fontSize": 16,
+    "editor.fontSize": 13,
 
-    "editor.lineHeight": 25,
+    "editor.fontLigatures": true,
+
+    "editor.lineHeight": 27,
 
     "editor.rulers": [80, 100],
 
@@ -18,13 +20,13 @@
 
     "editor.mouseWheelZoom": true,
 
-    "editor.renderWhitespace": true,
+    "editor.renderWhitespace": "boundary",
 
     "editor.renderControlCharacters": true,
 
     "editor.renderIndentGuides": true,
 
-    "editor.cursorBlinking": "visible",
+    "editor.cursorBlinking": "phase",
 
     "diffEditor.ignoreTrimWhitespace": false,
 
