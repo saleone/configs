@@ -73,6 +73,21 @@ echo " > Get VS Code from: https://go.microsoft.com/fwlink/?LinkID=760868"
 echo " > Set up Visual Studio Code"
 bash $DATA/Dev/configs/vscode/__symlink.sh
 
+echo " > Install Gimp, Inkscape, Libre Office, Firefox"
+sudo apt install gimp inkscape libreoffice firefox -y
+
+echo " > Install Chrome"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O chrome.deb
+sudo dpkg -i chrome.deb
+rm -f chrome.deb
+
+echo " > Install Node.js"
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt install -y nodejs
+sudo npm install --global npm
+
+echo " > Install build essentials"
+sudo apt install -y build-essential
 
 
 
