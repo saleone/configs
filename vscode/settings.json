@@ -30,6 +30,8 @@
 
     "diffEditor.ignoreTrimWhitespace": false,
 
+    "workbench.editor.showIcons": true,
+
     // Window
 
     "window.openFilesInNewWindow": false,
@@ -92,5 +94,8 @@
 
     // amVim configuration
 
-    "amVim.bindCtrlCommands": false
+    "amVim.bindCtrlCommands": false,
+
+    // C#
+    "csharp.suppressDotnetInstallWarning": false
 }
