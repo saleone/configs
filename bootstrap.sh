@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 HOME=/home/saleone
 DATA=$HOME/Data
@@ -106,7 +106,7 @@ bash $DATA/Dev/configs/i3/__symlink.sh
 echo " > Set up Urxvt"
 bash $DATA/Dev/configs/urxvt/__symlink.sh
 
-#echo " > Install Visual Studio Code"
+echo " > Install Visual Studio Code"
 wget https://go.microsoft.com/fwlink/?LinkID=760868 -O vscode.deb
 sudo dpkg -i vscode.deb
 rm -f vscode.deb
@@ -133,7 +133,13 @@ echo " > Install build essentials"
 sudo apt install -y build-essential
 
 echo " > Install Numix themes"
-sudo add-apt-repository ppa:numix/ppa
+sudo add-apt-repository ppa:numix/ppa -y
 sudo apt update
 sudo apt install -y numix-gtk-theme numix-icon-theme-circle
 
+echo "Do you want to install Lektor (https://getlektor.com) ? (yes/NO)"
+read LEKTOR_PROMPT
+if [ $LEKTOR_PROMPT == "yes" ]; then
+    sudo apt install -y python-dev libssl-dev libffi-dev imagemagick
+    curl -sf https://www.getlektor.com/install.sh | sudo sh
+fi
