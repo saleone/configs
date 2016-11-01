@@ -34,7 +34,7 @@ fi
 echo "    - $DATA/GDrive -> $HOME/GDrive"
 if [ ! -L $HOME/GDrive ]; then
 	ln -s $DATA/GDrive
-fi
+fi"
 
 echo " > Installing Git"
 sudo apt install -y git
@@ -44,6 +44,9 @@ git clone https://github.com/saleone/configs.git $DATA/Dev/configs
 
 echo " > Set up Git"
 bash $DATA/Dev/configs/git/__symlink.sh
+
+echo " > Create SSH key"
+ssh-keygen -t rsa -b 4096 -C "$(git config --global user.email)"
 
 echo " > Install Vim with Gtk3"
 sudo apt install -y vim-gtk3
@@ -89,6 +92,3 @@ sudo npm install --global npm
 
 echo " > Install build essentials"
 sudo apt install -y build-essential
-
-
-
