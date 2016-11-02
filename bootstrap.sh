@@ -143,3 +143,11 @@ if [ $LEKTOR_PROMPT == "yes" ]; then
     sudo apt install -y python-dev libssl-dev libffi-dev imagemagick
     curl -sf https://www.getlektor.com/install.sh | sudo sh
 fi
+
+echo " > Install Htop"
+sudo apt install -y htop
+
+echo " > Install f.lux"
+sudo add-apt-repository ppa:nathan-renniewaldock/flux -y
+sudo apt update
+sudo apt install fluxgui -y
