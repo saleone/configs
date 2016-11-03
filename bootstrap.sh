@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 HOME=/home/saleone
 DATA=$HOME/Data
@@ -158,3 +158,13 @@ if [ ! $STEAM_PROMPT ==  "yes" ]; then
     echo " > Install Steam"
     sudo apt install steam -y
 fi
+
+echo " > Install Fira Fonts"
+wget https://github.com/mozilla/Fira/archive/4.202.zip -O fira.zip
+unzip fira.zip
+if [ ! -d $HOME/.fonts ]; then
+    mkdir -p $HOME/.fonts
+fi
+cp Fira-4.202/ttf/*.ttf $HOME/.fonts/
+rm -f fira.zip
+rm -fr Fira-4.202/
