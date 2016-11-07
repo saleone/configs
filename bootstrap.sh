@@ -168,3 +168,6 @@ fi
 cp Fira-4.202/ttf/*.ttf $HOME/.fonts/
 rm -f fira.zip
 rm -fr Fira-4.202/
+
+echo " > Install Docker"
+curl -sSL https://get.docker.com/ | sh
