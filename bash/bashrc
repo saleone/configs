@@ -49,16 +49,16 @@ PS1=" \W > "
 
 ##
 # My changes
-if [ ! -d ~/.my_bin/ ]; then mkdir ~/.my_bin; fi # create my bin folder
-export PATH=~/.my_bin:$PATH # add my bin folder to PATH
+if [ ! -d $HOME/.my_bin/ ]; then mkdir $HOME/.my_bin; fi # create my bin folder
+export PATH=$HOME/.my_bin:$PATH # add my bin folder to PATH
 
 # If there is a bin folder for PHPs composer add it to PATH
-if [ -d ~/.composer/vendor/bin ]; then
-    export PATH="~/.composer/vendor/bin:$PATH"
+if [ -d $HOME/.composer/vendor/bin ]; then
+    export PATH="$HOME/.composer/vendor/bin:$PATH"
 fi
 
-if [ -d ~/.config/composer/vendor/bin ]; then
-    export PATH="~/.config/composer/vendor/bin:$PATH"
+if [ -d $HOME/.config/composer/vendor/bin ]; then
+    export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
 ##
@@ -94,11 +94,11 @@ function list_all_apt_repos {
 
 ##
 # Bash git prompt
-if [ ! -d ~/.bash-git-prompt ]; then
+if [ ! -d $HOME/.bash-git-prompt ]; then
     git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 fi
-source ~/.bash-git-prompt/gitprompt.sh
+source $HOME/.bash-git-prompt/gitprompt.sh
 GIT_PROMPT_ONLY_IN_REPO=1
-GIT_PROMPT_FETCH_REMOTE_STATUS=0 
+GIT_PROMPT_FETCH_REMOTE_STATUS=0
 GIT_PROMPT_START=" \W"
 GIT_PROMPT_END=" > "
