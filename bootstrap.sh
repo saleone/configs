@@ -179,3 +179,6 @@ echo " > Install Composer"
 wget https://getcomposer.org/installer -O composer-setup.php
 php composer-setup.php --install-dir=$HOME/.my_bin --filename=composer
 rm -f composer-setup.php
+
+echo " > Install Homestead for Laravel"
+composer global require "laravel/homestead=~2.0"
