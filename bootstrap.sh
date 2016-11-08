@@ -171,3 +171,11 @@ rm -fr Fira-4.202/
 
 echo " > Install Docker"
 curl -sSL https://get.docker.com/ | sh
+
+echo " > Install PHP"
+sudo apt install php
+
+echo " > Install Composer"
+wget https://getcomposer.org/installer -O composer-setup.php
+php composer-setup.php --install-dir=$HOME/.my_bin --filename=composer
+rm -f composer-setup.php
