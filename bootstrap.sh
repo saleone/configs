@@ -173,7 +173,7 @@ echo " > Install Docker"
 curl -sSL https://get.docker.com/ | sh
 
 echo " > Install PHP"
-sudo apt install php
+sudo apt install php, php-curl, php-mcrypt, php-mbstring, php-gettext
 
 echo " > Install Composer"
 wget https://getcomposer.org/installer -O composer-setup.php
