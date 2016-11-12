@@ -40,3 +40,25 @@ URxvt.urlLauncher: firefox
 URxvt.font: xft:Source Code Pro:size=9
 URxvt.letterSpace: -1
 
+! --------------------------------------------------------------------------
+! ROFI
+! --------------------------------------------------------------------------
+! Colors
+rofi.color-enabled: true
+rofi.color-window: #444444, #484848, #484848
+rofi.color-normal: #484848, #eeeeee, #484848, #eeeeee, #444444
+rofi.color-active: #333333, #eeeeee, #eee8d5, #f0544c, #eeeeee
+rofi.color-urgent: #ff9300, #eeeeee, #dd8300, #dc322f, #fdf6e3
+
+! Launch options
+rofi.show: combi
+rofi.switchers: combi
+rofi.combi-modi: window, run
+
+! Looks
+rofi.eh: 2
+rofi.lines: 6
+rofi.padding: 10
+rofi.width: 60
+rofi.font: Fira Sans Medium 10
+rofi.opacity: 99

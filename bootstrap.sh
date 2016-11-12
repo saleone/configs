@@ -182,3 +182,7 @@ rm -f composer-setup.php
 
 echo " > Install Homestead for Laravel"
 composer global require "laravel/homestead=~2.0"
+
+echo " > Install Rofi"
+sudo apt install rofi
+
