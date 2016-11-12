@@ -53,7 +53,7 @@ rofi.color-urgent: #ff9300, #eeeeee, #dd8300, #dc322f, #fdf6e3
 ! Launch options
 rofi.show: combi
 rofi.switchers: combi
-rofi.combi-modi: window, run
+rofi.combi-modi: window,run
 
 ! Looks
 rofi.eh: 2
