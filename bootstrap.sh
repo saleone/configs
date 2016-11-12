@@ -186,3 +186,10 @@ composer global require "laravel/homestead=~2.0"
 echo " > Install Rofi"
 sudo apt install rofi
 
+echo " > Install Compton"
+sudo apt install compton
+
+echo " > Link Compton configuration"
+bash $DATA/Dev/configs/compton/__symlink.sh
+
+
