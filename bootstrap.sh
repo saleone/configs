@@ -80,6 +80,9 @@ git clone https://github.com/saleone/configs.git $DATA/Dev/configs
 echo " > Set up Git"
 bash $DATA/Dev/configs/git/__symlink.sh
 
+echo " > Set up Xfce 4"
+bash $DATA/Dev/configs/xfce4/__symlink.sh
+
 echo "Would you like to create SSH key? (yes/no)"
 read SSH_PROMPT
 if [ $SSH_PROMPT == "yes" ]; then
