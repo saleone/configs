@@ -197,4 +197,6 @@ bash $DATA/Dev/configs/compton/__symlink.sh
 
 echo " > Install pip."
 sudo apt install python-pip python3-pip
+sudo pip install --upgrade pip
+sudo pip3 install --upgrade pip
 
