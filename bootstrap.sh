@@ -195,4 +195,6 @@ sudo apt install compton
 echo " > Link Compton configuration"
 bash $DATA/Dev/configs/compton/__symlink.sh
 
+echo " > Install pip."
+sudo apt install python-pip python3-pip
 
