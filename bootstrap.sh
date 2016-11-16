@@ -195,8 +195,12 @@ sudo apt install compton
 echo " > Link Compton configuration"
 bash $DATA/Dev/configs/compton/__symlink.sh
 
-echo " > Install pip."
+echo " > Install pip"
 sudo apt install python-pip python3-pip
 sudo pip install --upgrade pip
 sudo pip3 install --upgrade pip
 
+echo " > Install Viber"
+wget http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb -O viber.deb
+sudo dpkg -i viber.deb
+rm -f viber.deb
