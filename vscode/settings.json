@@ -50,6 +50,15 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
 
+// Git Project Manager
+    "gitProjectManager.baseProjectsFolders": [
+        "~/Dev/"
+    ],
+    "gitProjectManager.ignoredFolders": [
+        "node_modules"
+    ],
+    "gitProjectManager.storeRepositoriesBetweenSessions": true,
+
 // Python configuration
     "python.pythonPath": "python3",
     "python.linting.enabled": false,
