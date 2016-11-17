@@ -200,6 +200,10 @@ sudo apt install python-pip python3-pip
 sudo pip install --upgrade pip
 sudo pip3 install --upgrade pip
 
+echo " > Install pytest"
+sudo pip install pytest
+sudo pip3 install pytest
+
 echo " > Install Viber"
 wget http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb -O viber.deb
 sudo dpkg -i viber.deb
