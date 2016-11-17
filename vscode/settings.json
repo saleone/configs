@@ -10,7 +10,6 @@
     "editor.suggestFontSize": 12,
     "editor.suggestLineHeight": 25,
     "editor.cursorBlinking": "phase",
-    "editor.mouseWheelZoom": true,
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "boundary",
     "editor.renderIndentGuides": true,
