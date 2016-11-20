@@ -215,3 +215,10 @@ rm -f viber.deb
 
 echo " > Install editorconfg"
 sudo apt install editorconfig
+
+echo " > Install Rust"
+curl -sSf https://static.rust-lang.org/rustup.sh | sh
+
+echo " > Download Rust sources (should be in RUST_SRC_PATH)"
+git clone https://github.com/rust-lang/rust.git $RUST_REPO
+

@@ -29,10 +29,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-## Keyboard keys
-# Use caps lock as escape
-setxkbmap -option "caps:escape"
-
 ##
 # Ubuntu:
 # enable programmable completion features (you don't need to enable
@@ -64,6 +60,22 @@ fi
 if [ -d $HOME/.config/composer/vendor/bin ]; then
     export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
+
+# Use caps lock as escape
+setxkbmap -option "caps:escape"
+
+# If there is rust cargo bin folder add it to PATH
+if [ -d $HOME/.cargo/bin ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+export RUST_REPO=$HOME/.cargo/rust_src
+# Define rust sources path
+if [ ! -d $RUST_REPO ]; then
+    mkdir -p $RUST_REPO
+fi
+export RUST_SRC_PATH="$RUST_REPO/src"
+
 
 ##
 # Custom funtions
