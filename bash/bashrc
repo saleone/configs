@@ -30,8 +30,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 ## Keyboard keys
-# Swap control and escape keys
-setxkbmap -option "caps:swapescape"
+# Use caps lock as escape
+setxkbmap -option "caps:escape"
 
 ##
 # Ubuntu:
