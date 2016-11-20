@@ -29,6 +29,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+## Keyboard keys
+# Swap control and escape keys
+setxkbmap -option "caps:swapescape"
+
 ##
 # Ubuntu:
 # enable programmable completion features (you don't need to enable
