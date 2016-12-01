@@ -9,13 +9,13 @@ Click_Command=xfce4-taskmanager
 Enabled=true
 Use_Label=true
 Color=#FFFFFF
-Text=
+Text=cpu
 
 [SL_Mem]
 Enabled=true
 Use_Label=true
 Color=#FFFFFF
-Text=
+Text=mem
 
 [SL_Swap]
 Enabled=false
