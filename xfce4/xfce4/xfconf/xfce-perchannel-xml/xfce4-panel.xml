@@ -43,6 +43,7 @@
         <value type="string" value="google-chrome-stable"/>
         <value type="string" value="network"/>
         <value type="string" value="gigolo"/>
+        <value type="string" value="task manager"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="synergy"/>
         <value type="string" value="update-notifier"/>

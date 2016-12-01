@@ -2,7 +2,7 @@
 Timeout=500
 Timeout_Seconds=2
 Use_Timeout_Seconds=true
-Use_Click_Command=false
+Use_Click_Command=true
 Click_Command=xfce4-taskmanager
 
 [SL_Cpu]
