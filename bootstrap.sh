@@ -172,11 +172,6 @@ echo " > Install ipython"
 sudo pip install ipython
 sudo pip3 install ipython
 
-echo " > Install Viber"
-wget http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb -O viber.deb
-sudo dpkg -i viber.deb
-rm -f viber.deb
-
 echo " > Install editorconfg"
 sudo apt install editorconfig
 
