@@ -137,6 +137,16 @@ wget https://getcomposer.org/installer -O composer-setup.php
 php composer-setup.php --install-dir=$HOME/.my_bin --filename=composer
 rm -f composer-setup.php
 
+echo " > Install Vagrant"
+wget https://releases.hashicorp.com/vagrant/1.9.0/vagrant_1.9.0_x86_64.deb -O vagrant.deb
+sudo dpkg -i vagrant.deb
+rm -f vagrant.deb
+
+echo " > Install virtualbox"
+wget http://download.virtualbox.org/virtualbox/5.1.10/virtualbox-5.1_5.1.10-112026~Ubuntu~xenial_amd64.deb -O virtualbox.deb
+sudo dpkg -i virtualbox.deb
+rm -f virtualbox.deb
+
 echo " > Install Homestead for Laravel"
 composer global require "laravel/homestead=~2.0"
 
