@@ -77,3 +77,9 @@ homestead init
 
 # Install Gnome tweak tool
 sudo dnf install gnome-tweak-tool
+
+# Install Numix GTK and circle icon themes
+sudo dnf install numix-gtk-theme numix-icon-theme-circle
+
+# Install full Xfce desktop
+sudo dnf install @xfce-desktop
