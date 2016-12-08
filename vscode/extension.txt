@@ -1,0 +1,8 @@
+EditorConfig.EditorConfig
+auiworks.amvim
+donjayamanne.python
+felixfbecker.php-debug
+formulahendry.auto-close-tag
+formulahendry.code-runner
+ms-vscode.cpptools
+robinbentley.sass-indented
