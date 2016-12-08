@@ -83,3 +83,8 @@ sudo dnf install numix-gtk-theme numix-icon-theme-circle
 
 # Install full Xfce desktop
 sudo dnf install @xfce-desktop
+
+# Install Spotify
+dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo
+sudo dnf install spotify-client
+
