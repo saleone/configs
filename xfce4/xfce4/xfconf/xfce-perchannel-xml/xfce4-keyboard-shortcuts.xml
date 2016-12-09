@@ -47,10 +47,12 @@
       <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
       <property name="override" type="bool" value="true"/>
-      <property name="&lt;Alt&gt;F3" type="string" value="rofi">
+      <property name="&lt;Alt&gt;F3" type="empty">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
-      <property name="&lt;Super&gt;r" type="string" value="rofi -show combi"/>
+      <property name="&lt;Super&gt;t" type="string" value="xfce4-terminal"/>
+      <property name="&lt;Super&gt;e" type="string" value="code"/>
+      <property name="&lt;Super&gt;w" type="string" value="firefox"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
