@@ -20,3 +20,4 @@ if [ -f ~/.config/Code/User/keybindings.json ]; then
 fi
 
 ln -s $keybindings ~/.config/Code/User/keybindings.json
+bash install_extensions.sh
