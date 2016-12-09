@@ -155,12 +155,6 @@ composer global require "laravel/homestead=~2.0"
 echo " > Install Rofi"
 sudo apt install rofi -y
 
-echo " > Install Compton"
-sudo apt install compton -y
-
-echo " > Link Compton configuration"
-bash $HOME/Dev/configs/compton/__symlink.sh
-
 echo " > Install pip"
 sudo apt install python-pip python3-pip -y
 sudo pip install --upgrade pip
