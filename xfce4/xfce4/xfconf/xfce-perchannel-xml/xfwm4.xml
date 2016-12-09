@@ -24,7 +24,7 @@
     <property name="raise_on_click" type="empty"/>
     <property name="raise_on_focus" type="empty"/>
     <property name="repeat_urgent_blink" type="empty"/>
-    <property name="scroll_workspaces" type="bool" value="false"/>
+    <property name="scroll_workspaces" type="bool" value="true"/>
     <property name="shadow_delta_height" type="empty"/>
     <property name="shadow_delta_width" type="empty"/>
     <property name="shadow_delta_x" type="empty"/>
