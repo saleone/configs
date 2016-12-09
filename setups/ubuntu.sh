@@ -130,7 +130,7 @@ echo " > Install Docker"
 curl -sSL https://get.docker.com/ | sh
 
 echo " > Install PHP"
-sudo apt install php php-curl php-mcrypt php-mbstring php-gettext
+sudo apt install php php-curl php-mcrypt php-mbstring php-gettext -y
 
 echo " > Install Composer"
 wget https://getcomposer.org/installer -O composer-setup.php
@@ -140,27 +140,29 @@ rm -f composer-setup.php
 echo " > Install Vagrant"
 wget https://releases.hashicorp.com/vagrant/1.9.0/vagrant_1.9.0_x86_64.deb -O vagrant.deb
 sudo dpkg -i vagrant.deb
+sudo apt install -f
 rm -f vagrant.deb
 
 echo " > Install virtualbox"
 wget http://download.virtualbox.org/virtualbox/5.1.10/virtualbox-5.1_5.1.10-112026~Ubuntu~xenial_amd64.deb -O virtualbox.deb
 sudo dpkg -i virtualbox.deb
+sudo apt install -f
 rm -f virtualbox.deb
 
 echo " > Install Homestead for Laravel"
 composer global require "laravel/homestead=~2.0"
 
 echo " > Install Rofi"
-sudo apt install rofi
+sudo apt install rofi -y
 
 echo " > Install Compton"
-sudo apt install compton
+sudo apt install compton -y
 
 echo " > Link Compton configuration"
 bash $HOME/Dev/configs/compton/__symlink.sh
 
 echo " > Install pip"
-sudo apt install python-pip python3-pip
+sudo apt install python-pip python3-pip -y
 sudo pip install --upgrade pip
 sudo pip3 install --upgrade pip
 
@@ -173,7 +175,7 @@ sudo pip install ipython
 sudo pip3 install ipython
 
 echo " > Install editorconfg"
-sudo apt install editorconfig
+sudo apt install editorconfig -y
 
 echo " > Install Rust"
 curl -sSf https://static.rust-lang.org/rustup.sh | sh
@@ -185,5 +187,5 @@ echo " > Install Spotify"
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update
-sudo apt-get install spotify-client
+sudo apt-get install spotify-client -y
 
