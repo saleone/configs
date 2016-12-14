@@ -16,6 +16,7 @@
     "diffEditor.ignoreTrimWhitespace": false,
 
 // Workbench
+    "workbench.activityBar.visible": false,
     "workbench.editor.showIcons": true,
 
 // Window
@@ -68,5 +69,9 @@
     "amVim.bindCtrlCommands": false,
 
 // C#
-    "csharp.suppressDotnetInstallWarning": false
+    "csharp.suppressDotnetInstallWarning": false,
+
+// PHP
+    "php.validate.enable": true,
+    "php.validate.run": "onType"
 }
