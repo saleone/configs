@@ -152,9 +152,6 @@ rm -f virtualbox.deb
 echo " > Install Homestead for Laravel"
 composer global require "laravel/homestead=~2.0"
 
-echo " > Install Rofi"
-sudo apt install rofi -y
-
 echo " > Install pip"
 sudo apt install python-pip python3-pip -y
 sudo pip install --upgrade pip
@@ -177,9 +174,7 @@ curl -sSf https://static.rust-lang.org/rustup.sh | sh
 echo " > Download Rust sources (should be in RUST_SRC_PATH)"
 git clone https://github.com/rust-lang/rust.git $RUST_REPO
 
-echo " > Install Spotify"
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-sudo apt-get update
-sudo apt-get install spotify-client -y
+echo " > Install plank"
+sudo apt install plank -y
+
 
