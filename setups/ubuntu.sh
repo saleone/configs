@@ -111,7 +111,7 @@ sudo apt install fluxgui -y
 
 echo "Would you like to install Steam? (yes/No)"
 read STEAM_PROMPT
-if [ ! $STEAM_PROMPT ==  "yes" ]; then
+if [ $STEAM_PROMPT ==  "yes" ]; then
     echo " > Install Steam"
     sudo apt install steam -y
 fi
