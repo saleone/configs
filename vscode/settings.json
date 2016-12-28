@@ -16,7 +16,7 @@
     "diffEditor.ignoreTrimWhitespace": false,
 
 // Workbench
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "workbench.editor.showIcons": true,
 
 // Window
@@ -70,6 +70,9 @@
 
 // C#
     "csharp.suppressDotnetInstallWarning": false,
+
+// Auto close tag
+    "auto-close-tag.SublimeText3Mode": true,
 
 // PHP
     "php.validate.enable": true,
