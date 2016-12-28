@@ -1,5 +1,7 @@
 EditorConfig.EditorConfig
+HookyQR.beautify
 auiworks.amvim
+dbaeumer.vscode-eslint
 donjayamanne.python
 felixfbecker.php-debug
 formulahendry.auto-close-tag
