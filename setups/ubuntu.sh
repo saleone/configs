@@ -160,3 +160,8 @@ git clone https://github.com/rust-lang/rust.git $RUST_REPO
 
 echo " > Install plank"
 sudo apt install plank -y
+
+echo " > Install Paper cursor theme"
+sudo add-apt-repository ppa:snwh/pulp -y
+sudo apt update
+sudo apt install paper-cursor-theme -y
