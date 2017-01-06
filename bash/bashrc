@@ -22,6 +22,8 @@ alias gita="git add"
 alias gitl="git log"
 alias gitlo="git log --pretty=oneline"
 alias gitd="git diff"
+alias gitp="git push"
+alias gitpl="git pull"
 
 # Directory traversing aliases
 alias dirs="dirs -v" # show directories with dirs
