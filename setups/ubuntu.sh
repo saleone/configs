@@ -38,11 +38,8 @@ echo " > Set up Xfce 4"
 bash $HOME/Dev/configs/xfce4/__symlink.sh
 
 echo "Would you like to create SSH key? (yes/no)"
-read SSH_PROMPT
-if [ $SSH_PROMPT == "yes" ]; then
-    echo " > Create SSH key"
-    ssh-keygen -t rsa -b 4096 -C "$(git config --global user.email)"
-fi
+echo " > Create SSH key"
+ssh-keygen -t rsa -b 4096 -C "$(git config --global user.email)"
 
 echo " > Install Vim with Gtk3"
 sudo apt install -y vim-gtk3
@@ -94,13 +91,6 @@ sudo add-apt-repository ppa:numix/ppa -y
 sudo apt update
 sudo apt install -y numix-gtk-theme numix-icon-theme-circle
 
-echo "Do you want to install Lektor (https://getlektor.com) ? (yes/NO)"
-read LEKTOR_PROMPT
-if [ $LEKTOR_PROMPT == "yes" ]; then
-    sudo apt install -y python-dev libssl-dev libffi-dev imagemagick
-    curl -sf https://www.getlektor.com/install.sh | sudo sh
-fi
-
 echo " > Install Htop"
 sudo apt install -y htop
 
@@ -110,11 +100,8 @@ sudo apt update
 sudo apt install fluxgui -y
 
 echo "Would you like to install Steam? (yes/No)"
-read STEAM_PROMPT
-if [ $STEAM_PROMPT ==  "yes" ]; then
-    echo " > Install Steam"
-    sudo apt install steam -y
-fi
+echo " > Install Steam"
+sudo apt install steam -y
 
 echo " > Install Fira Fonts"
 wget https://github.com/mozilla/Fira/archive/4.202.zip -O fira.zip
@@ -149,9 +136,6 @@ sudo dpkg -i virtualbox.deb
 sudo apt install -f
 rm -f virtualbox.deb
 
-echo " > Install Homestead for Laravel"
-composer global require "laravel/homestead=~2.0"
-
 echo " > Install pip"
 sudo apt install python-pip python3-pip -y
 sudo pip install --upgrade pip
@@ -176,5 +160,3 @@ git clone https://github.com/rust-lang/rust.git $RUST_REPO
 
 echo " > Install plank"
 sudo apt install plank -y
-
-
