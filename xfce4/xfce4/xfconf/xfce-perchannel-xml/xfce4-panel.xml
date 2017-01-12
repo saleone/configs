@@ -42,6 +42,7 @@
         <value type="string" value="thunar"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="google-chrome-stable"/>
+        <value type="string" value="fluxgui"/>
         <value type="string" value="network"/>
         <value type="string" value="gigolo"/>
         <value type="string" value="task manager"/>
