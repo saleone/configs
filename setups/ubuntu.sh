@@ -165,3 +165,9 @@ echo " > Install Paper cursor theme"
 sudo add-apt-repository ppa:snwh/pulp -y
 sudo apt update
 sudo apt install paper-cursor-theme -y
+
+echo " > Install Albert keyboard launcher"
+sudo add-apt-repository ppa:nilarimogard/webupd8 -y
+sudo apt-get update
+sudo apt-get install albert -y
+
