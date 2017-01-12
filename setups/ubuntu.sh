@@ -83,8 +83,11 @@ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt install -y nodejs
 sudo npm install --global npm
 
-echo " > Install bower "
+echo " > Install bower"
 sudo npm install -g bower
+
+echo " > Install gulp"
+sudo npm install -g gulp-cli
 
 echo " > Install build essentials"
 sudo apt install -y build-essential
