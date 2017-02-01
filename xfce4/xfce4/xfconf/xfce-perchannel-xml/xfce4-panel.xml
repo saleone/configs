@@ -21,7 +21,7 @@
         <value type="int" value="2"/>
       </property>
       <property name="background-style" type="uint" value="1"/>
-      <property name="background-alpha" type="uint" value="0"/>
+      <property name="background-alpha" type="uint" value="30"/>
       <property name="size" type="uint" value="24"/>
       <property name="length-adjust" type="bool" value="true"/>
       <property name="span-monitors" type="bool" value="false"/>
@@ -45,6 +45,7 @@
         <value type="string" value="fluxgui"/>
         <value type="string" value="network"/>
         <value type="string" value="gigolo"/>
+        <value type="string" value="hexchat"/>
         <value type="string" value="task manager"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="synergy"/>
