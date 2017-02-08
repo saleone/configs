@@ -21,7 +21,7 @@
         <value type="int" value="2"/>
       </property>
       <property name="background-style" type="uint" value="1"/>
-      <property name="background-alpha" type="uint" value="30"/>
+      <property name="background-alpha" type="uint" value="80"/>
       <property name="size" type="uint" value="24"/>
       <property name="length-adjust" type="bool" value="true"/>
       <property name="span-monitors" type="bool" value="false"/>
