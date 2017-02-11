@@ -20,8 +20,9 @@
     "workbench.editor.showIcons": true,
 
 // Window
-    "window.openFilesInNewWindow": false,
+    "window.openFilesInNewWindow": "off",
     "window.reopenFolders": "all",
+    "window.menuBarVisibility": "toggle",
 
 // Files
     "files.trimTrailingWhitespace": true,
