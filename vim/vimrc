@@ -13,6 +13,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'ryanpcmcquen/true-monochrome_vim'
 call plug#end()
 
 " ======================
