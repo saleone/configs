@@ -52,7 +52,7 @@
       </property>
       <property name="&lt;Super&gt;t" type="string" value="xfce4-terminal"/>
       <property name="&lt;Super&gt;e" type="string" value="code"/>
-      <property name="&lt;Super&gt;w" type="string" value="firefox"/>
+      <property name="&lt;Super&gt;w" type="string" value="google-chrome"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
