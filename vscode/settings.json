@@ -13,6 +13,8 @@
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "boundary",
     "editor.renderIndentGuides": true,
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
     "diffEditor.ignoreTrimWhitespace": false,
 
 // Workbench
