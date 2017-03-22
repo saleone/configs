@@ -1,0 +1,8 @@
+[ui]
+username = Sasa Savic <sasa@savic.pw>
+
+[extensions]
+pager =
+progress =
+color =
+purge =
