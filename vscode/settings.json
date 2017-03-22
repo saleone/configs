@@ -20,6 +20,7 @@
 // Workbench
     "workbench.activityBar.visible": true,
     "workbench.editor.showIcons": true,
+    "workbench.iconTheme": "material-icon-theme",
 
 // Window
     "window.openFilesInNewWindow": "off",
@@ -79,5 +80,6 @@
 
 // PHP
     "php.validate.enable": true,
-    "php.validate.run": "onType"
+    "php.validate.run": "onType",
+    "workbench.colorTheme": "Sublime Material Theme - Dark"
 }

@@ -1,10 +1,16 @@
+DotJoshJohnson.xml
 EditorConfig.EditorConfig
 HookyQR.beautify
+PKief.material-icon-theme
+alefragnani.project-manager
 auiworks.amvim
 dbaeumer.vscode-eslint
+donjayamanne.githistory
 donjayamanne.python
 felixfbecker.php-debug
 formulahendry.auto-close-tag
 formulahendry.code-runner
+jprestidge.theme-material-theme
 ms-vscode.cpptools
 robinbentley.sass-indented
+wholroyd.jinja
