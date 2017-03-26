@@ -13,4 +13,5 @@ formulahendry.code-runner
 jprestidge.theme-material-theme
 ms-vscode.cpptools
 robinbentley.sass-indented
+thiagoabreu.vala
 wholroyd.jinja
