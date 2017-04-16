@@ -1,9 +1,9 @@
 // Place your settings in this file to overwrite the default settings
 {
 // Editor
-    "editor.fontFamily": "'Fira Code Medium', 'Fira Mono Medium', 'Source Code Pro', 'Ubuntu Mono'",
+    "editor.fontFamily": "'Source Code Pro Medium', 'Fira Mono Medium', 'Ubuntu Mono'",
     "editor.fontSize": 15,
-    "editor.lineHeight": 25,
+    "editor.lineHeight": 38,
     "editor.rulers": [80, 100],
     "editor.quickSuggestionsDelay": 20,
     "editor.acceptSuggestionOnEnter": false,
