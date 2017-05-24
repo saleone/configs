@@ -34,6 +34,9 @@ git clone https://github.com/saleone/configs.git $HOME/Dev/configs
 echo " > Set up Git"
 bash $HOME/Dev/configs/git/__symlink.sh
 
+echo " > Set up Mercurial"
+bash $HOME/Dev/configs/mercurial/__symlink.sh
+
 echo " > Set up Xfce 4"
 bash $HOME/Dev/configs/xfce4/__symlink.sh
 
