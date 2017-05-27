@@ -59,6 +59,7 @@ sudo dpkg -i vscode.deb
 rm -f vscode.deb
 sudo apt install -f
 bash $HOME/Dev/configs/vscode/__symlink.sh
+bash $HOME/Dev/configs/vscode/install_extensions.sh
 
 echo " > Install Gimp, Inkscape, Libre Office, Firefox"
 sudo apt install gimp inkscape libreoffice firefox -y
