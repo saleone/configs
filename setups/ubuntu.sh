@@ -124,6 +124,9 @@ sudo pip3 install ipython
 echo " > Install editorconfg"
 sudo apt install editorconfig -y
 
+echo " > Install 7zip support"
+sudo apt install p7zip-full
+
 echo " > Install plank"
 sudo apt install plank -y
 
@@ -132,3 +135,4 @@ sudo add-apt-repository ppa:snwh/pulp -y
 sudo apt update
 sudo apt install paper-cursor-theme -y
 sudo apt install paper-icon-theme -y
+
