@@ -1,8 +1,12 @@
 [ui]
 username = Sasa Savic <sasa@savic.pw>
+merge = internal:merge
 
 [extensions]
+strip =
 pager =
 progress =
 color =
 purge =
+histedit =
+shelve =
