@@ -2,8 +2,8 @@
 {
 // Editor
     "editor.fontFamily": "'Fira Mono Medium', 'Source Code Pro Medium', 'Ubuntu Mono'",
-    "editor.fontSize": 17,
-    "editor.lineHeight": 40,
+    "editor.fontSize": 16,
+    "editor.lineHeight": 50,
     "editor.rulers": [80, 100],
     "editor.quickSuggestionsDelay": 20,
     "editor.acceptSuggestionOnEnter": "off",

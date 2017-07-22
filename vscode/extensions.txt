@@ -3,15 +3,13 @@ EditorConfig.EditorConfig
 HookyQR.beautify
 PKief.material-icon-theme
 SolarLiner.arc-theme
-alefragnani.project-manager
 auiworks.amvim
 dbaeumer.vscode-eslint
 donjayamanne.githistory
 donjayamanne.python
 felixfbecker.php-debug
-formulahendry.auto-close-tag
 formulahendry.code-runner
+mrcrowl.hg
 ms-vscode.cpptools
 robinbentley.sass-indented
-thiagoabreu.vala
 wholroyd.jinja
