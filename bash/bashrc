@@ -25,6 +25,17 @@ alias gitd="git diff"
 alias gitp="git push"
 alias gitpl="git pull"
 
+# mercurial aliases
+alias hgs="hg status"
+alias hgc="hg commit"
+alias hga="hg add"
+alias hgl="hg log --style compact"
+alias hgd="hg diff"
+alias hgp="hg push"
+alias hgpl="hg pull"
+alias hgpwb="hg bookmarks | grep '*'"
+
+
 # Directory traversing aliases
 alias dirs="dirs -v" # show directories with dirs
 alias ..="cd .."
