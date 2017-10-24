@@ -136,3 +136,9 @@ GIT_PROMPT_ONLY_IN_REPO=1
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
 GIT_PROMPT_START=" \W"
 GIT_PROMPT_END=" > "
+
+##
+# Virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Dev
+source /usr/local/bin/virtualenvwrapper.sh
