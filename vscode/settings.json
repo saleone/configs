@@ -2,8 +2,8 @@
 {
 // Editor
     "editor.fontFamily": "'Fira Mono Medium', 'Source Code Pro Medium', 'Ubuntu Mono'",
-    "editor.fontSize": 16,
-    "editor.lineHeight": 50,
+    "editor.fontSize": 14,
+    "editor.lineHeight": 30,
     "editor.rulers": [80, 100],
     "editor.quickSuggestionsDelay": 20,
     "editor.acceptSuggestionOnEnter": "off",
@@ -31,7 +31,8 @@
 
 // Files
     "files.trimTrailingWhitespace": true,
-    "files.autoSave": "onFocusChange",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 180000,
 
 // File explorer
     "explorer.openEditors.visible": 5,
@@ -73,5 +74,8 @@
     "php.validate.run": "onType",
 
 // Emmet
-"emmet.useNewEmmet": true
+"emmet.useNewEmmet": true,
+
+// Rust
+"rust.rustLangSrcPath": ""
 }
