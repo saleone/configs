@@ -1,9 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
 // Editor
-    "editor.fontFamily": "'Fira Mono Medium', 'Source Code Pro Medium', 'Ubuntu Mono'",
-    "editor.fontSize": 14,
-    "editor.lineHeight": 30,
+    "editor.fontFamily": "'Fira Mono Medium', 'Ubuntu Mono'",
+    "editor.fontSize": 16,
     "editor.rulers": [80, 100],
     "editor.quickSuggestionsDelay": 20,
     "editor.acceptSuggestionOnEnter": "off",
@@ -21,12 +20,10 @@
     "workbench.activityBar.visible": true,
     "workbench.editor.showIcons": true,
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Arc Dark",
+    "workbench.colorTheme": "Ambiance [beta]",
 
 // Window
     "window.openFilesInNewWindow": "off",
-    "window.reopenFolders": "all",
     "window.menuBarVisibility": "toggle",
 
 // Files
@@ -66,16 +63,7 @@
 // amVim configuration
     "amVim.bindCtrlCommands": false,
 
-// Auto close tag
-    "auto-close-tag.SublimeText3Mode": true,
-
 // PHP
     "php.validate.enable": true,
-    "php.validate.run": "onType",
-
-// Emmet
-"emmet.useNewEmmet": true,
-
-// Rust
-"rust.rustLangSrcPath": ""
+    "php.validate.run": "onType"
 }
