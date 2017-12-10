@@ -1,22 +1,5 @@
-###
-# Variables
-
-# Modifier key will be ALT.
-set $mod Mod1
-
-# Color variables (affects the window decorations).
-set $focused #EFECCA
-set $unfocused #A7A37E
-set $text #002F2F
-set $ltext #E6E2AF
-set $untext $text
-set $bg #002F2F
-set $urgent #FF7F66
-set $border_c #000000
-set $indicator $bg
-
-# /End of Variables
-###
+# Modifier key will be Windows.
+set $mod Mod4
 
 ###
 # Window organization and movement
@@ -28,11 +11,11 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # Change focus on windows.
-bindsym $mod+h focus left        
-bindsym $mod+j focus down       
-bindsym $mod+k focus up        
-bindsym $mod+l focus right    
-bindsym $mod+Left focus left 
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
@@ -67,7 +50,7 @@ bindsym $mod+space focus mode_toggle
 
 # Resizing windows (Right mouse button + $mod can do the same).
 mode "resize" {
-        bindsym h resize shrink width 3 px or 3 ppt   
+        bindsym h resize shrink width 3 px or 3 ppt
         bindsym j resize grow height 3 px or 3 ppt
         bindsym k resize shrink height 3 px or 3 ppt
         bindsym l resize grow width 3 px or 3 ppt
@@ -98,7 +81,7 @@ bindsym $mod+d exec dmenu_run
 # Reload i3wm config file.
 bindsym $mod+Shift+c reload
 
-# Restart i3wm. 
+# Restart i3wm.
 bindsym $mod+Shift+r restart
 
 # Exit i3wm. Log out of the session.
@@ -106,7 +89,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to log ou
 
 # Pulse audio volume control.
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 # /End of Program Shortcuts
 
@@ -119,11 +102,20 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 # is used in the bar {} block below.
 font pango:Ubuntu Bold 10
 
+# Color variables (affects the window decorations).
+#
+set $highlight #81A1C1
+set $unfocused #3B4252
+set $text #ECEFF4
+set $bg #2E3440
+set $urgent #BF616A
+set $indicator $bg
+
 # Define window decoration colors (check the variables for color hex codes).
-# class                 border     backgr.     text    indicator  
-client.focused          $focused   $focused    $text   $indicator
-client.focused_inactive $unfocused $unfocused  $untext $indicator
-client.unfocused        $unfocused $unfocused  $untext $indicator
+# class                 border     backgr.     text    indicator
+client.focused          $highlight $highlight  $text   $indicator
+client.focused_inactive $unfocused $unfocused  $text   $indicator
+client.unfocused        $unfocused $unfocused  $text   $indicator
 client.urgent           $urgent    $urgent     $text   $indicator
 
 # Remove borders on screen edges.
@@ -138,9 +130,9 @@ bar {
         colors {
             background  $bg
             separator   $bg
-            # class                 border     backgr.     text    
-            focused_workspace       $bg        $focused    $text   
-            inactive_workspace      $bg        $bg         $focused 
+            # class                 border     backgr.     text
+            focused_workspace       $bg        $bg         $highlight
+            inactive_workspace      $bg        $bg         $text
             urgent_workspace        $bg        $urgent     $text
         }
         tray_output primary
@@ -163,7 +155,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 
-# Move focused window to workspace. 
+# Move focused window to workspace.
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
