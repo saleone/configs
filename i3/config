@@ -113,7 +113,7 @@ set $indicator $bg
 
 # Define window decoration colors (check the variables for color hex codes).
 # class                 border     backgr.     text    indicator
-client.focused          $highlight $highlight  $text   $indicator
+client.focused          $highlight $highlight  $bg     $indicator
 client.focused_inactive $unfocused $unfocused  $text   $indicator
 client.unfocused        $unfocused $unfocused  $text   $indicator
 client.urgent           $urgent    $urgent     $text   $indicator
@@ -131,8 +131,8 @@ bar {
             background  $bg
             separator   $bg
             # class                 border     backgr.     text
-            focused_workspace       $bg        $bg         $highlight
-            inactive_workspace      $bg        $bg         $text
+            focused_workspace       $bg        $bg         $text
+            inactive_workspace      $bg        $bg         $highlight
             urgent_workspace        $bg        $urgent     $text
         }
         tray_output primary
