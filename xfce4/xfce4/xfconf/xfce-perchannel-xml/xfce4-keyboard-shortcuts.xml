@@ -43,7 +43,6 @@
       <property name="&lt;Alt&gt;F2" type="empty">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
-      <property name="&lt;Primary&gt;Escape" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
       <property name="override" type="bool" value="true"/>
@@ -53,6 +52,7 @@
       <property name="&lt;Super&gt;t" type="string" value="xfce4-terminal"/>
       <property name="&lt;Super&gt;e" type="string" value="code"/>
       <property name="&lt;Super&gt;w" type="string" value="google-chrome"/>
+      <property name="&lt;Super&gt;space" type="string" value="xfce4-popup-whiskermenu"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
