@@ -178,6 +178,7 @@ exec setxkbmap -layout "us,ba,rs" -option "grp:menu_toggle"
 
 # Set the wallpaper.
 exec_always feh --bg-scale ~/.wallpaper.jpg
+exec_always feh --bg-scale ~/.wallpaper.png
 exec --no-startup-id nm-applet
 
 # /End of Startup commands.
