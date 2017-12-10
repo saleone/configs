@@ -118,8 +118,8 @@ client.focused_inactive $unfocused $unfocused  $text   $indicator
 client.unfocused        $unfocused $unfocused  $text   $indicator
 client.urgent           $urgent    $urgent     $text   $indicator
 
-# Remove borders on screen edges.
-hide_edge_borders both
+# Show borders on screen edges.
+hide_edge_borders none
 
 # Status bar settings.
 bar {
