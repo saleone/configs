@@ -70,32 +70,6 @@ bindsym $mod+r mode "resize"
 ###
 
 ###
-# Program Shortcuts
-
-# Start a terminal.
-bindsym $mod+Return exec i3-sensible-terminal
-
-# Start program launcher (currently dmenu).
-bindsym $mod+d exec dmenu_run
-
-# Reload i3wm config file.
-bindsym $mod+Shift+c reload
-
-# Restart i3wm.
-bindsym $mod+Shift+r restart
-
-# Exit i3wm. Log out of the session.
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to log out?' -b 'YES' 'i3-msg exit'"
-
-# Pulse audio volume control.
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-
-# /End of Program Shortcuts
-
-###
-
-###
 # Window decorations
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -103,7 +77,7 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 font pango:Fira Sans Bold 9
 
 # Color variables (affects the window decorations).
-#
+# (dmenu requires these values to be set manually)
 set $highlight #81A1C1
 set $unfocused #3B4252
 set $text #ECEFF4
@@ -139,6 +113,31 @@ bar {
 }
 
 # /End of Window decorations
+###
+
+###
+# Program Shortcuts
+
+# Start a terminal.
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Start program launcher (currently dmenu).
+bindsym $mod+d exec dmenu_run -l 999 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
+
+# Reload i3wm config file.
+bindsym $mod+Shift+c reload
+
+# Restart i3wm.
+bindsym $mod+Shift+r restart
+
+# Exit i3wm. Log out of the session.
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to log out?' -b 'YES' 'i3-msg exit'"
+
+# Pulse audio volume control.
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# /End of Program Shortcuts
 ###
 
 ###
@@ -179,7 +178,8 @@ exec setxkbmap -layout "us,ba,rs" -option "grp:menu_toggle"
 # Set the wallpaper.
 exec_always feh --bg-scale ~/.wallpaper.jpg
 exec_always feh --bg-scale ~/.wallpaper.png
-exec_always compton
+exec compton
+exec volumeicon
 exec --no-startup-id nm-applet
 
 # /End of Startup commands.
