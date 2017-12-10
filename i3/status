@@ -52,13 +52,15 @@ ram()
 
 battery()
 {
-    battery=/sys/class/power_supply/BAT1
-    b_full=$battery/energy_full
-    b_now=$battery/energy_now
-    bf=`cat $b_full`
-    bn=`cat $b_now`
-    charge=`printf $(( 100 * $bn / $bf ))`
-    printf "bat %s" "$(draw $charge $SIZE)"
+    if [ -f /sys/class/power_supply/BAT1 ]; then
+        battery=/sys/class/power_supply/BAT1
+        b_full=$battery/energy_full
+        b_now=$battery/energy_now
+        bf=`cat $b_full`
+        bn=`cat $b_now`
+        charge=`printf $(( 100 * $bn / $bf ))`
+        printf "bat %s" "$(draw $charge $SIZE)"
+    fi
 }
 while :
 do
