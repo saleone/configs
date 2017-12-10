@@ -5,3 +5,4 @@ status_script="$DIR/status"
 mkdir ~/.config/i3/
 ln -s $i3config ~/.config/i3/config
 ln -s $status_script ~/.status
+ln -s $DIR/external/compton.conf ~/.config/compton.conf
