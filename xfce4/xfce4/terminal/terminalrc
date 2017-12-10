@@ -17,10 +17,11 @@ MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 MiscScrollAlternateScreen=TRUE
-ColorPalette=#000000000000;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#d4a4d4a4d4a4;#e8e8e8e8e8e8;#d8c5d8c5d8c5;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#e8e8e8e8e8e8;#ed6aed6aed6a
-ColorCursor=#9a9a9a9a9a9a
-ColorForeground=#ffffffffffff
-ColorSelection=#ffff00000000
-ColorBold=#ffffffffffff
+ColorPalette=#3B4252;#BF616A;#A3BE8C;#EBCB8B;#81A1C1;#B48EAD;#88C0D0;#E5E9F0;#4C566A;#BF616A;#A3BE8C;#EBCB8B;#81A1C1;#B48EAD;#8FBCBB;#ECEFF4
+ColorCursor=#D8DEE9
+ColorForeground=#D8DEE9
+ColorBold=#D8DEE9
 ColorBoldUseDefault=FALSE
+ColorBackground=#2E3440
+TabActivityColor=#88C0D0
 
