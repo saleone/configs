@@ -20,7 +20,7 @@
     "workbench.activityBar.visible": true,
     "workbench.editor.showIcons": true,
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.colorTheme": "Ambiance [beta]",
+    "workbench.colorTheme": "Nord",
 
 // Window
     "window.openFilesInNewWindow": "off",
