@@ -7,7 +7,7 @@ MiscCursorBlinks=FALSE
 MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
 MiscDefaultGeometry=80x24
 MiscInheritGeometry=FALSE
-MiscMenubarDefault=TRUE
+MiscMenubarDefault=FALSE
 MiscMouseAutohide=FALSE
 MiscToolbarDefault=FALSE
 MiscConfirmClose=TRUE
@@ -24,4 +24,5 @@ ColorBold=#D8DEE9
 ColorBoldUseDefault=FALSE
 ColorBackground=#2E3440
 TabActivityColor=#88C0D0
+ScrollingBar=TERMINAL_SCROLLBAR_NONE
 
