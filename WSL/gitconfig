@@ -2,7 +2,7 @@
 	email = sasa@savic.pw
 	name = Saša Savić
 [core]
-    editor = vim
-    autocrlf = true
+	editor = vim
+	autocrlf = true
 [push]
 	default = simple
