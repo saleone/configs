@@ -79,7 +79,7 @@ font pango:Fira Sans Bold 9
 # Color variables (affects the window decorations).
 # (dmenu requires these values to be set manually)
 set $highlight #E95420
-set $unfocused #5E2750
+set $unfocused #000000
 set $text #FFFFFF
 set $bg #000000
 set $urgent #BF616A
@@ -122,7 +122,7 @@ bar {
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Start program launcher (currently dmenu).
-bindsym $mod+d exec dmenu_run -l 999 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
+bindsym $mod+d exec dmenu_run -l 999 -nb '#000000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#E95420' -fn "Fira Sans Medium"
 
 # Reload i3wm config file.
 bindsym $mod+Shift+c reload
