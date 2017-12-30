@@ -78,12 +78,12 @@ font pango:Fira Sans Bold 9
 
 # Color variables (affects the window decorations).
 # (dmenu requires these values to be set manually)
-set $highlight #81A1C1
-set $unfocused #3B4252
-set $text #ECEFF4
-set $bg #2E3440
+set $highlight #E95420
+set $unfocused #5E2750
+set $text #FFFFFF
+set $bg #000000
 set $urgent #BF616A
-set $indicator $bg
+set $indicator #902A07
 
 # Define window decoration colors (check the variables for color hex codes).
 # class                 border     backgr.     text    indicator
