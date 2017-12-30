@@ -196,3 +196,7 @@ alias ....="cd ../../.."
 ##
 # Global variables
 EDITOR="vim"; export EDITOR;
+
+
+# Start in home
+cd ~
