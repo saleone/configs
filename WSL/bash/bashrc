@@ -155,3 +155,44 @@ export DISPLAY=:0.0
 
 if [ ! -d $HOME/.my_bin/ ]; then mkdir $HOME/.my_bin; fi # create my bin folder
 export PATH=$HOME/.my_bin:$PATH # add my bin folder to PATH
+
+##
+# Aliases
+alias v="vim"
+alias mkdir="mkdir -pv" # make parent directories when creating subdirectory
+alias listen="lsof -P -g -n" # list apps connected to network
+alias ls="ls --color=auto --classify" # more descriptive list
+alias rm="rm -i" # ask when deleting something
+alias vim="gvim -v" # use terminal version with +clipboard support
+alias h="history" # easily check command history
+
+# Git aliases
+alias gits="git status"
+alias gitc="git commit"
+alias gita="git add"
+alias gitl="git log"
+alias gitlo="git log --pretty=oneline"
+alias gitd="git diff"
+alias gitp="git push"
+alias gitpl="git pull"
+
+# mercurial aliases
+alias hgs="hg status"
+alias hgc="hg commit"
+alias hga="hg add"
+alias hgl="hg log --style compact"
+alias hgd="hg diff"
+alias hgp="hg push"
+alias hgpl="hg pull"
+alias hgpwb="hg bookmarks | grep '*'"
+
+
+# Directory traversing aliases
+alias dirs="dirs -v" # show directories with dirs
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+##
+# Global variables
+EDITOR="vim"; export EDITOR;
