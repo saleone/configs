@@ -22,11 +22,8 @@ mv ~/.bashrc ~/.bashrc_wsl_old
 ln -s "$DIR/bash/bashrc" ~/.bashrc
 source ~/.bashrc
 
-# Terminal
-rm -fr ~/.config/xfc4_wsl_old
-mv ~/.config/xfce4 ~/.config/xfce4_wsl_old
-mkdir -p ~/.config/xfce4/terminal
-ln -s "$DIR/xfce4/terminalrc" ~/.config/xfce4/terminal/terminalrc
+# XFCE4 & Terminal
+bash xfce4/__symlink.sh
 
 # Vim
 bash vim/__symlink.sh
