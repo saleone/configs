@@ -1,5 +1,5 @@
 [Configuration]
-FontName=Fira Mono Medium 11
+FontName=Fira Mono Medium 10
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBordersDefault=TRUE
@@ -17,12 +17,7 @@ MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 MiscScrollAlternateScreen=TRUE
-ColorPalette=#3B4252;#BF616A;#A3BE8C;#EBCB8B;#81A1C1;#B48EAD;#88C0D0;#E5E9F0;#4C566A;#BF616A;#A3BE8C;#EBCB8B;#81A1C1;#B48EAD;#8FBCBB;#ECEFF4
-ColorCursor=#D8DEE9
-ColorForeground=#D8DEE9
-ColorBold=#D8DEE9
-ColorBoldUseDefault=FALSE
-ColorBackground=#2E3440
-TabActivityColor=#88C0D0
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+ColorCursor=#bb10bb10bb10
+ColorPalette=#000000000000;#aaaa00000000;#bff3bff3bff3;#aaaa55550000;#00000000aaaa;#aaaa0000aaaa;#0000aaaaaaaa;#aaaaaaaaaaaa;#555555555555;#ffff55555555;#5555ffff5555;#ffffffff5555;#55555555ffff;#ffff5555ffff;#5555ffffffff;#ffffffffffff
 

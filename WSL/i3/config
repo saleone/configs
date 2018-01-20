@@ -76,40 +76,28 @@ bindsym $mod+r mode "resize"
 # is used in the bar {} block below.
 font pango:Fira Sans Bold 9
 
-# Color variables (affects the window decorations).
-# (dmenu requires these values to be set manually)
-set $highlight #81A1C1
-set $unfocused #3B4252
-set $text #ECEFF4
-set $bg #2E3440
-set $urgent #BF616A
-set $indicator $bg
-
 # Define window decoration colors (check the variables for color hex codes).
-# class                 border     backgr.     text    indicator
-client.focused          $highlight $highlight  $bg     $indicator
-client.focused_inactive $unfocused $unfocused  $text   $indicator
-client.unfocused        $unfocused $unfocused  $text   $indicator
-client.urgent           $urgent    $urgent     $text   $indicator
+# class border backgr. text indicator
+client.unfocused #333333 #333333 #FFFFFF #333333
+client.focused_inactive #333333 #333333 #FFFFFF #000000
+client.focused #000000 #000000 #FFFFFF #000000
 
 # Show borders on screen edges.
 hide_edge_borders none
 
 # Status bar settings.
 bar {
-        status_command ~/.status
+  status_command ~/.status
         position top
 
 # Status bar colors.
-        colors {
-            background  $bg
-            separator   $bg
-            # class                 border     backgr.     text
-            focused_workspace       $bg        $bg         $text
-            inactive_workspace      $bg        $bg         $highlight
-            urgent_workspace        $bg        $urgent     $text
-        }
         tray_output primary
+  colors {
+    statusline #AAAAAA
+    background #333333
+    focused_workspace #282828 #282828 #FFFFFF
+    inactive_workspace #333333 #333333 #AAAAAA
+  }
 }
 
 # /End of Window decorations
@@ -122,7 +110,7 @@ bar {
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Start program launcher (currently dmenu).
-bindsym $mod+d exec dmenu_run -l 999 -nb '#000000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#E95420' -fn "Fira Sans Medium"
+bindsym $mod+d exec dmenu_run -l 999 -nb '#000000' -nf '#FFFFFF' -sb '#AAAAAA' -sf '#000000' -fn "Fira Sans Medium"
 
 # Reload i3wm config file.
 bindsym $mod+Shift+c reload
