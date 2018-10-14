@@ -144,12 +144,6 @@ function list_all_apt_repos {
   done
 }
 
-##
-# Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Dev
-source /usr/local/bin/virtualenvwrapper.sh
-
 # XServer
 export DISPLAY=:0.0
 
@@ -163,7 +157,6 @@ alias mkdir="mkdir -pv" # make parent directories when creating subdirectory
 alias listen="lsof -P -g -n" # list apps connected to network
 alias ls="ls --color=auto --classify" # more descriptive list
 alias rm="rm -i" # ask when deleting something
-alias vim="gvim -v" # use terminal version with +clipboard support
 alias h="history" # easily check command history
 
 # Git aliases
@@ -195,8 +188,5 @@ alias ....="cd ../../.."
 
 ##
 # Global variables
-EDITOR="vim"; export EDITOR;
-
-
-# Start in home
-cd ~
+export EDITOR="vim";
+export DOCKER_HOST="tcp://0.0.0.0:2375";
