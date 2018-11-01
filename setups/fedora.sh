@@ -52,39 +52,15 @@ curl -SL https://go.microsoft.com/fwlink/?LinkID=760867 -o vscode.rpm
 sudo dnf install vscode.rpm -y
 rm -f vscode.rpm
 
-# Install Steam
-sudo dnf install steam -y
-
 # Install Virtualbox
 sudo dnf install VirtualBox -y
 sudo dnf install akmod-VirtualBox kernel-devel-4.8.6-300.fc25.x86_64
-sudo akmods --kernels 4.8.6-300.fc25.x86_64 && systemctl restart systemd-modules-load.service
+echo "NOTE: Enable kernel mods for VirtualBox"
+#sudo akmods --kernels 4.8.6-300.fc25.x86_64 && systemctl restart systemd-modules-load.service
 
 # Install Vagrant
 sudo dnf install vagrant -y
 
-# Install PHP for Laravel
-sudo dnf install php php-common php-cli php-pdo php-zip php-xml php-mbstring php-php-gettext -y
-
-# Install composer
-curl -SL https://getcomposer.org/installer -o composer-setup.php
-php composer-setup.php --install-dir=$HOME/.my_bin --filename=composer
-rm -f composer-setup.php
-
-# Install homestead
-composer global require "laravel/homestead=~2.0"
-homestead init
-
 # Install Gnome tweak tool
 sudo dnf install gnome-tweak-tool
-
-# Install Numix GTK and circle icon themes
-sudo dnf install numix-gtk-theme numix-icon-theme-circle
-
-# Install full Xfce desktop
-sudo dnf install @xfce-desktop
-
-# Install Spotify
-dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo
-sudo dnf install spotify-client
 
