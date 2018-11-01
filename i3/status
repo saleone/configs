@@ -1,16 +1,6 @@
 #!/bin/sh
-#   ▗   ▗
-# ▛▘▜▘▀▌▜▘▌▌▛▘
-# ▄▌▐▖█▌▐▖▙▌▄▌ - Display status in one line, to be embedded on statuslines.
-# ==============================================================================
-
-# Thank to xero's script sysinfo
 #	http://git.io/v4aH5
-
-# Thank to z3bra's mkbar translated now in C
 #	http://git.z3bra.org/mkb/files.html
-
-# More edits by Sasa Savic
 #   https://github.com/saleone
 
 FULL=${FULL-█}
@@ -36,11 +26,16 @@ draw()
 
 cpu()
 {
-	cpu="$(grep 'cpu ' /proc/stat |\
-		awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')"
-	cpu=$(printf "%.0f" $cpu)
+    cpu=$(top -bn1 | grep %Cpu | awk '{value=$2} END {print value}')
 
-	printf 'cpu %s' "$(draw $cpu $SIZE)"
+    # When CPU reaches 100% load, command above reuturns "us,"
+    if [ $cpu = 'us,' ]; then
+        cpu='100,0'
+    fi
+
+    cpu=$(printf "%.0f" $cpu)
+
+    printf 'cpu %s' "$(draw $cpu $SIZE)"
 }
 
 ram()
@@ -52,19 +47,20 @@ ram()
 
 battery()
 {
-    if [ -f /sys/class/power_supply/BAT1 ]; then
-        battery=/sys/class/power_supply/BAT1
-        b_full=$battery/energy_full
-        b_now=$battery/energy_now
+    if [ -d /sys/class/power_supply/BAT0 ]; then
+        battery=/sys/class/power_supply/BAT0
+        b_full=$battery/charge_full
+        b_now=$battery/charge_now
         bf=`cat $b_full`
         bn=`cat $b_now`
-        charge=`printf $(( 100 * $bn / $bf ))`
+        charge=`printf $(( 100 * bn / bf ))`
         printf "bat %s" "$(draw $charge $SIZE)"
     fi
 }
+
 while :
 do
-    printf ' %s  %s  %s  %s  \n' \
-        "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")"
+    printf '%s    |    %s  %s  %s  %s  \n' \
+        "$USER@$(hostname)" "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")"
     sleep 1
 done
