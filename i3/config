@@ -31,8 +31,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Change the way windows are split.
-bindsym $mod+b split h # split horizontally
-bindsym $mod+v split v # split vertically
+bindsym $mod+b split h
+bindsym $mod+v split v
 
 # Toggle program in fullscreen mode.
 bindsym $mod+f fullscreen toggle
@@ -119,7 +119,7 @@ bar {
 # Program Shortcuts
 
 # Start a terminal.
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal --hide-menubar
 
 # Start program launcher (currently dmenu).
 bindsym $mod+d exec dmenu_run -l 999 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
@@ -176,8 +176,10 @@ bindsym $mod+Shift+0 move container to workspace 5
 exec setxkbmap -layout "us,ba,rs" -option "grp:menu_toggle"
 
 # Set the wallpaper.
+exec_always xsetroot -solid "#2E3440"
 exec_always feh --bg-scale ~/.wallpaper.jpg
 exec_always feh --bg-scale ~/.wallpaper.png
+exec redshift
 exec compton
 exec volumeicon
 exec --no-startup-id nm-applet
