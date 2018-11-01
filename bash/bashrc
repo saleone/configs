@@ -12,7 +12,6 @@ alias mkdir="mkdir -pv" # make parent directories when creating subdirectory
 alias listen="lsof -P -g -n" # list apps connected to network
 alias ls="ls --color=auto --classify" # more descriptive list
 alias rm="rm -i" # ask when deleting something
-alias vim="gvim -v" # use terminal version with +clipboard support
 alias h="history" # easily check command history
 
 # Git aliases
@@ -25,7 +24,7 @@ alias gitd="git diff"
 alias gitp="git push"
 alias gitpl="git pull"
 
-# mercurial aliases
+# Mercurial aliases
 alias hgs="hg status"
 alias hgc="hg commit"
 alias hga="hg add"
@@ -58,7 +57,7 @@ fi
 ##
 # Global variables
 EDITOR="vim"; export EDITOR;
-PS1=" \W > "
+PS1=" \W $ "
 
 ##
 # My changes
@@ -74,9 +73,6 @@ if [ -d $HOME/.config/composer/vendor/bin ]; then
     export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
-# Use caps lock as escape
-setxkbmap -option "caps:escape"
-
 # If there is rust cargo bin folder add it to PATH
 if [ -d $HOME/.cargo/bin ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
@@ -88,6 +84,9 @@ if [ ! -d $RUST_REPO ]; then
     mkdir -p $RUST_REPO
 fi
 export RUST_SRC_PATH="$RUST_REPO/src"
+
+# Remap caps lock to control
+setxkbmap -option caps:ctrl_modifier
 
 
 ##
@@ -136,9 +135,3 @@ GIT_PROMPT_ONLY_IN_REPO=1
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
 GIT_PROMPT_START=" \W"
 GIT_PROMPT_END=" > "
-
-##
-# Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Dev
-source /usr/local/bin/virtualenvwrapper.sh
