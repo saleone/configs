@@ -1,3 +1,4 @@
+" Globals that need to activate
 " Install plugins with 'junegunn/vim-plug'
 call plug#begin("~/.vim/plugged")
 Plug 'tpope/vim-sensible'
@@ -11,9 +12,9 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
-Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ryanpcmcquen/true-monochrome_vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " ======================
@@ -133,6 +134,16 @@ map <Leader>Q :qall!<CR>
 
 " Save with <Leader>w
 map <Leader>w :w<CR>
+
+
+" Color scheme
+set termguicolors
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_comment_brightness = 20
+let g:nord_cursor_line_number_background = 1
+colorscheme nord
+
 
 
 " =============
