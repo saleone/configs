@@ -53,8 +53,12 @@ battery()
         b_now=$battery/charge_now
         bf=`cat $b_full`
         bn=`cat $b_now`
+        status="-"
+        if [ $(cat /sys/class/power_supply/AC/online) == '1' ]; then
+            status="+"
+        fi
         charge=`printf $(( 100 * bn / bf ))`
-        printf "bat %s" "$(draw $charge $SIZE)"
+        printf "bat %s %s" $status "$(draw $charge $SIZE)"
     fi
 }
 
