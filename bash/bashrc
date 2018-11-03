@@ -58,6 +58,7 @@ fi
 # Global variables
 EDITOR="vim"; export EDITOR;
 PS1=" \W $ "
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 ##
 # My changes
