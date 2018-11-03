@@ -131,7 +131,7 @@ bar {
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Start program launcher (currently dmenu).
-bindsym $mod+d exec dmenu_run -l 999 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
+bindsym $mod+d exec dmenu_run -l 20 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
 
 # Reload i3wm config file.
 bindsym $mod+Shift+c reload
