@@ -131,7 +131,7 @@ bar {
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Start program launcher (currently dmenu).
-bindsym $mod+d exec dmenu_run -l 20 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
+bindsym $mod+d exec dmenu_run -l 15 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
 
 # Reload i3wm config file.
 bindsym $mod+Shift+c reload
@@ -140,7 +140,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Exit i3wm. Log out of the session.
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to log out?' -b 'YES' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -f 'pango:Fira Sans Bold 9' -m 'Do you really want to log out?' -b 'YES' 'i3-msg exit'"
 
 # Pulse audio volume control.
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
