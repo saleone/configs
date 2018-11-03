@@ -72,6 +72,12 @@ bindsym $mod+r mode "resize"
 ###
 # Window decorations
 
+# Gaps
+gaps inner 7
+gaps outer 3
+smart_gaps on
+smart_borders on
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Fira Sans Bold 9
@@ -94,6 +100,9 @@ client.urgent           $urgent    $urgent     $text   $indicator
 
 # Show borders on screen edges.
 hide_edge_borders none
+
+# Hide title bar
+for_window [class="^.*"] border pixel 5
 
 # Status bar settings.
 bar {
@@ -119,7 +128,7 @@ bar {
 # Program Shortcuts
 
 # Start a terminal.
-bindsym $mod+Return exec gnome-terminal --hide-menubar
+bindsym $mod+Return exec i3-sensible-terminal
 
 # Start program launcher (currently dmenu).
 bindsym $mod+d exec dmenu_run -l 999 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
