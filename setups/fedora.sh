@@ -2,7 +2,7 @@
 cd $HOME
 
 # Update the system
-sudo dnf update -y
+dnf update -y
 
 # Add RPM Fusion repository
 su -c 'dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y'
@@ -23,7 +23,7 @@ dnf install \
     vlc \
     podman \
     tmux \
-    vim-enchanced \
+    vim-enhanced \
     vim-X11 \
     ncpamixer \
     rsync \
@@ -38,6 +38,7 @@ dnf install \
     arandr \
     compton \
     redshift \
+    xfce4-terminal \
     -y
 
 CONFIGS="$HOME/Dev/configs"
@@ -73,5 +74,5 @@ cp Fira-4.202/ttf/*.ttf $HOME/.fonts
 rm -fr Fira-4.202/
 
 curl -SL https://go.microsoft.com/fwlink/?LinkID=760867 -o vscode.rpm
-sudo dnf install vscode.rpm -y
+dnf install vscode.rpm -y
 rm -f vscode.rpm
