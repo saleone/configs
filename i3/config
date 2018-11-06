@@ -134,7 +134,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+d exec dmenu_run -l 15 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
 
 # Lock screen
-bindsym $mod+o exec import -window root ~/.lockscreen.png && convert -paint 0 ~/.lockscreen.png ~/.lockscreen.png && i3lock -i ~/.lockscreen.png && rm -f ~/.lockscreen.png
+bindsym $mod+o exec import -window root ~/.lockscreen.png && convert -scale 20% -scale 500% ~/.lockscreen.png ~/.lockscreen.png && i3lock -i ~/.lockscreen.png && rm -f ~/.lockscreen.png
 
 # Reload i3wm config file.
 bindsym $mod+Shift+c reload
