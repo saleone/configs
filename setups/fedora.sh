@@ -39,6 +39,7 @@ dnf install \
     compton \
     redshift \
     xfce4-terminal \
+    brightnessctl \
     -y
 
 CONFIGS="$HOME/Dev/configs"
