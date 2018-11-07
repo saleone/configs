@@ -9,3 +9,4 @@ xfce4/xfce4/xfconf/xfce-perchannel-xml/ristretto.xml
 xfce4/xfce4/help.rc
 xfce4/xfce4/xfce4-screenshooter
 xfce4/xfce4/desktop/*
+xfce4/xfce4/terminal/accels.scm
