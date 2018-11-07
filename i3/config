@@ -152,6 +152,10 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
+# Brightness controls.
+bindsym XF86KbdBrightnessUp exec brightnessctl s +10%
+bindsym XF86KbdBrightnessDown exec brightnessctl s 10%-
+
 # /End of Program Shortcuts
 ###
 
