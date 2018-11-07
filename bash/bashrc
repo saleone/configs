@@ -7,7 +7,9 @@ fi
 
 ##
 # Aliases
-alias v="vim"
+alias vim="gvim -v"
+alias vi="gvim -v"
+alias v="gvim -v"
 alias mkdir="mkdir -pv" # make parent directories when creating subdirectory
 alias listen="lsof -P -g -n" # list apps connected to network
 alias ls="ls --color=auto --classify" # more descriptive list
