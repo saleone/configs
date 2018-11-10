@@ -73,8 +73,8 @@ bindsym $mod+r mode "resize"
 # Window decorations
 
 # Gaps
-gaps inner 7
-gaps outer 3
+gaps inner 10
+gaps outer 5
 smart_gaps on
 smart_borders on
 
@@ -84,12 +84,12 @@ font pango:Fira Sans Bold 9
 
 # Color variables (affects the window decorations).
 # (dmenu requires these values to be set manually)
-set $highlight #81A1C1
-set $unfocused #3B4252
-set $text #ECEFF4
-set $bg #2E3440
-set $urgent #BF616A
-set $indicator $bg
+set $highlight #55c8fb
+set $unfocused #b9d5fc
+set $text #212121
+set $bg #e9e9e9
+set $urgent #d14185
+set $indicator $text
 
 # Define window decoration colors (check the variables for color hex codes).
 # class                 border     backgr.     text    indicator
@@ -102,7 +102,7 @@ client.urgent           $urgent    $urgent     $text   $indicator
 hide_edge_borders none
 
 # Hide title bar
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 3
 
 # Status bar settings.
 bar {
@@ -113,10 +113,11 @@ bar {
         colors {
             background  $bg
             separator   $bg
+            statusline  $text
             # class                 border     backgr.     text
-            focused_workspace       $bg        $bg         $text
-            inactive_workspace      $bg        $bg         $highlight
-            urgent_workspace        $bg        $urgent     $text
+            focused_workspace       $bg        $highlight  $bg
+            inactive_workspace      $bg        $bg         $text
+            urgent_workspace        $text      $urgent     $text
         }
         tray_output primary
 }
