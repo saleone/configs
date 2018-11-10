@@ -5,7 +5,7 @@
 
 FULL=${FULL-█}
 EMPTY=${EMPTY-░}
-SIZE=${SIZE-10}
+SIZE=${SIZE-50}
 
 draw()
 {
@@ -21,7 +21,7 @@ draw()
 			|| out="${out}${EMPTY}"
 	done
 
-	printf '%s' "$out"
+    printf '%s %02d%%' $out $perc
 }
 
 cpu()
@@ -53,7 +53,7 @@ battery()
         b_now=$battery/charge_now
         bf=`cat $b_full`
         bn=`cat $b_now`
-        status="-"
+        status=""
         if [ $(cat /sys/class/power_supply/AC/online) == '1' ]; then
             status="+"
         fi
@@ -64,7 +64,7 @@ battery()
 
 while :
 do
-    printf '%s    |    %s  %s  %s  %s  \n' \
-        "$USER@$(hostname)" "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")"
+    printf '%s\t\t%s\t\t%s\t\t%s\t@%s \n' \
+        "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")" $USER
     sleep 1
 done
