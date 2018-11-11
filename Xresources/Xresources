@@ -37,7 +37,7 @@ URxvt.urlLauncher: firefox
 
 
 !Change the font settings
-URxvt.font: xft:Source Code Pro:size=9
+URxvt.font: xft:Fira Mono Medium:size=10
 URxvt.letterSpace: -1
 
 ! --------------------------------------------------------------------------
