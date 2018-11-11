@@ -4,7 +4,7 @@
 #   https://github.com/saleone
 
 FULL=${FULL-█}
-EMPTY=${EMPTY-░}
+EMPTY=${EMPTY-▁}
 SIZE=${SIZE-50}
 
 draw()
@@ -21,7 +21,7 @@ draw()
 			|| out="${out}${EMPTY}"
 	done
 
-    printf '%s %02d%%' $out $perc
+    printf '▕%s▏%02d%%' $out $perc
 }
 
 cpu()
@@ -55,7 +55,7 @@ battery()
         bn=`cat $b_now`
         status=""
         if [ $(cat /sys/class/power_supply/AC/online) == '1' ]; then
-            status="+"
+            status="⚡"
         fi
         charge=`printf $(( 100 * bn / bf ))`
         printf "bat %s %s" $status "$(draw $charge $SIZE)"
@@ -64,7 +64,7 @@ battery()
 
 while :
 do
-    printf '%s\t\t%s\t\t%s\t\t%s\t@%s \n' \
+    printf '%s\t \t%s\t \t%s\t \t%s\t@%s \n' \
         "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")" $USER
     sleep 1
 done
