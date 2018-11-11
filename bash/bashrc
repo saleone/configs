@@ -95,11 +95,6 @@ setxkbmap -option caps:ctrl_modifier
 ##
 # Custom funtions
 
-# Homestead global access
-function homestead() {
-    (cd ~/Dev/Homestead && vagrant $*)
-}
-
 # List all custom apt repos
 function list_added_apt_repos {
   for APT in `find /etc/apt/ -name \*.list`; do
