@@ -8,7 +8,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # Kill focused window.
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # Change focus on windows.
 bindsym $mod+h focus left
@@ -132,7 +132,7 @@ bar {
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Start program launcher (currently dmenu).
-bindsym $mod+d exec dmenu_run -l 15 -nb '#2E3440' -nf '#ECEFF4' -sb '#81A1C1' -sf '#2E3440' -fn "Fira Sans Medium"
+bindsym $mod+d exec dmenu_run -l 15 -nb '$bg' -nf '$text' -sb '$highlight' -sf '$text' -fn "Fira Sans Medium"
 
 # Lock screen
 bindsym $mod+o exec import -window root ~/.lockscreen.png && convert -scale 20% -scale 500% ~/.lockscreen.png ~/.lockscreen.png && i3lock -i ~/.lockscreen.png && rm -f ~/.lockscreen.png
