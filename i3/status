@@ -64,7 +64,7 @@ battery()
 
 while :
 do
-    printf '%s\t \t%s\t \t%s\t \t%s\t@%s \n' \
+    printf '%s\t\t%s\t\t%s\t%s\t@%s \n' \
         "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")" $USER
     sleep 1
 done
