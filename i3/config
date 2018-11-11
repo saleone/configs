@@ -115,9 +115,9 @@ bar {
             separator   $bg
             statusline  $text
             # class                 border     backgr.     text
-            focused_workspace       $bg        $highlight  $bg
+            focused_workspace       $highlight $highlight  $bg
             inactive_workspace      $bg        $bg         $text
-            urgent_workspace        $text      $urgent     $text
+            urgent_workspace        $urgent    $urgent     $text
         }
         tray_output primary
 }
