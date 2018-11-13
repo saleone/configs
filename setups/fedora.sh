@@ -57,14 +57,7 @@ if [[ ! \$DISPLAY && \$XDG_VTNR -eq 1 ]]; then
 fi
 BASH_PROFILE
 
-bash $CONFIGS/git/__symlink.sh
-bash $CONFIGS/vim/__symlink.sh
-bash $CONFIGS/xfce4/__symlink.sh
-bash $CONFIGS/bash/__symlink.sh
-bash $CONFIGS/i3/__symlink.sh
-bash $CONFIGS/vscode/__symlink.sh
-bash $CONFIGS/compton/__symlink.sh
-bash $CONFIGS/redshift/__symlink.sh
+# TODO: Link the configs
 
 curl -SL https://github.com/mozilla/Fira/archive/4.202.zip -o fira.zip
 unzip fira.zip
