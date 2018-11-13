@@ -20,6 +20,7 @@ dnf install \
     firefox \
     pulseaudio \
     pulseaudio-utils \
+    pulseaudio-module-bluetooth \
     vlc \
     podman \
     tmux \
