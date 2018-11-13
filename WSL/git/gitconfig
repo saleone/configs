@@ -1,8 +1,0 @@
-[user]
-	email = savic-sasa@outlook.com
-	name = Saša Savić
-[core]
-	editor = vim
-	autocrlf = true
-[push]
-	default = simple
