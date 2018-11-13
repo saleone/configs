@@ -41,6 +41,7 @@ dnf install \
     redshift \
     xfce4-terminal \
     brightnessctl \
+    transmission-gtk \
     -y
 
 CONFIGS="$HOME/Dev/configs"
