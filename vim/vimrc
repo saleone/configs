@@ -136,7 +136,6 @@ map <Leader>Q :qall!<CR>
 map <Leader>w :w<CR>
 
 " Color scheme
-set termguicolors
 colorscheme pencil
 set background=light
 
