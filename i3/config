@@ -193,7 +193,7 @@ bindsym $mod+Shift+0 move container to workspace 5
 # Startup commands.
 
 # Set the keyboard layouts and layout switching (menu key).
-exec setxkbmap -layout "us,ba,rs" -option "grp:menu_toggle"
+exec_always setxkbmap -layout "us,ba,rs" -option "grp:menu_toggle"
 
 # Set the wallpaper.
 exec_always xsetroot -solid "#2E3440"
