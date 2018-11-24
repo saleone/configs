@@ -21,7 +21,8 @@ draw()
 			|| out="${out}${EMPTY}"
 	done
 
-    printf '▕%s▏%02d%%' $out $perc
+    # printf '▕%s▏%02d%%' $out $perc
+    printf '%02d%%' $perc
 }
 
 cpu()
@@ -58,13 +59,13 @@ battery()
             status="⚡"
         fi
         charge=`printf $(( 100 * bn / bf ))`
-        printf "bat %s %s" $status "$(draw $charge $SIZE)"
+        printf "%sbat %s" "$status" "$(draw $charge $SIZE)"
     fi
 }
 
 while :
 do
-    printf '%s\t\t%s\t\t%s\t%s\t@%s \n' \
-        "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")" $USER
+    printf '%s\t\t%s\t\t%s\t\t%s\t\t%s@%s\n' \
+        "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")" $USER "$(hostname)"
     sleep 1
 done
