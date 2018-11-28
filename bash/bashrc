@@ -66,17 +66,10 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 ##
 # My changes
-if [ ! -d $HOME/.my_bin/ ]; then mkdir $HOME/.my_bin; fi # create my bin folder
-export PATH=$HOME/.my_bin:$PATH # add my bin folder to PATH
 
-# If there is a bin folder for PHPs composer add it to PATH
-if [ -d $HOME/.composer/vendor/bin ]; then
-    export PATH="$HOME/.composer/vendor/bin:$PATH"
-fi
-
-if [ -d $HOME/.config/composer/vendor/bin ]; then
-    export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-fi
+# Add users local binary folder
+if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
+export PATH=$HOME/.local/bin:$PATH
 
 # If there is rust cargo bin folder add it to PATH
 if [ -d $HOME/.cargo/bin ]; then
