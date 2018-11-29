@@ -14,7 +14,6 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
-Plug 'reedes/vim-colors-pencil'
 call plug#end()
 
 " ======================
@@ -136,8 +135,7 @@ map <Leader>Q :qall!<CR>
 map <Leader>w :w<CR>
 
 " Color scheme
-colorscheme pencil
-set background=light
+colorscheme industry
 
 
 " =============
