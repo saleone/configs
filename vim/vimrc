@@ -5,21 +5,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
- 
+
 call plug#begin("~/.vim/plugged")
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'rstacruz/sparkup'
-Plug 'easymotion/vim-easymotion'
-Plug 'terryma/vim-expand-region'
 Plug 'jimsei/winresizer'
+Plug 'terryma/vim-expand-region'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " ======================
@@ -143,6 +138,8 @@ map <Leader>w :w<CR>
 " Color scheme
 colorscheme industry
 
+" Shows preview window on the bottom
+set splitbelow
 
 " =============
 "  CUSTOM CODE
@@ -166,9 +163,15 @@ autocmd BufWrite * :call DeleteTrailingWhiteSpace()
 map <Leader>e <Plug>(expand_region_expand)
 map <Leader>s <Plug>(expand_region_shrink)
 
+" YouCompleteMe
+" ---------------------
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_confirm_extra_conf = 0
 
 " Winresizer
 " -----------
 "
 "  Nice way to resize windows by pressing C-e and using hjkl.
+"
+"
 
