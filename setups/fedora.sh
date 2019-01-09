@@ -36,13 +36,14 @@ dnf install \
     wget \
     curl \
     bash-completion \
-    arandr \
     compton \
-    redshift \
-    xfce4-terminal \
+    lxterminal \
     brightnessctl \
     transmission-gtk \
     -y
+
+dnf copr disable nforro/i3-gaps -y
+dnf copr disable jstanek/ports -y
 
 CONFIGS="$HOME/Dev/configs"
 if [ ! -d $HOME/Dev ]; then
