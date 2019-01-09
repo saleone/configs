@@ -78,8 +78,7 @@ gaps outer 5
 smart_gaps on
 smart_borders on
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# Font for window titles
 font pango:Fira Sans Bold 12
 
 # Show borders on screen edges.
@@ -88,13 +87,6 @@ hide_edge_borders none
 # Hide title bar
 for_window [class="^.*"] border pixel 3
 
-# Status bar settings.
-bar {
-    status_command ~/.status
-    position top
-    tray_output primary
-}
-
 # /End of Window decorations
 ###
 
@@ -102,7 +94,7 @@ bar {
 # Program Shortcuts
 
 # Start a terminal.
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec lxterminal
 
 # Start program launcher (currently dmenu).
 bindsym $mod+d exec dmenu_run -fn "Fira Sans Medium"
@@ -174,6 +166,7 @@ exec_always xsetroot -solid "#000000"
 exec redshift
 exec compton
 exec volumeicon
+exec yabar -c ~/.yabar
 exec --no-startup-id nm-applet
 
 # /End of Startup commands.
