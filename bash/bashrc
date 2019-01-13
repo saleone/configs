@@ -47,6 +47,7 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 ##
 # My changes
+source /etc/bash_completion
 
 # Add users local binary folder
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
