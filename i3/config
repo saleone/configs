@@ -73,10 +73,8 @@ bindsym $mod+r mode "resize"
 # Window decorations
 
 # Gaps
-gaps inner 10
+gaps inner 5
 gaps outer 5
-smart_gaps on
-smart_borders on
 
 # Font for window titles
 font pango:Fira Sans Bold 12
