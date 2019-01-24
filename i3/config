@@ -154,7 +154,7 @@ bindsym $mod+Shift+0 move container to workspace 5
 
 ###
 # Startup commands.
-exec_always feh --bg-scale ~/.wallpaper.jpg
+exec_always feh --bg-fill ~/.wallpaper.jpg
 
 # Set the keyboard layouts and layout switching (menu key).
 exec_always setxkbmap -layout "us,ba,rs" -option "grp:alt_shift_toggle"
@@ -163,9 +163,7 @@ exec_always setxkbmap -layout "us,ba,rs" -option "grp:alt_shift_toggle"
 exec_always xsetroot -solid "#000000"
 exec redshift
 exec compton
-exec volumeicon
 exec yabar -c ~/.yabar
-exec --no-startup-id nm-applet
 
 # /End of Startup commands.
 ###
