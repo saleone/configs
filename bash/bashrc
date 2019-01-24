@@ -41,7 +41,7 @@ alias dirs="dirs -v" # show directories with dirs
 # Global variables
 EDITOR="vim"; export EDITOR;
 
-PS1="\[\033[01;39m\] \W \[\033[0m\]➤ "
+PS1="\[\033[01;39m\]\W\[\033[0m\] $ "
 
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
@@ -67,14 +67,3 @@ export RUST_SRC_PATH="$RUST_REPO/src"
 
 # Remap caps lock to control
 setxkbmap -option caps:ctrl_modifier
-
-##
-# Bash git prompt
-if [ ! -d $HOME/.bash-git-prompt ]; then
-    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
-fi
-source $HOME/.bash-git-prompt/gitprompt.sh
-GIT_PROMPT_ONLY_IN_REPO=1
-GIT_PROMPT_FETCH_REMOTE_STATUS=0
-GIT_PROMPT_START=" \[\033[01;39m\]\W\[\033[0m\]"
-GIT_PROMPT_END=" ➤ "
