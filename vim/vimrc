@@ -14,7 +14,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
-Plug 'Valloric/YouCompleteMe'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " ======================
@@ -135,9 +135,6 @@ map <Leader>Q :qall!<CR>
 " Save with <Leader>w
 map <Leader>w :w<CR>
 
-" Color scheme
-colorscheme industry
-
 " Shows preview window on the bottom
 set splitbelow
 
@@ -172,6 +169,10 @@ let g:ycm_confirm_extra_conf = 0
 " -----------
 "
 "  Nice way to resize windows by pressing C-e and using hjkl.
-"
-"
+
+" CtrlP
+" -----
+let g:ctrlp_working_path_mode = 'w'
+let g:ctrlp_root_markers = ['*.code-workspace']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
