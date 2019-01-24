@@ -1,6 +1,3 @@
-#Hi!, this config is not intended to become an example of beauty in yabar.
-#It is just intended to show an example (specifically an example config that uses internal blocks) of what you can do using yabar.
-
 bar-list = ["topbar"];
 topbar:{
 	font: "Fira Sans Medium, FontAwesome Bold 9";
@@ -31,7 +28,6 @@ topbar:{
 		align: "center";
 		fixed-size: 150;
 		interval: 2;
-		#underline-color-rgb:0x1974D2;
         underline-color-rgb: 0x285577;
 		internal-prefix: " ";
 		internal-option1: "%a %d %b, %I:%M";
@@ -41,21 +37,17 @@ topbar:{
 		align: "right";
 		fixed-size: 100;
 		interval: 1;
-		#underline-color-rgb:0x006DB0;
         underline-color-rgb: 0x285577;
 		internal-prefix: " ";
-		#internal-spacing: true;
 	}
 	ya_brightness: {
 		exec: "YABAR_BRIGHTNESS";
 		align: "right";
 		fixed-size: 40;
 		interval: 1;
-		#underline-color-rgb:0x417DC1;
         underline-color-rgb: 0x285577;
 		internal-prefix: " ";
-		internal-option1: "intel_backlight"; # one of /sys/class/backlight/intel_backlight/brightness
-		#internal-spacing: true;
+		internal-option1: "intel_backlight";
 	}
 	ya_bw: {
 		exec: "YABAR_BANDWIDTH";
@@ -63,9 +55,8 @@ topbar:{
 		fixed-size: 110;
 		interval: 1;
 		internal-prefix: " ";
-		internal-option1: "wlp2s0"; # "default" or network interface from `ifconfig` or `ip link`
-		internal-option2: " "; # characters to be placed before up/down data
-		#underline-color-rgb:0x0095B6;
+		internal-option1: "wlp2s0";
+		internal-option2: " ";
         underline-color-rgb: 0x285577;
 	}
 	ya_cpu: {
@@ -75,9 +66,7 @@ topbar:{
 		interval: 1;
 		internal-prefix: " ";
 		internal-suffix: "%";
-		#underline-color-rgb:0x0070FF;
         underline-color-rgb: 0x285577;
-		#internal-spacing: true;
 	}
 	ya_bat: {
 		exec: "YABAR_BATTERY";
@@ -87,7 +76,6 @@ topbar:{
 		internal-suffix: "%";
 		internal-option1: "BAT0";
 		internal-option2: "    ";
-        #underline-color-rgb: 0x0bb5ff
         underline-color-rgb: 0x285577;
 	}
 	ya_disk: {
@@ -96,9 +84,8 @@ topbar:{
 		fixed-size: 110;
 		interval: 1;
 		internal-prefix: " ";
-		internal-option1: "nvme0n1"; # name from `lsblk` or `ls /sys/class/block/`
-		internal-option2: " "; # characters to be placed before in/out data
-		#underline-color-rgb:0x318CE7;
+		internal-option1: "nvme0n1";
+		internal-option2: " ";
         underline-color-rgb: 0x285577;
 	}
 	ya_wifi: {
@@ -108,7 +95,6 @@ topbar:{
 		internal-suffix: " ";
 		internal-option1: "wlp2s0";
         fixed-size: 100;
-        #underline-color-rgb: 0x7ac5cd;
         underline-color-rgb: 0x285577;
 	}
 	title: {
@@ -117,7 +103,6 @@ topbar:{
 		fixed-size: 350;
 		type: "persist";
 		foreground-color-rgb:0xeeeeee;
-		#underline-color-rgb:0x373b41;
         underline-color-rgb: 0x285577;
 		overline-color-rgb:0x373b41;
 	}
