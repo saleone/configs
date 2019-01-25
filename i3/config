@@ -92,7 +92,7 @@ for_window [class="^.*"] border pixel 3
 # Program Shortcuts
 
 # Start a terminal.
-bindsym $mod+Return exec lxterminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # Start program launcher (currently dmenu).
 bindsym $mod+d exec dmenu_run -fn "Fira Sans Medium"
