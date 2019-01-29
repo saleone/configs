@@ -41,7 +41,7 @@ alias dirs="dirs -v" # show directories with dirs
 # Global variables
 EDITOR="vim"; export EDITOR;
 
-PS1=" \[\033[01;39m\]\W\[\033[0m\] $ "
+PS1="\[\033[01;39m\]\W\[\033[0m\] $ "
 
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 

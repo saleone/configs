@@ -63,9 +63,11 @@ battery()
     fi
 }
 
+# Reset the previosu
+xsetroot -name "                                                                                                                "
 while :
 do
-    printf -v status '%s    %s    %s    %s' \
+    printf -v status '%s      %s      %s      %s' \
         "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")"
     echo $status
     xsetroot -name "$status"
