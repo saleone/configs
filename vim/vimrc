@@ -15,6 +15,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fxn/vim-monochrome'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " ======================
@@ -137,6 +139,10 @@ map <Leader>w :w<CR>
 
 " Shows preview window on the bottom
 set splitbelow
+
+" Them
+colorscheme monochrome
+let g:airline_theme='monochrome'
 
 " =============
 "  CUSTOM CODE
