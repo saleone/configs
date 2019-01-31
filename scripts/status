@@ -5,7 +5,7 @@
 
 FULL=${FULL-█}
 EMPTY=${EMPTY-▁}
-SIZE=${SIZE-20}
+SIZE=${SIZE-10}
 
 draw()
 {
@@ -67,8 +67,7 @@ battery()
 xsetroot -name "                                                                                                                "
 while :
 do
-    printf -v status '%s      %s      %s      %s' \
-        "$(cpu)" "$(ram)" "$(battery)" "$(date +"%d.%m.%Y  %R")"
+    printf -v status '%s  %s  %s  %s' "$(cpu)" "$(ram)" "$(battery)" "$(date +"%R")"
     echo $status
     xsetroot -name "$status"
     sleep 1
