@@ -1,0 +1,2 @@
+#!/bin/bash
+eval $(echo -e 'shutdown now\nreboot' | dmenu -i -p "Power Menu")
