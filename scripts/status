@@ -36,14 +36,14 @@ cpu()
 
     cpu=$(printf "%.0f" $cpu)
 
-    printf ' %s' "$(draw $cpu $SIZE)"
+    printf '/%s' "$(draw $cpu $SIZE)"
 }
 
 ram()
 {
 	ram="$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')"
 
-	printf " %s" "$(draw $ram $SIZE)"
+	printf "/%s" "$(draw $ram $SIZE)"
 }
 
 battery()
@@ -59,7 +59,7 @@ battery()
             status="⚡"
         fi
         charge=`printf $(( 100 * bn / bf ))`
-        printf "%s %s" "$status" "$(draw $charge $SIZE)"
+        printf "%s/%s" "$status" "$(draw $charge $SIZE)"
     fi
 }
 
@@ -67,9 +67,9 @@ current_brightness()
 {
     value=$(( $(brightnessctl g) * 100 / $(brightnessctl m) ))
     if [ $value -ge 100 ]; then
-        printf ' max';
+        printf '/max';
     else
-        printf ' %02d%%' "$value";
+        printf '/%02d%%' "$value";
     fi
 }
 
@@ -77,12 +77,22 @@ current_datetime()
 {
     printf ' %s' "$(date +"%b %d, %R")"
 }
+
+current_volume()
+{
+    icon=""
+    # TODO: Set mute icon
+    # val=$(pactl list sink | grep "Mute:") ...
+    vol=$(pactl list sinks | grep "Volume:" | grep -Eo "[0-9]+\%" | head -1)
+    printf '%s/%s' "$icon" "$vol"
+}
+
 # Reset the previosu
 xsetroot -name "                                                                                                                                                                                                       "
 while :
 do
-    printf -v status '%s                                                                                 %s   %s   %s   %s' \
-        "$(current_datetime)" "$(cpu)" "$(ram)" "$(current_brightness)" "$(battery)"
+    printf -v status '%s                                                                         %s   %s   %s   %s   %s' \
+        "$(current_datetime)" "$(cpu)" "$(ram)" "$(current_brightness)" $(current_volume)  "$(battery)"
     echo $status
     xsetroot -name "$status"
     sleep 1
