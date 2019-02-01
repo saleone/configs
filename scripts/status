@@ -21,8 +21,8 @@ draw()
 			|| out="${out}${EMPTY}"
 	done
 
-    printf '▕%s▏%02d%%' $out $perc
-    # printf '%02d%%' $perc
+    # printf '▕%s▏%02d%%' $out $perc
+    printf '%02d%%' $perc
 }
 
 cpu()
@@ -36,14 +36,14 @@ cpu()
 
     cpu=$(printf "%.0f" $cpu)
 
-    printf 'cpu %s' "$(draw $cpu $SIZE)"
+    printf ' %s' "$(draw $cpu $SIZE)"
 }
 
 ram()
 {
 	ram="$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')"
 
-	printf "ram %s" "$(draw $ram $SIZE)"
+	printf " %s" "$(draw $ram $SIZE)"
 }
 
 battery()
@@ -59,15 +59,25 @@ battery()
             status="⚡"
         fi
         charge=`printf $(( 100 * bn / bf ))`
-        printf "%sbat %s" "$status" "$(draw $charge $SIZE)"
+        printf " %s%s" "$(draw $charge $SIZE)" "$status"
     fi
 }
 
+current_date()
+{
+    printf ' %s' "$(date +"%b %d")"
+}
+
+current_time()
+{
+    printf ' %s' "$(date +"%R")"
+
+}
 # Reset the previosu
 xsetroot -name "                                                                                                                "
 while :
 do
-    printf -v status '%s  %s  %s  %s' "$(cpu)" "$(ram)" "$(battery)" "$(date +"%R")"
+    printf -v status '%s ∥ %s ∥ %s ∥ %s ∥ %s' "$(cpu)" "$(ram)" "$(battery)" "$(current_date)" "$(current_time)"
     echo $status
     xsetroot -name "$status"
     sleep 1
