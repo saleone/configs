@@ -77,7 +77,7 @@ current_time()
 xsetroot -name "                                                                                                                "
 while :
 do
-    printf -v status '%s   %s   %s   %s  %s' "$(cpu)" "$(ram)" "$(battery)" "$(current_date)" "$(current_time)"
+    printf -v status '%s   %s   %s   %s   %s' "$(cpu)" "$(ram)" "$(battery)" "$(current_date)" "$(current_time)"
     echo $status
     xsetroot -name "$status"
     sleep 1
