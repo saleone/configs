@@ -63,21 +63,26 @@ battery()
     fi
 }
 
-current_date()
+current_brightness()
 {
-    printf ' %s' "$(date +"%b %d")"
+    value=$(( $(brightnessctl g) * 100 / $(brightnessctl m) ))
+    if [ $value -ge 100 ]; then
+        printf ' max';
+    else
+        printf ' %02d%%' "$value";
+    fi
 }
 
-current_time()
+current_datetime()
 {
-    printf ' %s' "$(date +"%R")"
-
+    printf ' %s' "$(date +"%b %d, %R")"
 }
 # Reset the previosu
-xsetroot -name "                                                                                                                "
+xsetroot -name "                                                                                                                                                                                                       "
 while :
 do
-    printf -v status '%s   %s   %s   %s   %s' "$(cpu)" "$(ram)" "$(battery)" "$(current_date)" "$(current_time)"
+    printf -v status '%s                                                                                 %s   %s   %s   %s' \
+        "$(current_datetime)" "$(cpu)" "$(ram)" "$(current_brightness)" "$(battery)"
     echo $status
     xsetroot -name "$status"
     sleep 1
