@@ -41,9 +41,7 @@ cpu()
 
 ram()
 {
-	ram="$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')"
-
-	printf " %s" "$(draw $ram $SIZE)"
+    printf " $(free | awk '/Mem/ {printf "%.1fGiB", $3 / 1024.0 / 1024.0}')"
 }
 
 battery()
@@ -89,9 +87,6 @@ current_volume()
 
 while :
 do
-    printf -v status '%s   %s   %s   %s' \
-        "$(cpu)" "$(ram)" "$(battery)" "$(current_datetime)"
-    echo $status
-    xsetroot -name "$status"
+    xsetroot -name "$(cpu)   $(ram)   $(battery)   $(current_datetime)"
     sleep 1
 done
