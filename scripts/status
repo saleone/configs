@@ -87,12 +87,10 @@ current_volume()
     printf '%s⋅%s' "$icon" "$vol"
 }
 
-# Reset the previosu
-xsetroot -name "                                                                                                                                                                                                       "
 while :
 do
-    printf -v status '%s                                                                                         %s   %s   %s' \
-        "$(current_datetime)" "$(cpu)" "$(ram)" "$(battery)"
+    printf -v status '%s   %s   %s   %s' \
+        "$(cpu)" "$(ram)" "$(battery)" "$(current_datetime)"
     echo $status
     xsetroot -name "$status"
     sleep 1
