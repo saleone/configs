@@ -101,10 +101,21 @@ current_volume()
 {
     # TODO: Set mute icon
     # val=$(pactl list sink | grep "Mute:") ...
-    vol=$(pactl list sinks | grep "Volume:" | grep -Eo "[0-9]+\%" | head -1)
-    printf ' %s' "$vol"
+    icon=" "
+    vol=$(pactl list sinks | grep "Volume:" | grep -Eo "[0-9]+\%" | grep -Eo "[0-9]+" | head -1)
+
+    if [ $vol -le 60 ]; then
+        icon=" "
+    fi
+
+    if [ $vol -eq 0 ]; then
+        icon=" "
+    fi
+
+    printf '%s%s%%' "$icon" "$vol"
 }
 
+xsetroot -name "                                                                               "
 while :
 do
     xsetroot -name "$(cpu)   $(ram)   $(current_volume)   $(battery)   $(current_datetime)"
