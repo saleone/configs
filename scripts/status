@@ -52,12 +52,33 @@ battery()
         b_now=$battery/charge_now
         bf=`cat $b_full`
         bn=`cat $b_now`
+
         status=""
         if [ $(cat /sys/class/power_supply/AC/online) == '1' ]; then
-            status="⚡"
+            status=""
         fi
+
         charge=`printf $(( 100 * bn / bf ))`
-        printf "%s %s" "$status" "$(draw $charge $SIZE)"
+        icon=" "
+        if [ $charge -le 90 ]; then
+            icon=" "
+        fi
+
+        if [ $charge -le 75 ]; then
+            icon=" "
+        fi
+
+        if [ $charge -le 25 ]; then
+            # Send battery low notification (once!)
+            icon=" "
+        fi
+
+        if [ $charge -le 10 ]; then
+            # Send battery critical notification (once!)
+            icon=" "
+        fi
+
+        printf "%s%s%s" "$status" "$icon" "$(draw $charge $SIZE)"
     fi
 }
 
