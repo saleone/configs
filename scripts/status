@@ -115,9 +115,10 @@ current_volume()
     printf '%s%s%%' "$icon" "$vol"
 }
 
-xsetroot -name "                                                                               "
+clean=$(myString=$(printf "%1000s");echo ${myString// /" "})
+
 while :
 do
-    xsetroot -name "$(cpu)   $(ram)   $(current_volume)   $(battery)   $(current_datetime)"
+    xsetroot -name "$clean $(cpu)   $(ram)   $(current_volume)   $(battery)   $(current_datetime)"
     sleep 1
 done
