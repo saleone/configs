@@ -1,0 +1,341 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Create required directory [~/.config]
+      file:
+        path: '{{ ansible_env.HOME }}/.config/'
+        state: directory
+
+    - name: Create required directory [~/.local/bin]
+      file:
+        path: '{{ ansible_env.HOME }}/.local/bin/'
+        state: directory
+
+    - name: Install X server
+      become: yes
+      package:
+        name: '@base-x'
+        state: present
+
+    - name: Install development tools
+      become: yes
+      package:
+        name: '@development-tools'
+        state: present
+
+    - name: Install bash-completion
+      become: yes
+      package:
+        name: bash-completion
+        state: present
+
+    - name: Install curl
+      become: yes
+      package:
+        name:  curl
+        state: present
+
+    - name: Install wget
+      become: yes
+      package:
+        name: wget
+        state: present
+
+    - name: Install ranger
+      become: yes
+      package:
+        name: ranger
+        state: present
+
+    - name: Install firefox
+      become: yes
+      package:
+        name: firefox
+        state: present
+
+    - name: Install podman
+      become: yes
+      package:
+        name: podman
+        state: present
+
+    - name: Install tmux
+      become: yes
+      package:
+        name: tmux
+        state: present
+
+    - name: Install feh
+      become: yes
+      package:
+        name: feh
+        state: present
+
+    - name: Install compton
+      become: yes
+      package:
+        name: compton
+        state: present
+
+    - name: Install redshift
+      become: yes
+      package:
+        name: redshift
+        state: present
+
+    - name: Install brightnessctl
+      become: yes
+      package:
+        name: brightnessctl
+        state: present
+
+    - name: Install Transmission
+      become: yes
+      package:
+        name: transmission-gtk
+        state: present
+
+    - name: Install Git
+      become: yes
+      package:
+        name: git
+        state: present
+
+    - name: Install neovim
+      become: yes
+      package:
+        name: neovim
+        state: present
+
+    - name: Install pulseaudio
+      become: yes
+      package:
+        name: pulseaudio
+        state: present
+
+    - name: Install pulseaudio-utils
+      become: yes
+      package:
+        name: pulseaudio-utils
+        state: present
+
+    - name: Install pulseaudio-module-bluetooth
+      become: yes
+      package:
+        name: pulseaudio-module-bluetooth
+        state: present
+
+    - name: Create required directory [~/Dev]
+      file:
+        path: '{{ ansible_env.HOME }}/Dev/'
+        state: directory
+
+    - name: Clone configurations
+      git:
+        repo: https://github.com/saleone/configs
+        dest: '{{ ansible_env.HOME }}/Dev/configs'
+
+    - name: Link .bashrc
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/bashrc'
+        dest: '{{ ansible_env.HOME }}/.bashrc'
+        state: link
+        force: yes
+
+    - name: Link .gitconfig
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/gitconfig'
+        dest: '{{ ansible_env.HOME }}/.gitconfig'
+        state: link
+        force: yes
+
+    - name: Create required directory [~/.config/nvim/]
+      file:
+        path: '{{ ansible_env.HOME }}/.config/nvim/'
+        state: directory
+
+    - name: Link .gitconfig
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/vimrc'
+        dest: '{{ ansible_env.HOME }}/.config/nvim/init.vim'
+        state: link
+        force: yes
+
+    - name: Link .gitconfig
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/vimrc'
+        dest: '{{ ansible_env.HOME }}/.vimrc'
+        state: link
+        force: yes
+
+    - name: Link .gitconfig
+      file:
+        src: '{{ ansible_env.HOME }}/.vim/autoload'
+        dest: '{{ ansible_env.HOME }}/.config/nvim/autoload'
+        state: link
+        force: yes
+
+    - name: Link .dwm_autostart
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/dwm_autostart'
+        dest: '{{ ansible_env.HOME }}/.dwm_autostart'
+        state: link
+        force: yes
+
+    - name: Link compton.conf
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/compton.conf'
+        dest: '{{ ansible_env.HOME }}/.config/compton.conf'
+        state: link
+        force: yes
+
+    - name: Link redshift.conf
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/redshift.conf'
+        dest: '{{ ansible_env.HOME }}/.config/redshift.conf'
+        state: link
+        force: yes
+
+    - name: Link status script
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/status'
+        dest: '{{ ansible_env.HOME }}/.local/bin/dwm_status'
+        state: link
+        force: yes
+
+    - name: Create required directory [~/Dev/src/]
+      file:
+        path: '{{ ansible_env.HOME }}/Dev/src/'
+        state: directory
+
+    - name: Clone dwm
+      git:
+        repo: https://github.com/saleone/dwm
+        dest: '{{ ansible_env.HOME }}/Dev/src/dwm'
+
+    - name: Install X library (for dwm)
+      become: yes
+      package:
+        name: libX11-devel
+        state: present
+
+    - name: Install Xft library (for dwm)
+      become: yes
+      package:
+        name: libXft-devel
+        state: present
+
+    - name: Install Xinerama library (for dwm)
+      become: yes
+      package:
+        name: libXinerama-devel
+        state: present
+
+    - name: Build and install dwm
+      make:
+        chdir: '{{ ansible_env.HOME }}/Dev/src/dwm'
+        target: install
+      become: yes
+
+    - name: Set dwm as window manager
+      lineinfile:
+        path: '{{ ansible_env.HOME }}/.xinitrc'
+        create: yes
+        line: exec dwm
+
+    - name: Autostart dwm on login
+      blockinfile:
+        path: '{{ ansible_env.HOME }}/.bash_profile'
+        block: |
+          # Start X on login
+          if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+              exec startx
+          fi
+
+    - name: Clone st
+      git:
+        repo: https://github.com/saleone/st
+        dest: '{{ ansible_env.HOME }}/Dev/src/st'
+
+    - name: Build and install st
+      make:
+        chdir: '{{ ansible_env.HOME }}/Dev/src/st'
+        target: install
+      become: yes
+
+    - name: Clone dmenu
+      git:
+        repo: https://github.com/saleone/dmenu
+        dest: '{{ ansible_env.HOME }}/Dev/src/dmenu'
+
+    - name: Build and install dmenu
+      make:
+        chdir: '{{ ansible_env.HOME }}/Dev/src/dmenu'
+        target: install
+      become: yes
+
+    - name: Install Xrandr library (for slock)
+      become: yes
+      package:
+        name: libXrandr-devel
+        state: present
+
+    - name: Clone slock
+      git:
+        repo: https://github.com/saleone/slock
+        dest: '{{ ansible_env.HOME }}/Dev/src/slock'
+
+    - name: Build and install slock
+      make:
+        chdir: '{{ ansible_env.HOME }}/Dev/src/slock'
+        target: install
+      become: yes
+
+    - name: Install Liberation font family
+      become: yes
+      package:
+          name: liberation-fonts
+          state: present
+
+    - name: Install fontawesome fonts
+      become: yes
+      package:
+          name: fontawesome-fonts
+          state: present
+
+    - name: Download and install Fira fonts
+      become: yes
+      unarchive:
+        remote_src: yes
+        src: https://github.com/mozilla/Fira/archive/4.202.zip
+        dest: /tmp
+
+    - name: Install Fira fonts
+      become: yes
+      command: mv /tmp/Fira-4.202/ttf /usr/share/fonts/fira
+      #NOTE: Will be avaiable with version 2.8
+      #copy:
+          #remote_src: yes
+          #directory_mode: yes
+          #src: /tmp/Fira-4.202/ttf
+          #dest: /usr/share/fonts/fira
+
+    - name: Set Fira as default system font family (sans, mono)
+      become: yes
+      file:
+          src: '{{ ansible_env.HOME }}/Dev/configs/fonts.conf'
+          dest: '/etc/fonts/local.conf'
+          state: link
+          force: yes
+
+    - name: Update font cache
+      command: fc-cache -fv
+
+    - name: Download background
+      get_url:
+        url: https://i.imgur.com/7rtPrad.jpg
+        dest: '{{ ansible_env.HOME }}/.wallpaper.jpg'
+
+    - name: Reboot
+      become: yes
+      command: reboot
