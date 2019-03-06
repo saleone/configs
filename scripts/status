@@ -41,7 +41,7 @@ cpu()
 
 ram()
 {
-    printf " $(free | awk '/Mem/ {printf "%.1fGiB", $3 / 1024.0 / 1024.0}')"
+    printf " $(free -h | awk '/Mem/ {printf "%sB", $3}')"
 }
 
 battery()
