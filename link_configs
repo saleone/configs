@@ -2,9 +2,12 @@
 
 ln -s $(realpath bashrc) ~/.bashrc
 ln -s $(realpath gitconfig) ~/.gitconfig
-ln -s $(realpath vimrc) ~/.vimrc
+
 ln -s $(realpath scripts/dwm_autostart) ~/.dwm_autostart
 
 mkdir -p ~/.config
 ln -s $(realpath compton.conf) ~/.config/compton.conf
 ln -s $(realpath redshift.conf) ~/.config/redshift.conf
+
+mkdir -p ~/.config/nvim
+ln -s $(realpath vimrc) ~/.config/nvim/init.vim

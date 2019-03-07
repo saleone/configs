@@ -154,28 +154,14 @@
         path: '{{ ansible_env.HOME }}/.config/nvim/'
         state: directory
 
-    - name: Link .gitconfig
+    - name: Link vimrc for Neovim
       file:
         src: '{{ ansible_env.HOME }}/Dev/configs/vimrc'
         dest: '{{ ansible_env.HOME }}/.config/nvim/init.vim'
         state: link
         force: yes
 
-    - name: Link .gitconfig
-      file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/vimrc'
-        dest: '{{ ansible_env.HOME }}/.vimrc'
-        state: link
-        force: yes
-
-    - name: Link .gitconfig
-      file:
-        src: '{{ ansible_env.HOME }}/.vim/autoload'
-        dest: '{{ ansible_env.HOME }}/.config/nvim/autoload'
-        state: link
-        force: yes
-
-    - name: Link .dwm_autostart
+    - name: Link dwm autostart scripts
       file:
         src: '{{ ansible_env.HOME }}/Dev/configs/scripts/dwm_autostart'
         dest: '{{ ansible_env.HOME }}/.dwm_autostart'
