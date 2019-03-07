@@ -16,12 +16,15 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fxn/vim-monochrome'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " ======================
 "  VIM BUILDIN SETTINGS
 " ======================
+
+" Theme
+colorscheme base16-summerfruit-light
 
 " Regular copy and paste
 set pastetoggle=<F2>
@@ -139,10 +142,6 @@ map <Leader>w :w<CR>
 
 " Shows preview window on the bottom
 set splitbelow
-
-" Them
-colorscheme monochrome
-let g:airline_theme='monochrome'
 
 " =============
 "  CUSTOM CODE
