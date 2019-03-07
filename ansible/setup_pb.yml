@@ -317,11 +317,6 @@
     - name: Update font cache
       command: fc-cache -fv
 
-    - name: Download background
-      get_url:
-        url: https://i.imgur.com/7rtPrad.jpg
-        dest: '{{ ansible_env.HOME }}/.wallpaper.jpg'
-
     - name: Reboot
       become: yes
       command: reboot
