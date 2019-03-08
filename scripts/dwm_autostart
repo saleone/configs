@@ -1,5 +1,5 @@
 #!/bin/bash
-compton &
+compton --opengl --vsync opengl-swc --paint-on-overlay -b &
 feh --bg-scale ~/.wallpaper.jpg &
 dwm_status &
 setxkbmap -option caps:ctrl_modifier &
