@@ -1,29 +1,4 @@
 #!/bin/sh
-#	http://git.io/v4aH5
-#	http://git.z3bra.org/mkb/files.html
-#   https://github.com/saleone
-
-FULL=${FULL-█}
-EMPTY=${EMPTY-▁}
-SIZE=${SIZE-10}
-
-draw()
-{
-	perc=$1
-	size=$2
-
-	inc=$(( perc * size / 100 ))
-
-	for v in $(seq 0 $(( size - 1 )))
-	do
-		[ "$v" -le "$inc" ] \
-			&& out="${out}${FULL}" \
-			|| out="${out}${EMPTY}"
-	done
-
-    # printf '▕%s▏%02d%%' $out $perc
-    printf '%02d%%' $perc
-}
 
 cpu()
 {
@@ -36,7 +11,7 @@ cpu()
 
     cpu=$(printf "%.0f" $cpu)
 
-    printf ' %s' "$(draw $cpu $SIZE)"
+    printf ' %02d%%' $cpu
 }
 
 ram()
@@ -46,40 +21,53 @@ ram()
 
 battery()
 {
-    if [ -d /sys/class/power_supply/BAT0 ]; then
-        battery=/sys/class/power_supply/BAT0
-        b_full=$battery/charge_full
-        b_now=$battery/charge_now
-        bf=`cat $b_full`
-        bn=`cat $b_now`
+    max_charge=1
+    now_charge=0
 
+    for dir in /sys/class/power_supply/BAT*/;
+    do
+        # Different latops, different files:
+        if [ -f $dir"charge_full" ]; then
+            # Dell Latitude 5480 (single bat)
+            max_charge=$(($max_charge + `cat $dir"charge_full"`))
+            now_charge=$(($now_charge + `cat $dir"charge_now"`))
+        elif [ -f $dir"energy_full" ]; then
+            # Lenovo Thinkpad T580 (dual bats)
+            max_charge=$(($max_charge + `cat $dir"energy_full"`))
+            now_charge=$(($now_charge + `cat $dir"energy_now"`))
+        fi
+    done
+
+    if [ $now_charge -gt 0 ]; then
         status=""
         if [ $(cat /sys/class/power_supply/AC/online) == '1' ]; then
             status=""
         fi
 
-        charge=`printf $(( 100 * bn / bf ))`
+        charge_perc=$((100 * now_charge / max_charge))
         icon=" "
-        if [ $charge -le 90 ]; then
+        if [ $charge_perc -le 90 ]; then
             icon=" "
         fi
 
-        if [ $charge -le 75 ]; then
+        if [ $charge_perc -le 75 ]; then
             icon=" "
         fi
 
-        if [ $charge -le 25 ]; then
+        if [ $charge_perc -le 25 ]; then
             # Send battery low notification (once!)
             icon=" "
         fi
 
-        if [ $charge -le 10 ]; then
+        if [ $charge_perc -le 10 ]; then
             # Send battery critical notification (once!)
             icon=" "
         fi
 
-        printf "%s%s%s" "$status" "$icon" "$(draw $charge $SIZE)"
+        printf "%s%s%s%%" "$status" "$icon" "$charge_perc"
     fi
+
+
 }
 
 current_brightness()
