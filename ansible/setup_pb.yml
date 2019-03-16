@@ -125,26 +125,26 @@
         name: pulseaudio-module-bluetooth
         state: present
 
-    - name: Create required directory [~/Dev]
+    - name: Create required directory [~/dev]
       file:
-        path: '{{ ansible_env.HOME }}/Dev/'
+        path: '{{ ansible_env.HOME }}/devel/'
         state: directory
 
     - name: Clone configurations
       git:
         repo: https://github.com/saleone/configs
-        dest: '{{ ansible_env.HOME }}/Dev/configs'
+        dest: '{{ ansible_env.HOME }}/devel/configs'
 
     - name: Link .bashrc
       file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/bashrc'
+        src: '{{ ansible_env.HOME }}/devel/configs/bashrc'
         dest: '{{ ansible_env.HOME }}/.bashrc'
         state: link
         force: yes
 
     - name: Link .gitconfig
       file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/gitconfig'
+        src: '{{ ansible_env.HOME }}/devel/configs/gitconfig'
         dest: '{{ ansible_env.HOME }}/.gitconfig'
         state: link
         force: yes
@@ -156,48 +156,48 @@
 
     - name: Link vimrc for Neovim
       file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/vimrc'
+        src: '{{ ansible_env.HOME }}/devel/configs/vimrc'
         dest: '{{ ansible_env.HOME }}/.config/nvim/init.vim'
         state: link
         force: yes
 
     - name: Link dwm autostart scripts
       file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/dwm_autostart'
+        src: '{{ ansible_env.HOME }}/devel/configs/scripts/dwm_autostart'
         dest: '{{ ansible_env.HOME }}/.dwm_autostart'
         state: link
         force: yes
 
     - name: Link compton.conf
       file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/compton.conf'
+        src: '{{ ansible_env.HOME }}/devel/configs/compton.conf'
         dest: '{{ ansible_env.HOME }}/.config/compton.conf'
         state: link
         force: yes
 
     - name: Link redshift.conf
       file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/redshift.conf'
+        src: '{{ ansible_env.HOME }}/devel/configs/redshift.conf'
         dest: '{{ ansible_env.HOME }}/.config/redshift.conf'
         state: link
         force: yes
 
     - name: Link status script
       file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/status'
+        src: '{{ ansible_env.HOME }}/devel/configs/scripts/status'
         dest: '{{ ansible_env.HOME }}/.local/bin/dwm_status'
         state: link
         force: yes
 
-    - name: Create required directory [~/Dev/src/]
+    - name: Create required directory [~/devel/src/]
       file:
-        path: '{{ ansible_env.HOME }}/Dev/src/'
+        path: '{{ ansible_env.HOME }}/devel/src/'
         state: directory
 
     - name: Clone dwm
       git:
         repo: https://github.com/saleone/dwm
-        dest: '{{ ansible_env.HOME }}/Dev/src/dwm'
+        dest: '{{ ansible_env.HOME }}/devel/src/dwm'
 
     - name: Install X library (for dwm)
       become: yes
@@ -219,7 +219,7 @@
 
     - name: Build and install dwm
       make:
-        chdir: '{{ ansible_env.HOME }}/Dev/src/dwm'
+        chdir: '{{ ansible_env.HOME }}/devel/src/dwm'
         target: install
       become: yes
 
@@ -241,22 +241,22 @@
     - name: Clone st
       git:
         repo: https://github.com/saleone/st
-        dest: '{{ ansible_env.HOME }}/Dev/src/st'
+        dest: '{{ ansible_env.HOME }}/devel/src/st'
 
     - name: Build and install st
       make:
-        chdir: '{{ ansible_env.HOME }}/Dev/src/st'
+        chdir: '{{ ansible_env.HOME }}/devel/src/st'
         target: install
       become: yes
 
     - name: Clone dmenu
       git:
         repo: https://github.com/saleone/dmenu
-        dest: '{{ ansible_env.HOME }}/Dev/src/dmenu'
+        dest: '{{ ansible_env.HOME }}/devel/src/dmenu'
 
     - name: Build and install dmenu
       make:
-        chdir: '{{ ansible_env.HOME }}/Dev/src/dmenu'
+        chdir: '{{ ansible_env.HOME }}/devel/src/dmenu'
         target: install
       become: yes
 
@@ -269,11 +269,11 @@
     - name: Clone slock
       git:
         repo: https://github.com/saleone/slock
-        dest: '{{ ansible_env.HOME }}/Dev/src/slock'
+        dest: '{{ ansible_env.HOME }}/devel/src/slock'
 
     - name: Build and install slock
       make:
-        chdir: '{{ ansible_env.HOME }}/Dev/src/slock'
+        chdir: '{{ ansible_env.HOME }}/devel/src/slock'
         target: install
       become: yes
 
@@ -309,7 +309,7 @@
     - name: Set Fira as default system font family (sans, mono)
       become: yes
       file:
-          src: '{{ ansible_env.HOME }}/Dev/configs/fonts.conf'
+          src: '{{ ansible_env.HOME }}/devel/configs/fonts.conf'
           dest: '/etc/fonts/local.conf'
           state: link
           force: yes

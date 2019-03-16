@@ -1,0 +1,37 @@
+#!/bin/bash
+
+pushd ../configurations/
+
+rm ~/.bashrc
+ln -s $(realpath bashrc) ~/.bashrc
+
+rm ~/.gitconfig
+ln -s $(realpath gitconfig) ~/.gitconfig
+
+mkdir -p ~/.config
+
+rm ~/.config/compton.conf
+ln -s $(realpath compton.conf) ~/.config/compton.conf
+
+rm ~/.config/redshift.conf
+ln -s $(realpath redshift.conf) ~/.config/redshift.conf
+
+rm -fr ~/.config/nvim
+rm -fr ~/.vim
+rm ~/.vimrc
+mkdir -p ~/.config/nvim
+mkdir ~/.vim
+ln -s $(realpath vimrc) ~/.config/nvim/init.vim
+ln -s ~/.config/nvim/init.vim ~/.vimrc
+ln -s ~/.config/nvim/autoload ~/.vim/autoload
+ln -s ~/.config/nvim/plugged ~/.vim/plugged
+
+# --- System files ---
+sudo rm /etc/fonts/local.conf
+sudo ln -s $(realpath fonts.conf) /etc/fonts/local.conf
+
+popd
+
+# --- Scripts ---
+rm ~/.dwm_autostart
+ln -s $(realpath ./dwm_autostart) ~/.dwm_autostart
