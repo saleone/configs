@@ -137,14 +137,14 @@
 
     - name: Link .bashrc
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/bashrc'
+        src: '{{ ansible_env.HOME }}/devel/configs/configurations/bashrc'
         dest: '{{ ansible_env.HOME }}/.bashrc'
         state: link
         force: yes
 
     - name: Link .gitconfig
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/gitconfig'
+        src: '{{ ansible_env.HOME }}/devel/configs/configurations/gitconfig'
         dest: '{{ ansible_env.HOME }}/.gitconfig'
         state: link
         force: yes
@@ -156,7 +156,7 @@
 
     - name: Link vimrc for Neovim
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/vimrc'
+        src: '{{ ansible_env.HOME }}/devel/configs/configurations/vimrc'
         dest: '{{ ansible_env.HOME }}/.config/nvim/init.vim'
         state: link
         force: yes
@@ -170,14 +170,14 @@
 
     - name: Link compton.conf
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/compton.conf'
+        src: '{{ ansible_env.HOME }}/devel/configs/configurations/compton.conf'
         dest: '{{ ansible_env.HOME }}/.config/compton.conf'
         state: link
         force: yes
 
     - name: Link redshift.conf
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/redshift.conf'
+        src: '{{ ansible_env.HOME }}/devel/configs/configurations/redshift.conf'
         dest: '{{ ansible_env.HOME }}/.config/redshift.conf'
         state: link
         force: yes
@@ -309,7 +309,7 @@
     - name: Set Fira as default system font family (sans, mono)
       become: yes
       file:
-          src: '{{ ansible_env.HOME }}/devel/configs/fonts.conf'
+          src: '{{ ansible_env.HOME }}/devel/configs/configurations/fonts.conf'
           dest: '/etc/fonts/local.conf'
           state: link
           force: yes
