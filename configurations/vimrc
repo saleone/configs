@@ -19,10 +19,8 @@ call plug#end()
 set pastetoggle=<F2>
 set clipboard=unnamedplus
 
-" Disable backup and autosave files
-set nobackup
-set nowb
-set noswapfile
+" Mouse support
+set mouse=a
 
 " =================
 "  PLUGIN SETTINGS
