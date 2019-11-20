@@ -11,16 +11,10 @@
         path: '{{ ansible_env.HOME }}/.local/bin/'
         state: directory
 
-    - name: Install X server
-      become: yes
-      package:
-        name: '@base-x'
-        state: present
-
     - name: Install development tools
       become: yes
       package:
-        name: '@development-tools'
+        name: 'build-essential'
         state: present
 
     - name: Install bash-completion
@@ -41,22 +35,10 @@
         name: wget
         state: present
 
-    - name: Install ranger
-      become: yes
-      package:
-        name: ranger
-        state: present
-
     - name: Install firefox
       become: yes
       package:
-        name: firefox
-        state: present
-
-    - name: Install podman
-      become: yes
-      package:
-        name: podman
+        name: firefox-esr
         state: present
 
     - name: Install tmux
@@ -107,44 +89,26 @@
         name: neovim
         state: present
 
-    - name: Install pulseaudio
-      become: yes
-      package:
-        name: pulseaudio
-        state: present
-
-    - name: Install pulseaudio-utils
-      become: yes
-      package:
-        name: pulseaudio-utils
-        state: present
-
-    - name: Install pulseaudio-module-bluetooth
-      become: yes
-      package:
-        name: pulseaudio-module-bluetooth
-        state: present
-
-    - name: Create required directory [~/dev]
+    - name: Create required directory [~/Dev]
       file:
-        path: '{{ ansible_env.HOME }}/devel/'
+        path: '{{ ansible_env.HOME }}/Dev/'
         state: directory
 
     - name: Clone configurations
       git:
         repo: https://github.com/saleone/configs
-        dest: '{{ ansible_env.HOME }}/devel/configs'
+        dest: '{{ ansible_env.HOME }}/Dev/configs'
 
     - name: Link .bashrc
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/configurations/bashrc'
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/bashrc'
         dest: '{{ ansible_env.HOME }}/.bashrc'
         state: link
         force: yes
 
     - name: Link .gitconfig
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/configurations/gitconfig'
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/gitconfig'
         dest: '{{ ansible_env.HOME }}/.gitconfig'
         state: link
         force: yes
@@ -156,70 +120,70 @@
 
     - name: Link vimrc for Neovim
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/configurations/vimrc'
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/vimrc'
         dest: '{{ ansible_env.HOME }}/.config/nvim/init.vim'
         state: link
         force: yes
 
     - name: Link dwm autostart scripts
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/scripts/dwm_autostart'
+        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/dwm_autostart'
         dest: '{{ ansible_env.HOME }}/.dwm_autostart'
         state: link
         force: yes
 
     - name: Link compton.conf
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/configurations/compton.conf'
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/compton.conf'
         dest: '{{ ansible_env.HOME }}/.config/compton.conf'
         state: link
         force: yes
 
     - name: Link redshift.conf
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/configurations/redshift.conf'
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/redshift.conf'
         dest: '{{ ansible_env.HOME }}/.config/redshift.conf'
         state: link
         force: yes
 
     - name: Link status script
       file:
-        src: '{{ ansible_env.HOME }}/devel/configs/scripts/status'
+        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/status'
         dest: '{{ ansible_env.HOME }}/.local/bin/dwm_status'
         state: link
         force: yes
 
-    - name: Create required directory [~/devel/src/]
+    - name: Create required directory [~/Dev/src/]
       file:
-        path: '{{ ansible_env.HOME }}/devel/src/'
+        path: '{{ ansible_env.HOME }}/Dev/src/'
         state: directory
 
     - name: Clone dwm
       git:
         repo: https://github.com/saleone/dwm
-        dest: '{{ ansible_env.HOME }}/devel/src/dwm'
+        dest: '{{ ansible_env.HOME }}/Dev/src/dwm'
 
     - name: Install X library (for dwm)
       become: yes
       package:
-        name: libX11-devel
+        name: libx11-dev
         state: present
 
     - name: Install Xft library (for dwm)
       become: yes
       package:
-        name: libXft-devel
+        name: libxft-dev
         state: present
 
     - name: Install Xinerama library (for dwm)
       become: yes
       package:
-        name: libXinerama-devel
+        name: libxinerama-dev
         state: present
 
     - name: Build and install dwm
       make:
-        chdir: '{{ ansible_env.HOME }}/devel/src/dwm'
+        chdir: '{{ ansible_env.HOME }}/Dev/src/dwm'
         target: install
       become: yes
 
@@ -228,6 +192,11 @@
         path: '{{ ansible_env.HOME }}/.xinitrc'
         create: yes
         line: exec dwm
+
+    - name: Create .bash_profile
+      file:
+        path: '{{ ansible_env.HOME }}/.bash_profile'
+        state: touch
 
     - name: Autostart dwm on login
       blockinfile:
@@ -241,82 +210,50 @@
     - name: Clone st
       git:
         repo: https://github.com/saleone/st
-        dest: '{{ ansible_env.HOME }}/devel/src/st'
+        dest: '{{ ansible_env.HOME }}/Dev/src/st'
 
     - name: Build and install st
       make:
-        chdir: '{{ ansible_env.HOME }}/devel/src/st'
+        chdir: '{{ ansible_env.HOME }}/Dev/src/st'
         target: install
       become: yes
 
     - name: Clone dmenu
       git:
         repo: https://github.com/saleone/dmenu
-        dest: '{{ ansible_env.HOME }}/devel/src/dmenu'
+        dest: '{{ ansible_env.HOME }}/Dev/src/dmenu'
 
     - name: Build and install dmenu
       make:
-        chdir: '{{ ansible_env.HOME }}/devel/src/dmenu'
+        chdir: '{{ ansible_env.HOME }}/Dev/src/dmenu'
         target: install
       become: yes
 
     - name: Install Xrandr library (for slock)
       become: yes
       package:
-        name: libXrandr-devel
+        name: libxrandr-dev
         state: present
 
     - name: Clone slock
       git:
         repo: https://github.com/saleone/slock
-        dest: '{{ ansible_env.HOME }}/devel/src/slock'
+        dest: '{{ ansible_env.HOME }}/Dev/src/slock'
 
     - name: Build and install slock
       make:
-        chdir: '{{ ansible_env.HOME }}/devel/src/slock'
+        chdir: '{{ ansible_env.HOME }}/Dev/src/slock'
         target: install
       become: yes
 
     - name: Install Liberation font family
       become: yes
       package:
-          name: liberation-fonts
+          name: fonts-liberation
           state: present
 
     - name: Install fontawesome fonts
       become: yes
       package:
-          name: fontawesome-fonts
+          name: fonts-font-awesome
           state: present
-
-    - name: Download and install Fira fonts
-      become: yes
-      unarchive:
-        remote_src: yes
-        src: https://github.com/mozilla/Fira/archive/4.202.zip
-        dest: /tmp
-
-    - name: Install Fira fonts
-      become: yes
-      command: mv /tmp/Fira-4.202/ttf /usr/share/fonts/fira
-      #NOTE: Will be avaiable with version 2.8
-      #copy:
-          #remote_src: yes
-          #directory_mode: yes
-          #src: /tmp/Fira-4.202/ttf
-          #dest: /usr/share/fonts/fira
-
-    - name: Set Fira as default system font family (sans, mono)
-      become: yes
-      file:
-          src: '{{ ansible_env.HOME }}/devel/configs/configurations/fonts.conf'
-          dest: '/etc/fonts/local.conf'
-          state: link
-          force: yes
-
-    - name: Update font cache
-      command: fc-cache -fv
-
-    - name: Reboot
-      become: yes
-      command: reboot
