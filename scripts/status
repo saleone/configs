@@ -40,7 +40,7 @@ battery()
 
     if [ $now_charge -gt 0 ]; then
         status=""
-        if [ $(cat /sys/class/power_supply/AC/online) == '1' ]; then
+        if [ "$(cat /sys/class/power_supply/AC/online)" -eq '1' ]; then
             status=""
         fi
 
@@ -103,10 +103,9 @@ current_volume()
     printf '%s%s%%' "$icon" "$vol"
 }
 
-clean=$(myString=$(printf "%1000s");echo ${myString// /" "})
-
 while :
 do
-    xsetroot -name "$clean $(cpu)   $(ram)   $(current_volume)   $(battery)   $(current_datetime)"
+    statusline="$(cpu)   $(ram)   $(current_volume)   $(battery)   $(current_datetime)"
+    notify-send "$statusline"
     sleep 1
 done
