@@ -9,6 +9,7 @@ endif
 call plug#begin("~/.config/nvim/plugged")
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fxn/vim-monochrome'
 call plug#end()
 
 " ======================
@@ -18,6 +19,9 @@ call plug#end()
 " Regular copy and paste
 set pastetoggle=<F2>
 set clipboard=unnamedplus
+
+" Remove trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
 
 " Mouse support
 set mouse=a

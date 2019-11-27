@@ -83,6 +83,12 @@
         name: neovim
         state: present
 
+    - name: Install brightnessctl
+      become: yes
+      package:
+        name: brightnessctl
+        state: present
+
     - name: Create required directory [~/Dev]
       file:
         path: '{{ ansible_env.HOME }}/Dev/'
@@ -144,13 +150,6 @@
       file:
         src: '{{ ansible_env.HOME }}/Dev/configs/scripts/status'
         dest: '{{ ansible_env.HOME }}/.local/bin/dwm_status'
-        state: link
-        force: yes
-
-    - name: Link brightness script
-      file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/brightness'
-        dest: '{{ ansible_env.HOME }}/.local/bin/brightness'
         state: link
         force: yes
 
