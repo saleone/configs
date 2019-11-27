@@ -172,10 +172,10 @@
         state: link
         force: yes
 
-    - name: Link status script
+    - name: Link controls script
       file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/status'
-        dest: '{{ ansible_env.HOME }}/.local/bin/dwm_status'
+        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/controls'
+        dest: '{{ ansible_env.HOME }}/.local/bin/controls'
         state: link
         force: yes
 

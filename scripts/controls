@@ -1,0 +1,17 @@
+BASEDIR=$(dirname `realpath $0`)
+
+if [ "$1" == "notify" ]; then
+
+	if [ "$2" == 'status' ]; then
+		notify-send "`$BASEDIR/status`"
+		exit 0
+	fi
+
+	echo "Unkown notify target $2. Use status."
+	exit 1
+
+fi
+
+echo "Unknown command $1. Use notify."
+exit 1
+

@@ -103,9 +103,5 @@ current_volume()
     printf '%s%s%%' "$icon" "$vol"
 }
 
-while :
-do
-    statusline="$(cpu)   $(ram)   $(current_volume)   $(battery)   $(current_datetime)"
-    notify-send "$statusline"
-    sleep 1
-done
+statusline="$(cpu)   $(ram)   $(current_volume)   $(battery)   $(current_datetime)"
+echo "$statusline"

@@ -10,3 +10,4 @@ xfce4/xfce4/help.rc
 xfce4/xfce4/xfce4-screenshooter
 xfce4/xfce4/desktop/*
 xfce4/xfce4/terminal/accels.scm
+*.retry
