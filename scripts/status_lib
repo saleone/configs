@@ -1,7 +1,6 @@
 #!/bin/sh
 
-cpu()
-{
+cpu() {
     cpu=$(top -bn1 | grep %Cpu | awk '{value=$2} END {print value}')
 
     # When CPU reaches 100% load, command above return "us,"
@@ -14,27 +13,24 @@ cpu()
     printf ' %02d%%' $cpu
 }
 
-ram()
-{
+ram() {
     printf " $(free -h | awk '/Mem/ {printf "%sB", $3}')"
 }
 
-battery()
-{
+battery() {
     max_charge=1
     now_charge=0
 
-    for dir in /sys/class/power_supply/BAT*/;
-    do
+    for dir in /sys/class/power_supply/BAT*/; do
         # Different latops, different files:
         if [ -f $dir"charge_full" ]; then
             # Dell Latitude 5480 (single bat)
-            max_charge=$(($max_charge + `cat $dir"charge_full"`))
-            now_charge=$(($now_charge + `cat $dir"charge_now"`))
+            max_charge=$(($max_charge + $(cat $dir"charge_full")))
+            now_charge=$(($now_charge + $(cat $dir"charge_now")))
         elif [ -f $dir"energy_full" ]; then
             # Lenovo Thinkpad T580 (dual bats)
-            max_charge=$(($max_charge + `cat $dir"energy_full"`))
-            now_charge=$(($now_charge + `cat $dir"energy_now"`))
+            max_charge=$(($max_charge + $(cat $dir"energy_full")))
+            now_charge=$(($now_charge + $(cat $dir"energy_now")))
         fi
     done
 
@@ -67,31 +63,26 @@ battery()
         printf "%s%s%s%%" "$status" "$icon" "$charge_perc"
     fi
 
-
 }
 
-current_brightness()
-{
-    value=$(( $(brightnessctl g) * 100 / $(brightnessctl m) ))
+current_brightness() {
+    value=$(($(brightnessctl g) * 100 / $(brightnessctl m)))
     if [ $value -ge 100 ]; then
-        printf ' max';
+        printf ' max'
     else
-        printf ' %02d%%' "$value";
+        printf ' %02d%%' "$value"
     fi
 }
 
-current_datetime()
-{
+current_datetime() {
     printf ' %s' "$(date +"%b %d, %R")"
 }
 
-current_time()
-{
+current_time() {
     printf ' %s' "$(date +"%R")"
 }
 
-current_volume()
-{
+current_volume() {
     # TODO: Set mute icon
     # val=$(pactl list sink | grep "Mute:") ...
     icon=" "

@@ -1,10 +1,9 @@
 #!/bin/sh
-BASEDIR=$(dirname `realpath $0`)
+BASEDIR=$(dirname $(realpath $0))
 
 . "$BASEDIR/status_lib"
 
-while true
-do
+while true; do
 	statusline="$(cpu)  $(current_volume)  $(battery)  $(current_time)"
 	echo "$statusline"
 	xsetroot -name "  $statusline  "
