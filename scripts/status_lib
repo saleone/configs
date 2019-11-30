@@ -39,7 +39,7 @@ battery()
     done
 
     if [ $now_charge -gt 0 ]; then
-        status=""
+        status=" "
         if [ "$(cat /sys/class/power_supply/AC/online)" -eq '1' ]; then
             status=""
         fi
@@ -85,6 +85,11 @@ current_datetime()
     printf ' %s' "$(date +"%b %d, %R")"
 }
 
+current_time()
+{
+    printf ' %s' "$(date +"%R")"
+}
+
 current_volume()
 {
     # TODO: Set mute icon
@@ -102,6 +107,3 @@ current_volume()
 
     printf '%s%s%%' "$icon" "$vol"
 }
-
-statusline="$(cpu)   $(ram)   $(current_volume)   $(battery)   $(current_datetime)"
-echo "$statusline"
