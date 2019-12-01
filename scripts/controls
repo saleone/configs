@@ -9,14 +9,33 @@ case "$1" in
 		exit 0
 		;;
 	*)
-
-		echo "Unkown notify target $2. Use status."
+		echo "Unknown notify target '$2'. Use status."
+		exit 1
+		;;
+	esac
+	;;
+"power")
+	case "$2" in
+	"shutdown")
+		systemctl poweroff
+		exit 0
+		;;
+	"sleep")
+		slock & systemctl suspend
+		exit 0
+		;;
+	"restart")
+		systemctl reboot
+		exit 0
+		;;
+	*)
+		echo "Unknown power target '$2': Use shutdown, sleep or restart"
 		exit 1
 		;;
 	esac
 	;;
 *)
-	echo "Unknown command $1. Use notify."
+	echo "Unknown command '$1'. Use notify or power."
 	exit 1
 	;;
 esac
