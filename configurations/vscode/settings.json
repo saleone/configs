@@ -1,0 +1,26 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys":{
+            "<C-a>": false,
+            "<C-f>": false,
+            "<C-b>": false
+        },
+    "editor.fontFamily": "'Ubuntu Mono', 'Roboto Mono Medium', 'Droid Sans Mono', 'monospace'",
+    "editor.fontSize": 20,
+    "window.zoomLevel": 1,
+    "workbench.editor.enablePreview": false,
+    "vim.useSystemClipboard": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [
+        80,
+        100,
+    120
+    ],
+    "git.autofetch": true,
+    "workbench.colorTheme": "plain",
+    "keyboard.distatch": "keyCode",
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false
+}

@@ -118,13 +118,58 @@
         state: link
         force: yes
 
+    - name: Create required directory [~/.config/Code/User/]
+      file:
+        path: '{{ ansible_env.HOME }}/.config/Code/User'
+        state: directory
+
+    - name: Link VSCode settings.json
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/vscode/settings.json'
+        dest: '{{ ansible_env.HOME }}/.config/Code/User/settings.json'
+        state: link
+        force: yes
+
+    - name: Link VSCode keybindings.json
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/vscode/keybindings.json'
+        dest: '{{ ansible_env.HOME }}/.config/Code/User/keybindings.json'
+        state: link
+        force: yes
+
+    - name: Link VSCode snippets
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/vscode/snippets'
+        dest: '{{ ansible_env.HOME }}/.config/Code/User/snippets'
+        state: link
+        force: yes
+
+    - name: Download VSCode
+      get_url:
+        url: https://go.microsoft.com/fwlink/?LinkID=760868
+        dest: '{{ ansible_env.HOME }}/code.deb'
+
+    - name: Install VSCode
+      become: yes
+      command: 'dpkg -i "{{ ansible_env.HOME }}/code.deb"'
+
+    - name: Remove downloaded VSCode package
+      file:
+        path: '{{ ansible_env.HOME }}/code.deb'
+        state: absent
+
+    - name: Install VSCode
+      become: yes
+      package:
+        name: '{{ ansbile_env.HOME }}/code.deb'
+        state: present
 
     - name: Create required directory [~/.config/dunst/]
       file:
         path: '{{ ansible_env.HOME }}/.config/dunst/'
         state: directory
 
-    - name: Link dunstrc
+    - name:  dunstrc
       file:
         src: '{{ ansible_env.HOME }}/Dev/configs/configurations/dunstrc'
         dest: '{{ ansible_env.HOME }}/.config/dunst/dunstrc'
