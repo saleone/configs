@@ -279,6 +279,12 @@
         target: install
       become: yes
 
+    - name: Install Ubuntu font family
+      become: yes
+      package:
+          name: fonts-ubuntu*
+          state: present
+
     - name: Install Liberation font family
       become: yes
       package:
