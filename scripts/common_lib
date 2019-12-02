@@ -1,0 +1,11 @@
+#!/bin/sh
+
+dmenu_confirm() {
+	result=$(printf "yes\nno" | dmenu -p "$1")
+	shift
+
+	if [ "$result" = "yes" ]; then
+		$@
+	fi
+}
+
