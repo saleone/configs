@@ -7,7 +7,7 @@
             "<C-b>": false
         },
     "editor.fontFamily": "'Ubuntu Mono', 'Roboto Mono Medium', 'Droid Sans Mono', 'monospace'",
-    "editor.fontSize": 20,
+    "editor.fontSize": 18,
     "window.zoomLevel": 1,
     "workbench.editor.enablePreview": false,
     "vim.useSystemClipboard": true,
@@ -19,7 +19,7 @@
     120
     ],
     "git.autofetch": true,
-    "workbench.colorTheme": "plain",
+    "workbench.colorTheme": "White Winter",
     "keyboard.distatch": "keyCode",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false
