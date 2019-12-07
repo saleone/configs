@@ -21,6 +21,23 @@ case "$1" in
 		;;
 	esac
 	;;
+"restart")
+	case "$2" in
+	"touchpad")
+		sudo modprobe -r psmouse
+		sudo modprobe psmouse
+		exit 0
+		;;
+	"bluetooth")
+		rfkill block bluetooth
+		rfkill unblock bluetooth
+		exit 0
+		;;
+	*)
+		unknown_target $@ touchpad bluetooth
+		;;
+	esac
+	;;
 "wm")
 	case "$2" in
 	"exit")
@@ -53,7 +70,7 @@ case "$1" in
 	esac
 	;;
 *)
-	echo "Unknown command '$1'. Use:\n\tnotify\n\tpower\n\twm"
+	echo "Unknown command '$1'. Use:\n\tnotify\n\tpower\n\twm\n\trestart"
 	exit 1
 	;;
 esac
