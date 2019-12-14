@@ -6,8 +6,8 @@
             "<C-f>": false,
             "<C-b>": false
         },
-    "editor.fontFamily": "'Ubuntu Mono', 'Roboto Mono Medium', 'Droid Sans Mono', 'monospace'",
-    "editor.fontSize": 18,
+    "editor.fontFamily": "'Fira Code Medium', 'Ubuntu Mono', 'Roboto Mono Medium', 'Droid Sans Mono', 'monospace'",
+    "editor.fontSize": 16,
     "window.zoomLevel": 1,
     "workbench.editor.enablePreview": false,
     "vim.useSystemClipboard": true,
@@ -16,10 +16,10 @@
     "editor.rulers": [
         80,
         100,
-    120
+        120
     ],
     "git.autofetch": true,
-    "workbench.colorTheme": "White Winter",
+    "workbench.colorTheme": "Atom One Light",
     "keyboard.distatch": "keyCode",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false

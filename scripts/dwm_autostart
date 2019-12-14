@@ -1,6 +1,0 @@
-#!/bin/bash
-setxkbmap -option caps:ctrl_modifier -layout "us,ba,rs" -option "grp:alt_shift_toggle" &
-compton --opengl --vsync opengl-swc --paint-on-overlay -b &
-feh --bg-scale ~/.wallpaper.jpg &
-redshift &
-dwm_status &

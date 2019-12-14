@@ -11,6 +11,16 @@
         path: '{{ ansible_env.HOME }}/.local/bin/'
         state: directory
 
+    - name: Create required directory [~/.local/share]
+      file:
+        path: '{{ ansible_env.HOME }}/.local/share/'
+        state: directory
+
+    - name: Create required directory [~/.local/var]
+      file:
+        path: '{{ ansible_env.HOME }}/.local/var/'
+        state: directory
+
     - name: Install development tools
       become: yes
       package:
@@ -77,12 +87,6 @@
         name: redshift
         state: present
 
-    - name: Install Transmission
-      become: yes
-      package:
-        name: transmission-gtk
-        state: present
-
     - name: Install Git
       become: yes
       package:
@@ -101,20 +105,93 @@
         name: brightnessctl
         state: present
 
+    - name: Install fish
+      become: yes
+      package:
+        name: fish
+        state: present
+
+    - name: Install bspwm
+      become: yes
+      package:
+        name: bspwm
+        state: present
+
+    - name: Install rofi
+      become: yes
+      package:
+        name: rofi
+        state: present
+
+    - name: Install i3lock
+      become: yes
+      package:
+        name: i3lock
+        state: present
+
+    - name: Install mpv
+      become: yes
+      package:
+        name: mpv
+        state: present
+
     - name: Create required directory [~/Dev]
       file:
         path: '{{ ansible_env.HOME }}/Dev/'
         state: directory
 
-     - name: Clone configurations
-       git:
-         repo: https://github.com/saleone/configs
-         dest: '{{ ansible_env.HOME }}/Dev/configs'
+    - name: Clone configurations
+      git:
+        repo: https://github.com/saleone/configs
+        dest: '{{ ansible_env.HOME }}/Dev/configs'
 
     - name: Link .bashrc
       file:
         src: '{{ ansible_env.HOME }}/Dev/configs/configurations/bashrc'
         dest: '{{ ansible_env.HOME }}/.bashrc'
+        state: link
+        force: yes
+
+    - name: Link .Xresources
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/light.Xresources'
+        dest: '{{ ansible_env.HOME }}/.Xresources'
+        state: link
+        force: yes
+
+    - name: Create required directory [~/.config/fish]
+      file:
+        path: '{{ ansible_env.HOME }}/.config/fish'
+        state: directory
+
+    - name: Link fish theme
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/config.fish'
+        dest: '{{ ansible_env.HOME }}/.config/fish/config.fish'
+        state: link
+        force: yes
+
+    - name: Create required directory [~/.config/polybar]
+      file:
+        path: '{{ ansible_env.HOME }}/.config/polybar'
+        state: directory
+
+    - name: Link polybar theme
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/polybar'
+        dest: '{{ ansible_env.HOME }}/.config/polybar/config'
+        state: link
+        force: yes
+
+    - name: Create required directory [~/.config/rofi]
+      file:
+        path: '{{ ansible_env.HOME }}/.config/rofi'
+        state: directory
+
+    - name: Link rofi theme
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/rofi-light.rasi'
+        dest: '{{ ansible_env.HOME }}/.config/rofi/config.rasi'
         state: link
         force: yes
 
@@ -158,12 +235,6 @@
         path: '{{ ansible_env.HOME }}/code.deb'
         state: absent
 
-    - name: Install VSCode
-      become: yes
-      package:
-        name: '{{ ansbile_env.HOME }}/code.deb'
-        state: present
-
     - name: Create required directory [~/.config/dunst/]
       file:
         path: '{{ ansible_env.HOME }}/.config/dunst/'
@@ -176,6 +247,29 @@
         state: link
         force: yes
 
+    - name: Create required directory [~/.config/bspwm/]
+      file:
+        path: '{{ ansible_env.HOME }}/.config/bspwm/'
+        state: directory
+
+    - name:  bspwmrc
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/bspwmrc'
+        dest: '{{ ansible_env.HOME }}/.config/bspwm/bspwmrc'
+        state: link
+        force: yes
+
+    - name: Create required directory [~/.config/sxhkd/]
+      file:
+        path: '{{ ansible_env.HOME }}/.config/sxhkd/'
+        state: directory
+
+    - name:  sxhkdrc
+      file:
+        src: '{{ ansible_env.HOME }}/Dev/configs/configurations/sxhkdrc'
+        dest: '{{ ansible_env.HOME }}/.config/sxhkd/sxhkdrc'
+        state: link
+        force: yes
 
     - name: Link .gitconfig
       file:
@@ -193,13 +287,6 @@
       file:
         src: '{{ ansible_env.HOME }}/Dev/configs/configurations/vimrc'
         dest: '{{ ansible_env.HOME }}/.config/nvim/init.vim'
-        state: link
-        force: yes
-
-    - name: Link dwm autostart scripts
-      file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/dwm_autostart'
-        dest: '{{ ansible_env.HOME }}/.dwm_autostart'
         state: link
         force: yes
 
@@ -224,110 +311,16 @@
         state: link
         force: yes
 
-    - name: Link controls script
-      file:
-        src: '{{ ansible_env.HOME }}/Dev/configs/scripts/status_bin'
-        dest: '{{ ansible_env.HOME }}/.local/bin/dwm_status'
-        state: link
-        force: yes
-
-    - name: Create required directory [~/Dev/src/]
-      file:
-        path: '{{ ansible_env.HOME }}/Dev/src/'
-        state: directory
-
-    - name: Clone dwm
-      git:
-        repo: https://github.com/saleone/dwm
-        dest: '{{ ansible_env.HOME }}/Dev/src/dwm'
-
-    - name: Install X library (for dwm)
-      become: yes
-      package:
-        name: libx11-dev
-        state: present
-
-    - name: Install Xft library (for dwm)
-      become: yes
-      package:
-        name: libxft-dev
-        state: present
-
-    - name: Install Xinerama library (for dwm)
-      become: yes
-      package:
-        name: libxinerama-dev
-        state: present
-
-    - name: Build and install dwm
-      make:
-        chdir: '{{ ansible_env.HOME }}/Dev/src/dwm'
-        target: install
-      become: yes
-
-    - name: Set dwm as window manager
-      lineinfile:
-        path: '{{ ansible_env.HOME }}/.xinitrc'
-        create: yes
-        line: exec dwm
-
-    - name: Create .bash_profile
-      file:
-        path: '{{ ansible_env.HOME }}/.bash_profile'
-        state: touch
-
-    - name: Autostart dwm on login
-      blockinfile:
-        path: '{{ ansible_env.HOME }}/.bash_profile'
-        block: |
-          # Start X on login
-          if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-              exec startx
-          fi
-
-    - name: Clone st
-      git:
-        repo: https://github.com/saleone/st
-        dest: '{{ ansible_env.HOME }}/Dev/src/st'
-
-    - name: Build and install st
-      make:
-        chdir: '{{ ansible_env.HOME }}/Dev/src/st'
-        target: install
-      become: yes
-
-    - name: Clone dmenu
-      git:
-        repo: https://github.com/saleone/dmenu
-        dest: '{{ ansible_env.HOME }}/Dev/src/dmenu'
-
-    - name: Build and install dmenu
-      make:
-        chdir: '{{ ansible_env.HOME }}/Dev/src/dmenu'
-        target: install
-      become: yes
-
-    - name: Install Xrandr library (for slock)
-      become: yes
-      package:
-        name: libxrandr-dev
-        state: present
-
-    - name: Clone slock
-      git:
-        repo: https://github.com/saleone/slock
-        dest: '{{ ansible_env.HOME }}/Dev/src/slock'
-
-    - name: Build and install slock
-      make:
-        chdir: '{{ ansible_env.HOME }}/Dev/src/slock'
-        target: install
-      become: yes
-
     - name: Install Ubuntu font family
       become: yes
       package:
           name: fonts-ubuntu*
+          state: present
+
+    - name: Install Fira Code font
+      become: yes
+      package:
+          name: fonts-firacode
           state: present
 
     - name: Install Liberation font family

@@ -9,7 +9,7 @@ endif
 call plug#begin("~/.config/nvim/plugged")
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fxn/vim-monochrome'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " ======================
@@ -25,6 +25,16 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Mouse support
 set mouse=a
+
+" Enable line numbers
+set number
+set relativenumber
+
+" Theme
+colorscheme base16-google-light
+
+" No background
+hi Normal guibg=NONE ctermbg=NONE
 
 " =================
 "  PLUGIN SETTINGS
