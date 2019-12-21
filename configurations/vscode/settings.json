@@ -19,7 +19,7 @@
         120
     ],
     "git.autofetch": true,
-    "workbench.colorTheme": "Atom One Light",
+    "workbench.colorTheme": "Atom One Dark",
     "keyboard.distatch": "keyCode",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false
