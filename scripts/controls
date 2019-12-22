@@ -41,7 +41,7 @@ case "$1" in
 "wm")
 	case "$2" in
 	"exit")
-		pkill dwm
+		bspc quit
 		exit 0
 		;;
 	*)
