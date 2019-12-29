@@ -40,7 +40,7 @@ module-margin-right = 2
 font-0 = "Fira Code Medium:pixelsize=10;1"
 
 modules-left = bspwm
-modules-right = pulseaudio wlan battery date time
+modules-right = pulseaudio wlan battery datetime
 
 ;tray-position = right
 ;tray-padding = 2
@@ -92,19 +92,12 @@ ramp-signal-3 =
 ramp-signal-4 =
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/date]
-type = internal/date
-interval = 60
-date = %Y-%m-%d
-format-underline = #0a6cf5
-label =" %date% "
-
-[module/time]
+[module/datetime]
 type = internal/date
 interval = 30
-time = %H:%M
-format-underline = ${colors.yellow}
-label =" %time% "
+date = %a %d.%m. %H:%M
+format-underline = ${colors.blue}
+label =" %date% "
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -139,13 +132,13 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = .<label-charging>.
+format-charging = <label-charging>
 format-charging-underline = ${colors.green}
 
-format-discharging = .<label-discharging>.
+format-discharging = <label-discharging>
 format-discharging-underline = ${colors.red}
 
-format-full = .<label-full>.
+format-full = <label-full>
 format-full-underline = ${self.format-charging-underline}
 
 [settings]
