@@ -10,6 +10,10 @@ call plug#begin("~/.config/nvim/plugged")
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 call plug#end()
 
 " ======================
@@ -35,6 +39,20 @@ colorscheme base16-google-light
 
 " No background
 hi Normal guibg=NONE ctermbg=NONE
+
+" Language server
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']}
+"    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+"    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+"    \ 'python': ['/usr/local/bin/pyls'],
+"    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> gr :call LanguageClient#textDocument_rename()<CR>
 
 " =================
 "  PLUGIN SETTINGS
