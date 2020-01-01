@@ -1,0 +1,54 @@
+#!/bin/sh
+
+dest="$(realpath ~)"
+if [ -d "$1" ]; then
+	dest="$1"
+fi
+
+mkdir -p "$dest/Dev"
+
+git clone https://github.com/saleone/configs "$dest/Dev/configs"
+cd "$dest/Dev/configs"
+git checkout new_structure
+git remote remove origin
+git remote add origin git@github.com:saleone/configs
+
+mkdir -p $dest/.config/{rofi,dunst,polybar,bspwm,sxhkd,nvim,Code/User,fish,alacritty}
+
+mkdir -p "$dest/.local/bin"
+
+sudo apt install \
+	build-essential \
+	bash-completion \
+	curl \
+	wget \
+	libnotify-bin \
+	dunst \
+	firefox-esr \
+	tmux \
+	feh \
+	compton \
+	redshift \
+	git \
+	neovim \
+	brightnessctl \
+	fish \
+	bspwm \
+	rofi \
+	i3lock \
+	mpv \
+	fonts-ubuntu* \
+	fonts-firacode \
+	fonts-liberation \
+	fonts-font-awesome
+
+# Install VSCode
+wget https://go.microsoft.com/fwlink/?LinkID=760868 -O code.deb
+sudo dpkg -i code.deb
+sudo apt install -f
+rm code.deb
+
+# Link configs
+cd dotfiles
+find . -type f -exec ln -s "`realpath {}`" "`realpath $dest/{}`" \;
+
