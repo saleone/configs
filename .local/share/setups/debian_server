@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Install all the dependencies
+sudo apt update
+sudo apt upgrade -y
+sudo apt install --fix-broken -y
+
+sudo apt install -y \
+	build-essential \
+	bash-completion \
+	curl \
+	wget \
+	tmux \
+	git \
+	neovim \
+	fish
+
+sudo apt install --fix-broken -y
+
+# Clone configs
+cd ~
+git init
+git remote add origin https://github.com/saleone/configs
+git fetch
+git checkout -f master
+
+# Install VSCode
+wget https://go.microsoft.com/fwlink/?LinkID=760868 -O code.deb
+sudo dpkg -i code.deb
+sudo apt install -f -y
+rm code.deb
+

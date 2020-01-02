@@ -1,13 +1,1 @@
-xfce4/xfce4/panel/whiskermenu*
-xfce4/xfce4/xfconf/xfce-perchannel-xml/parole.xml
-xfce4/xfce4/xfconf/xfce-perchannel-xml/pointers.xml
-xfce4/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
-xfce4/xfce4/xfconf/xfce-perchannel-xml/displays.xml
-xfce4/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml
-xfce4/xfce4/xfconf/xfce-perchannel-xml/xfce4-appfinder.xml
-xfce4/xfce4/xfconf/xfce-perchannel-xml/ristretto.xml
-xfce4/xfce4/help.rc
-xfce4/xfce4/xfce4-screenshooter
-xfce4/xfce4/desktop/*
-xfce4/xfce4/terminal/accels.scm
-*.retry
+*
