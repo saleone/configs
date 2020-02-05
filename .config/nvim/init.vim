@@ -9,7 +9,6 @@ endif
 call plug#begin("~/.config/nvim/plugged")
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -32,10 +31,6 @@ set mouse=a
 
 " Enable line numbers
 set number
-set relativenumber
-
-" Theme
-colorscheme base16-google-light
 
 " No background
 hi Normal guibg=NONE ctermbg=NONE
