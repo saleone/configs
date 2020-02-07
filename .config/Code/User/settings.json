@@ -6,8 +6,8 @@
             "<C-f>": false,
             "<C-b>": false
         },
-    "editor.fontFamily": "'Fira Code Medium', 'Ubuntu Mono', 'Roboto Mono Medium', 'Droid Sans Mono', 'monospace'",
-    "editor.fontSize": 14,
+    "editor.fontFamily": "'Fira Code Medium', 'Fira Mono Medium', 'Ubuntu Mono', 'Roboto Mono Medium', 'Droid Sans Mono', 'monospace'",
+    "editor.fontSize": 12,
     "window.zoomLevel": 1,
     "workbench.editor.enablePreview": false,
     "vim.useSystemClipboard": true,
