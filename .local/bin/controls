@@ -16,9 +16,24 @@ case "$1" in
 		notify-send " $($BASEDIR/status_notification) "
 		exit 0
 		;;
+	# TODO: Add message when no arg is provided
 	*)
 		unknown_target $@ status
 		;;
+	esac
+	;;
+"keyboard")
+	case "$2" in
+	"off")
+		xinput float 10
+		exit 0
+		;;
+	"on")
+		xinput reattach 10 3
+		exit 0
+		;;
+	*)
+		unknown_target $@ off on
 	esac
 	;;
 "restart")
