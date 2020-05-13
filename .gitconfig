@@ -1,7 +1,9 @@
 [user]
 	email = sasa@savic.one
 	name = Saša Savić
-[core]
-	editor = vim
+
 [push]
 	default = simple
+
+[includeIf "gitdir:~/Dev/Stem/"]
+	path = ~/Dev/Stem/.gitconfig

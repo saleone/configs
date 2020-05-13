@@ -15,7 +15,9 @@ fi
 
 ##
 # Global settings
-EDITOR="vim"; export EDITOR;
+alias vi="nvim";
+alias vim="nvim";
+export EDITOR="nvim";
 
 PS1="\[\033[01;39m\]\W\[\033[0m\] $ "
 
