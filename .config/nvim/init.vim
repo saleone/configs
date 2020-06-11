@@ -9,15 +9,15 @@ endif
 call plug#begin("~/.config/nvim/plugged")
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " ======================
 "  VIM BUILDIN SETTINGS
 " ======================
+
+" Space as leaders
+let mapleader = " "
 
 " Regular copy and paste
 set pastetoggle=<F2>
@@ -35,27 +35,10 @@ set number
 " No background
 hi Normal guibg=NONE ctermbg=NONE
 
-" Language server
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-let g:LanguageClient_serverCommands = {'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']}
-"    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-"    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-"    \ 'python': ['/usr/local/bin/pyls'],
-"    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> gr :call LanguageClient#textDocument_rename()<CR>
-
 " =================
 "  PLUGIN SETTINGS
 " =================
 
-" CtrlP
-" -----
-let g:ctrlp_working_path_mode = 'w'
-let g:ctrlp_root_markers = ['*.code-workspace']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+source $HOME/.config/nvim/plugconf/ctrlp.vim
+source $HOME/.config/nvim/plugconf/coc.vim
 
