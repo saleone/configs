@@ -19,7 +19,7 @@
         120
     ],
     "git.autofetch": true,
-    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.colorTheme": "Visual Studio Light",
     "keyboard.distatch": "keyCode",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
@@ -28,5 +28,6 @@
     "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
     "zenMode.centerLayout": true,
     "zenMode.hideLineNumbers": false,
-    "zenMode.hideTabs": false
+    "zenMode.hideTabs": false,
+    "python.languageServer": "Microsoft"
 }
