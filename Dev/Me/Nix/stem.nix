@@ -13,5 +13,6 @@ stdenv.mkDerivation rec {
     postman
     firefox
     awscli2
+    dbeaver
   ];
 }
