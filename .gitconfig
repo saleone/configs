@@ -7,3 +7,12 @@
 
 [includeIf "gitdir:~/Dev/Stem/"]
 	path = ~/Dev/Stem/.gitconfig
+
+[alias]
+    clean-branches = "!f(){\
+        git branch | grep -v "master" | grep -v ^* | xargs git branch -d;\
+    }; f"
+    # Delete all local branches but master and the current one.
+    clean-branches-force = "!f(){\
+        git branch | grep -v "master" | grep -v ^* | xargs git branch -D;\
+    }; f"
