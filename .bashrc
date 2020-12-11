@@ -26,4 +26,5 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
 export PATH=$HOME/.local/bin:$PATH
 
-alias kubectl-stem='kubectl --kubeconfig ~/Dev/Stem/env/kubeconfig_stem'
+alias ks='kubectl --kubeconfig ~/Dev/Stem/env/kubeconfig_stem'
+alias ksq='kubectl --kubeconfig ~/Dev/Stem/env/kubeconfig_stem_qa'
