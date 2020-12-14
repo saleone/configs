@@ -1,1 +1,0 @@
-/home/saleone/Dev/Me/Nix/stem.nix
