@@ -5,13 +5,13 @@ if [ -f /etc/bashrc ]; then
 fi
 
 
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+# if ! shopt -oq posix; then
+#   if [ -f /usr/share/bash-completion/bash_completion ]; then
+#     . /usr/share/bash-completion/bash_completion
+#   elif [ -f /etc/bash_completion ]; then
+#     . /etc/bash_completion
+#   fi
+# fi
 
 ##
 # Global settings
@@ -26,5 +26,14 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
 export PATH=$HOME/.local/bin:$PATH
 
-alias ks='kubectl --kubeconfig ~/Dev/Stem/env/kubeconfig_stem'
-alias ksq='kubectl --kubeconfig ~/Dev/Stem/env/kubeconfig_stem_qa'
+alias ks='kubectl --kubeconfig ~/Dev/Stem/Env/kubeconfig_dev'
+alias ksqa='kubectl --kubeconfig ~/Dev/Stem/Env/kubeconfig_qa'
+
+builder () {
+  . ~/Dev/Stem/Tools/builder/bin/activate;
+  stem-builder $@;
+  deactivate;
+}
+
+
+eval "$(pyenv init -)"
