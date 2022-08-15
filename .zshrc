@@ -18,4 +18,4 @@ export EDITOR="nvim";
 
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
 export PATH=$HOME/.local/bin:$PATH
-export HDF5_HOME=$(brew --prefix hdf5)
+export HDF5_DIR=$(brew --prefix hdf5)
