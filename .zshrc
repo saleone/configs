@@ -17,5 +17,7 @@ alias vim="nvim";
 export EDITOR="nvim";
 
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:/opt/homebrew/opt/icu4c/bin:/opt/homebrew/opt/icu4c/sbin:$PATH
 export HDF5_DIR=$(brew --prefix hdf5)
+
+autoload bashcompinit && bashcompinit
