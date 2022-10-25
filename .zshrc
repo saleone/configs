@@ -3,9 +3,6 @@ eval "$(pyenv init -)"
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
 export PATH=$HOME/.local/bin:$PATH
 
-alias ks='kubectl --kubeconfig ~/Dev/Stem/Env/kubeconfig_dev'
-alias ksqa='kubectl --kubeconfig ~/Dev/Stem/Env/kubeconfig_qa'
-
 builder () {
   . ~/Dev/Stem/Tools/builder/bin/activate;
   stem-builder $@;
@@ -17,7 +14,11 @@ alias vim="nvim";
 export EDITOR="nvim";
 
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
-export PATH=$HOME/.local/bin:/opt/homebrew/opt/icu4c/bin:/opt/homebrew/opt/icu4c/sbin:$PATH
+export PATH=$HOME/.local/bin:$(brew --prefix icu4c)/bin:$(brew --prefix icu4c)/sbin:$PATH
 export HDF5_DIR=$(brew --prefix hdf5)
 
-autoload bashcompinit && bashcompinit
+alias ks='kubectl'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion

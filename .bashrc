@@ -28,6 +28,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 alias ks='kubectl --kubeconfig ~/Dev/Stem/Env/kubeconfig_dev'
 alias ksqa='kubectl --kubeconfig ~/Dev/Stem/Env/kubeconfig_qa'
+alias ks='kubectl'
 
 builder () {
   . ~/Dev/Stem/Tools/builder/bin/activate;
