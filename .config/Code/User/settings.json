@@ -5,14 +5,14 @@
             "<C-f>": false,
             "<C-b>": false
         },
+    "editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 14,
-    "window.zoomLevel": 0.5,
     "workbench.editor.enablePreview": false,
     "vim.useSystemClipboard": true,
     "files.trimTrailingWhitespace": true,
     "git.autofetch": true,
     "telemetry.telemetryLevel": "off",
-    "window.titleBarStyle": "native",
+    "window.titleBarStyle": "custom",
     "zenMode.centerLayout": true,
     "zenMode.hideLineNumbers": false,
     "zenMode.hideTabs": false,
@@ -20,5 +20,25 @@
     "window.autoDetectColorScheme": true,
     "zenMode.fullScreen": false,
     "workbench.sideBar.location": "right",
-    "workbench.colorTheme": "Default Light+"
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false,
+        "yaml": true
+    },
+    "editor.largeFileOptimizations": false,
+    "git.openRepositoryInParentFolders": "never",
+    "terminal.integrated.fontFamily": "monospace",
+    "diffEditor.renderSideBySide": false,
+    "github.copilot-labs.showBrushesLenses": true,
+    "github.copilot-labs.showTestGenerationLenses": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/clang",
+    "zenMode.hideActivityBar": false,
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
+    "workbench.preferredLightColorTheme": "Default Light Modern"
 }
