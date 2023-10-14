@@ -16,6 +16,9 @@ export EDITOR="nvim";
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
 export PATH=$HOME/.local/bin:$(brew --prefix icu4c)/bin:$(brew --prefix icu4c)/sbin:$PATH
 export HDF5_DIR=$(brew --prefix hdf5)
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
+
 
 alias ks='kubectl'
 
