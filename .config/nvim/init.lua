@@ -159,8 +159,12 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- Delete does not add to clipboard
 vim.keymap.set({"n", "v"}, "d", "\"_d")
 
--- :noh with leader, remove highlights from search
-vim.keymap.set('n', '<leader>n', vim.cmd.nohlsearch)
+-- Retain selection when indenting
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
+
+-- Do nohlsearch when using escape
+vim.keymap.set('n', '<Esc>', ':nohlsearch<CR><Esc>')
 
 ---------------
 --- PLUGINS --|
@@ -178,13 +182,6 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 --> Fugitive
 vim.keymap.set('n', '<leader>g', vim.cmd.Git)
-
---> Comment.nvim
-local api = require('Comment.api')
-vim.keymap.set(
-    'v', '<C-_>', api.call('toggle.linewise', 'g@'),
-    { expr = true }
-)
 
 --> LSP zero
 local lsp = require('lsp-zero')
