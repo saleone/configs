@@ -32,9 +32,11 @@ alias ks='kubectl'
 
 builder () {
   . ~/Dev/Stem/Tools/builder/bin/activate;
+  pip install --extra-index-url https://nexus.stem.com/repository/stem-pypi/simple --upgrade stem-builder
   stem-builder $@;
   deactivate;
 }
 
 
 eval "$(pyenv init -)"
+. "$HOME/.cargo/env"
