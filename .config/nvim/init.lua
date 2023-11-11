@@ -65,9 +65,15 @@ require('lazy').setup({
      opts = {
        icons = { filetype = { enabled = false } },
        autohide = true,
+       focus_on_close = 'previous',
+       auto_hide = 1
+       
+
     }
   },
-  "github/copilot.vim"
+  "github/copilot.vim",
+  "arzg/vim-colors-xcode",
+  "vimpostor/vim-lumen"
 })
 
 -- Use system clipboard
@@ -135,6 +141,9 @@ vim.opt.smartindent = true
 
 -- Disable line wrap
 vim.opt.wrap = false
+
+-- Set colorscheme
+vim.cmd[[colorscheme xcode]]
 
 
 -------------
