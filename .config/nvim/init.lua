@@ -59,6 +59,14 @@ require('lazy').setup({
   },
   {'hrsh7th/cmp-nvim-lsp'},
   {'hrsh7th/nvim-cmp'},
+  {
+    'romgrk/barbar.nvim',
+     init = function() vim.g.barbar_auto_setup = false end,
+     opts = {
+       icons = { filetype = { enabled = false } },
+       autohide = true,
+    }
+  },
   "github/copilot.vim"
 })
 
@@ -208,18 +216,7 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     'rust_analyzer',
     'pyright',
-    -- 'html', 
-    -- 'tailwindcss', 
-    -- 'cssls', 
-    -- 'clangd', -- C and C++
-    -- 'asm_lsp',
-    -- 'json_ls',
-    -- 'tsserver', -- typescript and javascript
-    -- 'lua_ls',
-    -- 'marksman', -- markdown
-    -- 'sqlls',
-    -- 'yamlls',
-    -- 'lemminx' -- XML
+    'html',
   },
   handlers = {
     lsp.default_setup,
