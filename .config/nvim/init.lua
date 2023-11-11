@@ -26,16 +26,6 @@ require('lazy').setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		config = function()
-			local configs = require("nvim-treesitter.configs")
-
-			configs.setup({
-				ensure_installed = { "javascript", "python", "c", "lua", "html", "rust" },
-				sync_install = false,
-				highlight = { enable = true, additional_vim_regs },
-				indent = { enable = true },
-			})
-		end
 	},
 	{
 		'nvim-lualine/lualine.nvim',
@@ -74,7 +64,59 @@ require('lazy').setup({
 	"github/copilot.vim",
 	"arzg/vim-colors-xcode",
 	"vimpostor/vim-lumen",
-	{ "mfussenegger/nvim-dap", tag = "v0.7.0", },
+	{
+		"mfussenegger/nvim-dap",
+		tag = "v0.7.0",
+		config = function(_, _)
+			local dap = require("dap")
+			dap.configurations.python = {
+				-- Only current file for global config
+				{
+					type = 'python',
+					request = 'launch',
+					name = "Current file",
+
+					program = "${file}",
+					pythonPath = function()
+						-- local cwd = vim.fn.getcwd()
+						-- TODO: Write a lua function that recursively searches for folder
+						-- named .venv-* and returns the path to the python executable
+						-- TODO: Just use the Python from $PATH. Verify below is the case for that.
+						return 'python'
+					end
+				},
+			}
+
+			dap.adapters.python = function(cb, config)
+				if config.request == 'attach' then
+					---@diagnostic disable-next-line: undefined-field
+					local port = (config.connect or config).port
+					---@diagnostic disable-next-line: undefined-field
+					local host = (config.connect or config).host or '127.0.0.1'
+					cb({
+						type = 'server',
+						port = assert(port,
+							'`connect.port` is required for a python `attach` configuration'),
+						host = host,
+						options = {
+							source_filetype = 'python',
+						},
+					})
+				else
+					cb({
+						type = 'executable',
+						-- TODO: Works on my computer! :D
+						command = '/Users/saleone/Dev/Me/Tools/venvs/venv-dap/bin/python',
+						args = { '-m', 'debugpy.adapter' },
+						options = {
+							source_filetype = 'python',
+						},
+					})
+				end
+			end
+		end
+
+	},
 	{
 		"rcarriga/nvim-dap-ui",
 		tag = "v3.9.0",
@@ -102,8 +144,21 @@ require('lazy').setup({
 				size = 10
 			} },
 		},
+		config = function(_, opts)
+			local dapui, dap = require("dapui"), require('dap')
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+				dapui.close()
+			end
+			dap.listeners.before.event_exited["dapui_config"] = function()
+				dapui.close()
+			end
+			dapui.setup(opts)
+		end
 	},
-	{ "folke/neodev.nvim",     opts = {},      tag = "v2.5.2" },
+	{ "folke/neodev.nvim", opts = {}, tag = "v2.5.2" },
 })
 
 -- Use system clipboard
@@ -217,6 +272,20 @@ vim.keymap.set("n", "<leader>q", ":bd<CR>")
 ---------------
 --- PLUGINS --|
 ---------------
+--> Treesitter
+-- Borrowed from Kickstarter, defers treesitter execution
+-- to allow opening specific files fast (nvim %file%)
+vim.defer_fn(function()
+	require('nvim-treesitter.configs').setup {
+		ensure_installed = { "javascript", "python", "c", "lua", "html", "rust" },
+		sync_install = false,
+		highlight = { enable = true },
+		indent = { enable = true },
+		auto_install = false,
+		modules = {},
+		ignore_install = {},
+	}
+end, 0)
 
 --> Telescope
 local tbin = require("telescope.builtin")
@@ -267,62 +336,3 @@ vim.keymap.set('n', '<leader>bl', require 'dap.ext.vscode'.load_launchjs)
 vim.keymap.set('n', '<F8>', dap.continue)
 vim.keymap.set('n', '<F9>', dap.step_over)
 vim.keymap.set('n', '<F7>', dap.step_into)
-
--- Adapters
-dap.adapters.python = function(cb, config)
-	if config.request == 'attach' then
-		---@diagnostic disable-next-line: undefined-field
-		local port = (config.connect or config).port
-		---@diagnostic disable-next-line: undefined-field
-		local host = (config.connect or config).host or '127.0.0.1'
-		cb({
-			type = 'server',
-			port = assert(port, '`connect.port` is required for a python `attach` configuration'),
-			host = host,
-			options = {
-				source_filetype = 'python',
-			},
-		})
-	else
-		cb({
-			type = 'executable',
-			-- TODO: Works on my computer! :D
-			command = '/Users/saleone/Dev/Me/Tools/venvs/venv-dap/bin/python',
-			args = { '-m', 'debugpy.adapter' },
-			options = {
-				source_filetype = 'python',
-			},
-		})
-	end
-end
-
--- Configurations
-dap.configurations.python = {
-	-- Only current file for global config
-	{
-		type = 'python',
-		request = 'launch',
-		name = "Current file",
-
-		program = "${file}",
-		pythonPath = function()
-			-- local cwd = vim.fn.getcwd()
-			-- TODO: Write a lua function that recursively searches for folder
-			-- named .venv-* and returns the path to the python executable
-			-- TODO: Just use the Python from $PATH. Verify below is the case for that.
-			return 'python'
-		end
-	},
-}
-
--- dapui
-local dapui = require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
-	dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
-end
