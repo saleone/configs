@@ -5,75 +5,105 @@ vim.g.maplocalleader = ' '
 -- Plugin Manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { 'numToStr/Comment.nvim', opts = {} },
-  {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
-     dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  {
-    "nvim-treesitter/nvim-treesitter", 
-    build = ":TSUpdate",
-    config = function () 
-      local configs = require("nvim-treesitter.configs")
+	{ 'numToStr/Comment.nvim',            opts = {} },
+	{
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.4',
+		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			local configs = require("nvim-treesitter.configs")
 
-      configs.setup({
-          ensure_installed = { "javascript", "python", "c", "lua", "html", "rust" },
-          sync_install = false,
-          highlight = { enable = true, additional_vim_regs },
-          indent = { enable = true },  
-        })
-    end
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    opts = {
-      options = {
-        icons_enabled = true,
-        component_separators = '|',
-        section_separators = ' ',
-      },
-    }
-  },
-  'mbbill/undotree',
-  {'williamboman/mason.nvim'},
-  {'williamboman/mason-lspconfig.nvim'},
-  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      {'j-hui/fidget.nvim', tag = 'legacy', opts = {}}
-    },
-  },
-  {'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/nvim-cmp'},
-  {
-    'romgrk/barbar.nvim',
-     init = function() vim.g.barbar_auto_setup = false end,
-     opts = {
-       icons = { filetype = { enabled = false } },
-       autohide = true,
-       focus_on_close = 'previous',
-       auto_hide = 1
-       
+			configs.setup({
+				ensure_installed = { "javascript", "python", "c", "lua", "html", "rust" },
+				sync_install = false,
+				highlight = { enable = true, additional_vim_regs },
+				indent = { enable = true },
+			})
+		end
+	},
+	{
+		'nvim-lualine/lualine.nvim',
+		opts = {
+			options = {
+				icons_enabled = true,
+				component_separators = '|',
+				section_separators = ' ',
+			},
+		}
+	},
+	'mbbill/undotree',
+	{ 'williamboman/mason.nvim' },
+	{ 'williamboman/mason-lspconfig.nvim' },
+	{ 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
+	{
+		'neovim/nvim-lspconfig',
+		dependencies = {
+			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} }
+		},
+	},
+	{ 'hrsh7th/cmp-nvim-lsp' },
+	{ 'hrsh7th/nvim-cmp' },
+	{
+		'romgrk/barbar.nvim',
+		init = function() vim.g.barbar_auto_setup = false end,
+		opts = {
+			icons = { filetype = { enabled = false } },
+			autohide = true,
+			focus_on_close = 'previous',
+			auto_hide = 1
 
-    }
-  },
-  "github/copilot.vim",
-  "arzg/vim-colors-xcode",
-  "vimpostor/vim-lumen",
-  "mfussenegger/nvim-dap",
+
+		}
+	},
+	"github/copilot.vim",
+	"arzg/vim-colors-xcode",
+	"vimpostor/vim-lumen",
+	{ "mfussenegger/nvim-dap", tag = "v0.7.0", },
+	{
+		"rcarriga/nvim-dap-ui",
+		tag = "v3.9.0",
+		dependencies = { "mfussenegger/nvim-dap", },
+		opts = {
+			layouts = { {
+				elements = { {
+					id = "breakpoints",
+					size = 0.2
+				}, {
+					id = "stacks",
+					size = 0.05
+				}, {
+					id = "watches",
+					size = 0.75
+				} },
+				position = "left",
+				size = 40
+			}, {
+				elements = { {
+					id = "repl",
+					size = 1
+				} },
+				position = "bottom",
+				size = 10
+			} },
+		},
+	},
+	{ "folke/neodev.nvim",     opts = {},      tag = "v2.5.2" },
 })
 
 -- Use system clipboard
@@ -95,7 +125,7 @@ vim.o.relativenumber = true
 vim.o.scrolloff = 10
 
 -- Make sure search hits are highlighted
-vim.o.hlsearch = true  
+vim.o.hlsearch = true
 
 -- Make sure inc search is on
 vim.opt.incsearch = true
@@ -110,7 +140,7 @@ vim.o.termguicolors = true
 vim.opt.swapfile = false
 
 -- Disable backups
-vim.opt.backup = False
+vim.opt.backup = false
 
 -- Restrict update time
 vim.opt.updatetime = 100
@@ -118,16 +148,6 @@ vim.opt.updatetime = 100
 -- Add undo dir
 vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
 vim.opt.undofile = true
-
--- Highlight yanked text
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
 
 -- Smart search. Use capital to search case-sensitive
 vim.o.ignorecase = true
@@ -143,7 +163,10 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 -- Set colorscheme
-vim.cmd[[colorscheme xcode]]
+vim.cmd [[colorscheme xcode]]
+
+-- Tabs to three spaces (to notice when I use tabs)
+vim.opt.tabstop = 3
 
 
 -------------
@@ -152,11 +175,11 @@ vim.cmd[[colorscheme xcode]]
 -- Highlight yanked text
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = '*',
 })
 
 ----------------------
@@ -173,7 +196,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- Delete does not add to clipboard
-vim.keymap.set({"n", "v"}, "d", "\"_d")
+vim.keymap.set({ "n", "v" }, "d", "\"_d")
 
 -- Retain selection when indenting
 vim.keymap.set('v', '<', '<gv')
@@ -210,25 +233,25 @@ local lsp = require('lsp-zero')
 
 lsp.preset("recommended")
 
-lsp.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp.default_keymaps({buffer = bufnr})
+lsp.on_attach(function(_, bufnr)
+	-- see :help lsp-zero-keybindings
+	-- to learn the available actions
+	lsp.default_keymaps({ buffer = bufnr })
 
-  vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
-  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+	vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
+	vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {
-    'rust_analyzer',
-    'pyright',
-    'html',
-  },
-  handlers = {
-    lsp.default_setup,
-  },
+	ensure_installed = {
+		'rust_analyzer',
+		'pyright',
+		'html',
+	},
+	handlers = {
+		lsp.default_setup,
+	},
 })
 
 --> nvim-dap
@@ -239,7 +262,7 @@ vim.keymap.set('n', '<leader>bn', dap.step_over)
 vim.keymap.set('n', '<leader>bi', dap.step_into)
 vim.keymap.set('n', '<leader>bd', dap.repl.open)
 vim.keymap.set('n', '<leader>bs', function() dap.disconnect({ terminateDebuggee = true }) end)
-vim.keymap.set('n', '<leader>bl', require'dap.ext.vscode'.load_launchjs)
+vim.keymap.set('n', '<leader>bl', require 'dap.ext.vscode'.load_launchjs)
 
 vim.keymap.set('n', '<F8>', dap.continue)
 vim.keymap.set('n', '<F9>', dap.step_over)
@@ -247,47 +270,59 @@ vim.keymap.set('n', '<F7>', dap.step_into)
 
 -- Adapters
 dap.adapters.python = function(cb, config)
-  if config.request == 'attach' then
-    ---@diagnostic disable-next-line: undefined-field
-    local port = (config.connect or config).port
-    ---@diagnostic disable-next-line: undefined-field
-    local host = (config.connect or config).host or '127.0.0.1'
-    cb({
-      type = 'server',
-      port = assert(port, '`connect.port` is required for a python `attach` configuration'),
-      host = host,
-      options = {
-        source_filetype = 'python',
-      },
-    })
-  else
-    cb({
-      type = 'executable',
-      -- TODO: Works on my computer! :D 
-      command = '/Users/saleone/Dev/Me/Tools/venvs/venv-dap/bin/python',
-      args = { '-m', 'debugpy.adapter' },
-      options = {
-        source_filetype = 'python',
-      },
-    })
-  end
+	if config.request == 'attach' then
+		---@diagnostic disable-next-line: undefined-field
+		local port = (config.connect or config).port
+		---@diagnostic disable-next-line: undefined-field
+		local host = (config.connect or config).host or '127.0.0.1'
+		cb({
+			type = 'server',
+			port = assert(port, '`connect.port` is required for a python `attach` configuration'),
+			host = host,
+			options = {
+				source_filetype = 'python',
+			},
+		})
+	else
+		cb({
+			type = 'executable',
+			-- TODO: Works on my computer! :D
+			command = '/Users/saleone/Dev/Me/Tools/venvs/venv-dap/bin/python',
+			args = { '-m', 'debugpy.adapter' },
+			options = {
+				source_filetype = 'python',
+			},
+		})
+	end
 end
 
 -- Configurations
 dap.configurations.python = {
-  -- Only current file for global config
-  {
-    type = 'python';
-    request = 'launch';
-    name = "Current file";
+	-- Only current file for global config
+	{
+		type = 'python',
+		request = 'launch',
+		name = "Current file",
 
-    program = "${file}";
-    pythonPath = function()
-      local cwd = vim.fn.getcwd()
-      -- TODO: Write a lua function that recursively searches for folder
-      -- named .venv-* and returns the path to the python executable
-      -- TODO: Just use the Python from $PATH. Verify below is the case for that.
-      return 'python'
-    end
-  },
+		program = "${file}",
+		pythonPath = function()
+			-- local cwd = vim.fn.getcwd()
+			-- TODO: Write a lua function that recursively searches for folder
+			-- named .venv-* and returns the path to the python executable
+			-- TODO: Just use the Python from $PATH. Verify below is the case for that.
+			return 'python'
+		end
+	},
 }
+
+-- dapui
+local dapui = require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+end
