@@ -64,6 +64,7 @@ require('lazy').setup({
 	"github/copilot.vim",
 	"arzg/vim-colors-xcode",
 	"vimpostor/vim-lumen",
+	{ "folke/neodev.nvim", opts = {}, tag = "v2.5.2" },
 	{
 		"mfussenegger/nvim-dap",
 		tag = "v0.7.0",
@@ -78,11 +79,9 @@ require('lazy').setup({
 
 					program = "${file}",
 					pythonPath = function()
-						-- local cwd = vim.fn.getcwd()
 						-- TODO: Write a lua function that recursively searches for folder
 						-- named .venv-* and returns the path to the python executable
-						-- TODO: Just use the Python from $PATH. Verify below is the case for that.
-						return 'python'
+						return os.getenv("DAP_PY_PATH")
 					end
 				},
 			}
@@ -106,7 +105,8 @@ require('lazy').setup({
 					cb({
 						type = 'executable',
 						-- TODO: Works on my computer! :D
-						command = '/Users/saleone/Dev/Me/Tools/venvs/venv-dap/bin/python',
+						-- command = '/Users/saleone/Dev/Me/Tools/venvs/venv-dap/bin/python',
+						command = "python",
 						args = { '-m', 'debugpy.adapter' },
 						options = {
 							source_filetype = 'python',
@@ -158,7 +158,23 @@ require('lazy').setup({
 			dapui.setup(opts)
 		end
 	},
-	{ "folke/neodev.nvim", opts = {}, tag = "v2.5.2" },
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-neotest/neotest-python",
+		},
+		config = function(_, opts)
+			require("neotest").setup(vim.tbl_extend("force", opts, {
+				adapters = {
+					require("neotest-python")({
+						dap = { justMyCode = false },
+					}),
+				},
+			}))
+		end
+	}
 })
 
 -- Use system clipboard
@@ -277,7 +293,7 @@ vim.keymap.set("n", "<leader>q", ":bd<CR>")
 -- to allow opening specific files fast (nvim %file%)
 vim.defer_fn(function()
 	require('nvim-treesitter.configs').setup {
-		ensure_installed = { "javascript", "python", "c", "lua", "html", "rust" },
+		ensure_installed = { "javascript", "python", "lua", "html", "rust", "json" },
 		sync_install = false,
 		highlight = { enable = true },
 		indent = { enable = true },
@@ -329,7 +345,7 @@ vim.keymap.set('n', '<leader>bb', dap.toggle_breakpoint)
 vim.keymap.set('n', '<leader>bc', dap.continue)
 vim.keymap.set('n', '<leader>bn', dap.step_over)
 vim.keymap.set('n', '<leader>bi', dap.step_into)
-vim.keymap.set('n', '<leader>bd', dap.repl.open)
+vim.keymap.set('n', '<leader>br', dap.repl.open)
 vim.keymap.set('n', '<leader>bs', function() dap.disconnect({ terminateDebuggee = true }) end)
 vim.keymap.set('n', '<leader>bl', require 'dap.ext.vscode'.load_launchjs)
 
