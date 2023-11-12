@@ -253,6 +253,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 })
 
+-- Remove trailing whitespace
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
+
 ----------------------
 --- DEFAULT KEYMAP --|
 ----------------------
