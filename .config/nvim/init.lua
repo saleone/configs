@@ -16,46 +16,51 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-	{ 'numToStr/Comment.nvim',            opts = {} },
+require("lazy").setup({
 	{
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.4',
-		dependencies = { 'nvim-lua/plenary.nvim' }
+		  "numToStr/Comment.nvim",
+		  opts = {},
+		  tag = "0.8.0"
+   },
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		tag = "0.1.4",
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+      tag = "v0.9.1",
 	},
 	{
-		'nvim-lualine/lualine.nvim',
+		"nvim-lualine/lualine.nvim",
 		opts = {
 			options = {
 				icons_enabled = true,
-				component_separators = '|',
-				section_separators = ' ',
+				component_separators = "|",
+				section_separators = " ",
 			},
-		}
-	},
-	'mbbill/undotree',
-	{ 'williamboman/mason.nvim' },
-	{ 'williamboman/mason-lspconfig.nvim' },
-	{ 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
-	{
-		'neovim/nvim-lspconfig',
-		dependencies = {
-			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} }
 		},
 	},
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'hrsh7th/nvim-cmp' },
+	"mbbill/undotree",
+	{ "williamboman/mason.nvim", tag="v1.8.3" },
+	{ "williamboman/mason-lspconfig.nvim", tag="v1.20.0"},
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 	{
-		'romgrk/barbar.nvim',
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }
+		},
+	},
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/nvim-cmp" },
+	{
+		"romgrk/barbar.nvim",
 		init = function() vim.g.barbar_auto_setup = false end,
 		opts = {
 			icons = { filetype = { enabled = false } },
 			autohide = true,
-			focus_on_close = 'previous',
+			focus_on_close = "previous",
 			auto_hide = 1
 
 
@@ -173,7 +178,8 @@ require('lazy').setup({
 					}),
 				},
 			}))
-		end
+		end,
+      tag = "v4.1.3",
 	}
 })
 
@@ -299,7 +305,7 @@ vim.keymap.set("n", "<leader>q", ":bd<CR>")
 -- to allow opening specific files fast (nvim %file%)
 vim.defer_fn(function()
 	require('nvim-treesitter.configs').setup {
-		ensure_installed = { "javascript", "python", "lua", "html", "rust", "json" },
+		ensure_installed = { "javascript", "python", "lua", "html", "rust", "json", "go" },
 		sync_install = false,
 		highlight = { enable = true },
 		indent = { enable = true },
@@ -339,6 +345,7 @@ require('mason-lspconfig').setup({
 		'rust_analyzer',
 		'pyright',
 		'html',
+      'gopls',
 	},
 	handlers = {
 		lsp.default_setup,
