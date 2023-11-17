@@ -185,7 +185,8 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 		}
-	}
+	},
+	"tpope/vim-sleuth",
 })
 
 -- Use system clipboard
