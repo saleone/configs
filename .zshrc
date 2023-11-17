@@ -33,10 +33,23 @@ builder () {
 }
 
 # Aliases
+alias cd="pushd";
 alias vi="nvim";
 alias vim="nvim";
 export EDITOR="nvim";
+
 alias ks='kubectl'
+
+alias gits='git status'
+alias gita='git add'
+alias gitc='git commit'
+alias gitl='git log --oneline --graph --decorate --all'
+alias gitb='git branch'
+alias gitd='git diff'
+alias gitf='git fetch'
+alias gitco='git checkout'
+alias gitcb='git checkout -b'
+
 
 # Paths updates
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
