@@ -177,6 +177,14 @@ require("lazy").setup({
 			}))
 		end,
 		tag = "v4.1.3",
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		}
 	}
 })
 
@@ -363,3 +371,6 @@ vim.keymap.set('n', '<leader>bl', require 'dap.ext.vscode'.load_launchjs)
 vim.keymap.set('n', '<F8>', dap.continue)
 vim.keymap.set('n', '<F9>', dap.step_over)
 vim.keymap.set('n', '<F7>', dap.step_into)
+
+--> neotree
+vim.keymap.set('n', '<C-b>', ":Neotree toggle<CR>")
