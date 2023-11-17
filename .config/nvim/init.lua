@@ -18,10 +18,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		  "numToStr/Comment.nvim",
-		  opts = {},
-		  tag = "0.8.0"
-   },
+		"numToStr/Comment.nvim",
+		opts = {},
+		tag = "0.8.0"
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -30,7 +30,7 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-      tag = "v0.9.1",
+		tag = "v0.9.1",
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -43,9 +43,9 @@ require("lazy").setup({
 		},
 	},
 	"mbbill/undotree",
-	{ "williamboman/mason.nvim", tag="v1.8.3" },
-	{ "williamboman/mason-lspconfig.nvim", tag="v1.20.0"},
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	{ "williamboman/mason.nvim",           tag = "v1.8.3" },
+	{ "williamboman/mason-lspconfig.nvim", tag = "v1.20.0" },
+	{ "VonHeikemen/lsp-zero.nvim",         branch = "v3.x" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -132,11 +132,8 @@ require("lazy").setup({
 					id = "breakpoints",
 					size = 0.2
 				}, {
-					id = "stacks",
-					size = 0.05
-				}, {
 					id = "watches",
-					size = 0.75
+					size = 08.
 				} },
 				position = "left",
 				size = 40
@@ -179,7 +176,7 @@ require("lazy").setup({
 				},
 			}))
 		end,
-      tag = "v4.1.3",
+		tag = "v4.1.3",
 	}
 })
 
@@ -261,8 +258,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Remove trailing whitespace
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = [[%s/\s\+$//e]],
+	pattern = { "*" },
+	command = [[%s/\s\+$//e]],
 })
 
 ----------------------
@@ -318,6 +315,7 @@ end, 0)
 --> Telescope
 local tbin = require("telescope.builtin")
 vim.keymap.set('n', '<leader>ff', tbin.find_files, {})
+vim.keymap.set('n', '<C-p>', tbin.find_files, {})
 vim.keymap.set('n', '<leader>fs', tbin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', tbin.buffers, {})
 vim.keymap.set('n', '<leader>fh', tbin.help_tags, {})
@@ -345,7 +343,7 @@ require('mason-lspconfig').setup({
 		'rust_analyzer',
 		'pyright',
 		'html',
-      'gopls',
+		'gopls',
 	},
 	handlers = {
 		lsp.default_setup,
