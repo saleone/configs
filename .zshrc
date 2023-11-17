@@ -2,6 +2,9 @@
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
 export PATH=$HOME/.local/bin:$PATH
 
+# Load secrets
+source ~/.env_configs
+
 # Functions
 builder () {
   local venvDir="/Users/saleone/Dev/Stem/Tools/builder"
