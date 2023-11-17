@@ -283,8 +283,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Add line below to the end of the current
 vim.keymap.set("n", "J", "mzJ`z")
 
--- Delete does not add to clipboard
+-- Delete and change does not add to clipboard
 vim.keymap.set({ "n", "v" }, "d", "\"_d")
+vim.keymap.set({ "n", "v" }, "c", "\"_c")
 
 -- Retain selection when indenting
 vim.keymap.set('v', '<', '<gv')
