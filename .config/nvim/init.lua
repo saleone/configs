@@ -45,7 +45,13 @@ require("lazy").setup({
 	"mbbill/undotree",
 	{ "williamboman/mason.nvim",           tag = "v1.8.3" },
 	{ "williamboman/mason-lspconfig.nvim", tag = "v1.20.0" },
-	{ "VonHeikemen/lsp-zero.nvim",         branch = "v3.x" },
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v3.x",
+		dependencies = {
+			{ "L3MON4D3/LuaSnip", tag = "2.*", build="make install_jsregexp"}
+		},
+	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
