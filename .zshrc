@@ -1,13 +1,16 @@
+OS_NAME="$(uname -s)"
+
 # Ensure we have out local binaries dir
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
 export PATH=$HOME/.local/bin:$PATH
 
 # Load secrets
-source ~/.env_configs
+if [ ! -f $HOME/.env_configs ]; then touch $HOME/.env_configs; fi
+source "$HOME/.env_configs"
 
 # Functions
 builder () {
-  local venvDir="/Users/saleone/Dev/Stem/Tools/builder"
+  local venvDir="$HOME/Dev/Stem/Tools/builder"
 
   # Install builder if not already installed
   if [ ! -d "$venvDir" ]; then
@@ -55,15 +58,23 @@ alias gitcb='git checkout -b'
 
 
 # Paths updates
-if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
-export PATH=$HOME/.local/bin:$(brew --prefix icu4c)/bin:$(brew --prefix icu4c)/sbin:$PATH
-export HDF5_DIR=$(brew --prefix hdf5)
-export CPATH=/opt/homebrew/include
-export LIBRARY_PATH=/opt/homebrew/lib
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+if [ "$OS_NAME" = "Darwin" ]; then
+  export CPATH=/opt/homebrew/include
+  export LIBRARY_PATH=/opt/homebrew/lib
+
+  export PATH=$HOME/.local/bin:$(brew --prefix icu4c)/bin:$(brew --prefix icu4c)/sbin:$PATH
+  export HDF5_DIR=$(brew --prefix hdf5)
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+fi
 
 # Setups
-eval "$(pyenv init -)"
-. "$HOME/.cargo/env"
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
