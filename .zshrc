@@ -39,7 +39,6 @@ builder () {
 }
 
 # Aliases
-alias cd="pushd";
 alias vi="nvim";
 alias vim="nvim";
 export EDITOR="nvim";
