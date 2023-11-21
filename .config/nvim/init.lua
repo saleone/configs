@@ -133,24 +133,36 @@ require("lazy").setup({
 		tag = "v3.9.0",
 		dependencies = { "mfussenegger/nvim-dap", },
 		opts = {
-			layouts = { {
-				elements = { {
-					id = "breakpoints",
-					size = 0.2
-				}, {
-					id = "watches",
-					size = 08.
-				} },
-				position = "left",
-				size = 40
-			}, {
-				elements = { {
-					id = "repl",
-					size = 1
-				} },
-				position = "bottom",
-				size = 10
-			} },
+			layouts = {
+				{
+					elements = {
+						{
+							id = "repl",
+							size = 0.5
+						},
+						{
+							id = "console",
+							size = 0.5
+						}
+					},
+					position = "bottom",
+					size = 10
+				},
+				{
+					elements = {
+						{
+							id = "breakpoints",
+							size = 0.2
+						},
+						{
+							id = "watches",
+							size = 0.8
+						}
+					},
+					position = "left",
+					size = 30
+				},
+			},
 		},
 		config = function(_, opts)
 			local dapui, dap = require("dapui"), require('dap')
