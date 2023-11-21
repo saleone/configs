@@ -151,13 +151,13 @@ require("lazy").setup({
 				{
 					elements = {
 						{
+							id = "watches",
+							size = 0.8
+						},
+						{
 							id = "breakpoints",
 							size = 0.2
 						},
-						{
-							id = "watches",
-							size = 0.8
-						}
 					},
 					position = "left",
 					size = 30
