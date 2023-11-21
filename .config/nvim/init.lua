@@ -49,7 +49,7 @@ require("lazy").setup({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
 		dependencies = {
-			{ "L3MON4D3/LuaSnip", tag = "2.*", build="make install_jsregexp"}
+			{ "L3MON4D3/LuaSnip", tag = "2.*", build = "make install_jsregexp" }
 		},
 	},
 	{
@@ -319,9 +319,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>ef', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- Close buffer
-vim.keymap.set("n", "<leader>q", ":bd<CR>")
-
 ---------------
 --- PLUGINS --|
 ---------------
@@ -393,4 +390,4 @@ vim.keymap.set('n', '<F9>', dap.step_over)
 vim.keymap.set('n', '<F7>', dap.step_into)
 
 --> neotree
-vim.keymap.set('n', '<C-b>', ":Neotree toggle<CR>")
+vim.keymap.set('n', '<leader>t', ":Neotree toggle<CR>")
