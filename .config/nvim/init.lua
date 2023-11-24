@@ -64,11 +64,10 @@ require("lazy").setup({
 		"romgrk/barbar.nvim",
 		init = function() vim.g.barbar_auto_setup = false end,
 		opts = {
-			icons = { filetype = { enabled = false } },
+			icons = { filetype = { enabled = false }, buffer_number = true, preset = "slanted" },
 			autohide = true,
 			focus_on_close = "previous",
 			auto_hide = 1
-
 
 		}
 	},
