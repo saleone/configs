@@ -137,11 +137,11 @@ require("lazy").setup({
 				{
 					elements = {
 						{
-							id = "repl",
+							id = "console",
 							size = 0.5
 						},
 						{
-							id = "console",
+							id = "repl",
 							size = 0.5
 						}
 					},
