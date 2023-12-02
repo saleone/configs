@@ -38,22 +38,24 @@ builder () {
 
 }
 
+
 # Aliases
 alias vi="nvim";
 alias vim="nvim";
 export EDITOR="nvim";
 
-alias ks='kubectl'
+alias ks="kubectl"
+alias aws-login="aws --profile dev sso login"
 
-alias gits='git status'
-alias gita='git add'
-alias gitc='git commit'
-alias gitl='git log --oneline --graph --decorate --all'
-alias gitb='git branch'
-alias gitd='git diff'
-alias gitf='git fetch'
-alias gitco='git checkout'
-alias gitcb='git checkout -b'
+alias gits="git status"
+alias gita="git add"
+alias gitc="git commit"
+alias gitl="git log --oneline --graph --decorate --all"
+alias gitb="git branch"
+alias gitd="git diff"
+alias gitf="git fetch"
+alias gitco="git checkout"
+alias gitcb="git checkout -b"
 
 
 # Paths updates
