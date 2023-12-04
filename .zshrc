@@ -9,6 +9,10 @@ if [ ! -f $HOME/.env_configs ]; then touch $HOME/.env_configs; fi
 source "$HOME/.env_configs"
 
 # Functions
+workon () {
+  pushd $HOME/Dev/$(python3 -c "print('$1'.capitalize())")/$2;
+}
+
 builder () {
   local venvDir="$HOME/Dev/Stem/Tools/builder"
 
