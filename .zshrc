@@ -90,3 +90,5 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 export PATH=$PATH:$(go env GOPATH)/bin
+
+eval $(ssh-agent -s) > /dev/null 2>&1
