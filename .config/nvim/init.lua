@@ -20,7 +20,7 @@ require("lazy").setup({
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
-		tag = "0.8.0"
+		tag = "v0.8.0"
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -49,7 +49,7 @@ require("lazy").setup({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
 		dependencies = {
-			{ "L3MON4D3/LuaSnip", tag = "2.*", build = "make install_jsregexp" }
+			{ "L3MON4D3/LuaSnip", tag = "v2.1.1", build = "make install_jsregexp" }
 		},
 	},
 	{
@@ -77,7 +77,7 @@ require("lazy").setup({
 	{ "folke/neodev.nvim", opts = {}, tag = "v2.5.2" },
 	{
 		"mfussenegger/nvim-dap",
-		tag = "v0.7.0",
+		tag = "0.7.0",
 		config = function(_, _)
 			local dap = require("dap")
 			dap.configurations.python = {
