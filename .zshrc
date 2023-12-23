@@ -101,7 +101,13 @@ zle-keymap-select () {
 }
 
 # Enable vim keybinds
-bindkey -v
+if [ -n "$ZSH_VERSION" ]; then
+  bindkey -v
+fi
+
+if [ -n "$BASH_VERSION" ]; then
+  set -o vi
+fi
 
 # Prompt
 build_prompt () {
