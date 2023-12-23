@@ -92,3 +92,57 @@ fi
 export PATH=$PATH:$(go env GOPATH)/bin
 
 eval $(ssh-agent -s) > /dev/null 2>&1
+
+zle-keymap-select () {
+  case $KEYMAP in
+    vicmd) print -rn -- $terminfo[cvvis];; # block cursor
+    viins|main) print -rn -- $terminfo[cnorm];; # less visible cursor
+  esac
+}
+
+# Enable vim keybinds
+bindkey -v
+
+# Prompt
+build_prompt () {
+  # Define constants based on the shell
+  if [ -n "$ZSH_VERSION" ]; then
+    HOSTNAME_COLOR="%F{green}"
+    USERNAME_COLOR="%F{blue}"
+    DIR_COLOR="%F{yellow}"
+    PROMPT_COLOR="%F{cyan}"
+    RESET_COLOR="%f"
+    PROMPT_SYMBOL="%#"
+  elif [ -n "$BASH_VERSION" ]; then
+    HOSTNAME_COLOR="\[\e[32m\]"
+    USERNAME_COLOR="\[\e[34m\]"
+    DIR_COLOR="\[\e[33m\]"
+    PROMPT_COLOR="\[\e[36m\]"
+    RESET_COLOR="\[\e[0m\]"
+    PROMPT_SYMBOL="\$"
+  fi
+
+  local prompt=""
+
+  if [ ! "$(hostname)" = "SasaS-MBP14-MPKQW6PDQF-8B49" ]; then
+    prompt+="${HOSTNAME_COLOR}$(hostname):${RESET_COLOR}"
+  fi
+
+  if [ ! "$(whoami)" = "saleone" ]; then
+    prompt+="${USERNAME_COLOR}\u${RESET_COLOR}@"
+  fi
+
+  if [ -n "$ZSH_VERSION" ]; then
+    prompt+="%{${DIR_COLOR}%}%~%{${RESET_COLOR}%} "
+  else
+    prompt+="${DIR_COLOR}\w${RESET_COLOR} "
+  fi
+
+  # Prompt symbol
+  prompt+="${PROMPT_COLOR}${PROMPT_SYMBOL}${RESET_COLOR} "
+
+  echo "$prompt"
+}
+
+# Set the prompt
+export PS1="$(build_prompt)"
