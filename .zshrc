@@ -10,7 +10,11 @@ source "$HOME/.env_configs"
 
 # Functions
 workon () {
-  pushd $HOME/Dev/$(python3 -c "print('$1'.capitalize())")/$2;
+  local workonPath="$HOME/Dev/$(python3 -c "print('$1'.capitalize())")/$2"
+  pushd $workonPath
+  if [ -f "$workonPath/.init-workon" ]; then
+    source $workonPath/.init-workon
+  fi
 }
 
 builder () {
