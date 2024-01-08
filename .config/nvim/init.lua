@@ -60,17 +60,6 @@ require("lazy").setup({
 	},
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
-	{
-		"romgrk/barbar.nvim",
-		init = function() vim.g.barbar_auto_setup = false end,
-		opts = {
-			icons = { filetype = { enabled = false }, buffer_number = true, preset = "slanted" },
-			autohide = true,
-			focus_on_close = "previous",
-			auto_hide = 1
-
-		}
-	},
 	"github/copilot.vim",
 	"arzg/vim-colors-xcode",
 	"vimpostor/vim-lumen",
