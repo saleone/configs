@@ -8,35 +8,11 @@
     git fetch
     git checkout -f origin/master
 
-## Software
-Repository hosts my configurations for the following software:
-* [bspwm](https://github.com/baskerville/bspwm)
-* [sxhkd](https://github.com/baskerville/sxhkd)
-* [Alacritty](https://github.com/jwilm/alacritty)
-* [Dunst](https://github.com/dunst-project/dunst)
-* [Polybar](https://github.com/polybar/polybar)
-* [Fish](https://github.com/fish-shell/fish-shell)
-* [Rofi](https://github.com/davatorium/rofi)
-* [Compton](https://github.com/chjj/compton)
-* [Redshift](https://github.com/jonls/redshift)
-* [Vim/Neovim](https://github.com/neovim/neovim)
-
-## Screenshots
-
-### Busy
-![Busy desktop](https://i.imgur.com/B43rIij.png)
-
-### Rofi
-![Fullscreen Rofi](https://i.imgur.com/kuxUFJd.png)
-
-## Clean
-![Clean desktop](https://i.imgur.com/gRBUVKk.png)
-
 ## License
 
 MIT License
 
-Copyright (c) 2016-2020 Sasa Savic
+Copyright (c) 2016-2024 Sasa Savic
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
