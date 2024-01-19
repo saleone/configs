@@ -62,6 +62,7 @@ require("lazy").setup({
 	{ "hrsh7th/nvim-cmp" },
 	"github/copilot.vim",
 	"arzg/vim-colors-xcode",
+	"NLKNguyen/papercolor-theme",
 	"vimpostor/vim-lumen",
 	{ "folke/neodev.nvim", opts = {}, tag = "v2.5.2" },
 	{
@@ -222,9 +223,6 @@ vim.opt.incsearch = true
 -- Break indent
 vim.o.breakindent = true
 
--- Term colors (check if it actually work)
-vim.o.termguicolors = true
-
 -- Disable swap file
 vim.opt.swapfile = false
 
@@ -252,7 +250,7 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 -- Set colorscheme
-vim.cmd [[colorscheme xcode]]
+vim.cmd [[colorscheme xcodehc]]
 
 -- Tabs to three spaces (to notice when I use tabs)
 vim.opt.tabstop = 3
