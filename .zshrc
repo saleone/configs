@@ -11,7 +11,7 @@ source "$HOME/.env_configs"
 # Functions
 workon () {
   local workonPath="$HOME/Dev/$(python3 -c "print('$1'.capitalize())")/$2"
-  pushd $workonPath
+  cd $workonPath
   if [ -f "$workonPath/.init-workon" ]; then
     source $workonPath/.init-workon
   fi
@@ -74,6 +74,7 @@ if [ "$OS_NAME" = "Darwin" ]; then
   export LIBRARY_PATH=/opt/homebrew/lib
 
   export PATH=$HOME/.local/bin:$(brew --prefix icu4c)/bin:$(brew --prefix icu4c)/sbin:$PATH
+  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(brew --prefix icu4c)/lib/pkgconfig"
   export HDF5_DIR=$(brew --prefix hdf5)
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
