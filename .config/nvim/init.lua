@@ -261,6 +261,8 @@ vim.cmd [[colorscheme xcodehc]]
 
 -- Tabs to three spaces (to notice when I use tabs)
 vim.opt.tabstop = 3
+vim.opt.shiftwidth = 3
+vim.opt.expandtab = true
 
 
 -------------
