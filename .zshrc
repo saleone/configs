@@ -24,7 +24,7 @@ builder () {
   if [ ! -d "$venvDir" ]; then
     echo "Installing stem-builder"
     mkdir -p $venvDir
-    python3 -m venv $venvDir
+    python3.11 -m venv $venvDir
 	 $venvDir/bin/pip install --extra-index-url https://nexus.stem.com/repository/stem-pypi/simple stem-builder
   fi
 
