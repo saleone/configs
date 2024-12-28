@@ -11,10 +11,23 @@ source "$HOME/.env_configs"
 # Functions
 workon () {
   local workonPath="$HOME/Dev/$(python3 -c "print('$1'.capitalize())")/$2"
-  cd $workonPath
-  if [ -f "$workonPath/.init-workon" ]; then
-    source $workonPath/.init-workon
+  if [ ! -d $workonPath ]; then
+    echo "Workon path does not exist."
+    return 1
   fi
+  cd $workonPath
+
+  if [ ! -d "$HOME/.workons" ]; then mkdir "$HOME/.workons"; fi
+
+  local initPath="$HOME/.workons/$1_$2_workon_init"
+  if [ !  -f $initPath ]; then
+    touch $initPath
+    chmod +x $initPath
+    echo "Workon init file does not exist. Initialized empty $initPath."
+    return 2
+  fi
+
+  source $initPath
 }
 
 builder () {
