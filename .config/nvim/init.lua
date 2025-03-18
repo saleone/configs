@@ -67,7 +67,6 @@ require("lazy").setup({
 	},
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
-	"github/copilot.vim",
 	"arzg/vim-colors-xcode",
 	"NLKNguyen/papercolor-theme",
 	"vimpostor/vim-lumen",
@@ -173,24 +172,6 @@ require("lazy").setup({
 			end
 			dapui.setup(opts)
 		end
-	},
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"antoinemadec/FixCursorHold.nvim",
-			"nvim-neotest/neotest-python",
-		},
-		config = function(_, opts)
-			require("neotest").setup(vim.tbl_extend("force", opts, {
-				adapters = {
-					require("neotest-python")({
-						dap = { justMyCode = false },
-					}),
-				},
-			}))
-		end,
-		tag = "v4.1.3",
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -357,17 +338,19 @@ lsp.on_attach(function(_, bufnr)
 	vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 end)
 
-require('mason').setup({})
+require('mason').setup()
 require('mason-lspconfig').setup({
 	ensure_installed = {
 		'rust_analyzer',
 		'pyright',
 		'html',
 		'gopls',
+		'lemminx',
 	},
 	handlers = {
 		lsp.default_setup,
 	},
+	automatic_installation=true
 })
 
 --> nvim-dap
