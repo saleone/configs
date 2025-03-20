@@ -182,6 +182,15 @@ require("lazy").setup({
 		}
 	},
 	"tpope/vim-sleuth",
+	{
+		"olimorris/codecompanion.nvim",
+		config = true,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"github/copilot.vim",
+		},
+	},
 })
 
 -- Use system clipboard
@@ -327,8 +336,6 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 --> LSP zero
 local lsp = require('lsp-zero')
 
-lsp.preset("recommended")
-
 lsp.on_attach(function(_, bufnr)
 	-- see :help lsp-zero-keybindings
 	-- to learn the available actions
@@ -350,7 +357,7 @@ require('mason-lspconfig').setup({
 	handlers = {
 		lsp.default_setup,
 	},
-	automatic_installation=true
+	automatic_installation = true
 })
 
 --> nvim-dap
@@ -369,3 +376,21 @@ vim.keymap.set('n', '<F7>', dap.step_into)
 
 --> neotree
 vim.keymap.set('n', '<leader>t', ":Neotree toggle<CR>")
+
+--> copilot
+-- require("copilot").setup()
+
+--> codecompantion
+require("codecompanion").setup({
+	adapters = {
+        copilot = function()
+          return require("codecompanion.adapters").extend("copilot", {
+            schema = {
+              -- model = {
+              --   default = "gpt-4o",
+              -- },
+            },
+          })
+        end,
+	}
+})
