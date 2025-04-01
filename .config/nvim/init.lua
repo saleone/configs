@@ -68,7 +68,6 @@ require("lazy").setup({
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
 	"arzg/vim-colors-xcode",
-	"NLKNguyen/papercolor-theme",
 	"vimpostor/vim-lumen",
 	{ "folke/neodev.nvim", opts = {}, tag = "v2.5.2" },
 	{
@@ -273,6 +272,19 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*" },
 	command = [[%s/\s\+$//e]],
 })
+
+-- Still doesn't work in default mac terminal.
+-- vim.api.nvim_create_autocmd('OptionSet', {
+--   group = vim.api.nvim_create_augroup('autobg', {}),
+--   pattern = 'background',
+--   callback = function()
+--     if vim.o.background == 'dark' then
+--       vim.cmd.colorscheme = "xcodehc"
+--     else
+--       vim.cmd.colorscheme = "xcodelighthc"
+--     end
+--   end,
+-- })
 
 ----------------------
 --- DEFAULT KEYMAP --|
