@@ -1,15 +1,21 @@
 OS_NAME="$(uname -s)"
 
+# Brew
+if ! command -v brew &> /dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # Ensure we have out local binaries dir
 if [ ! -d $HOME/.local/bin ]; then mkdir $HOME/.local/bin; fi
 export PATH=$HOME/.local/bin:$PATH
 
 # Load secrets
-if [ ! -f $HOME/.env_configs ]; then touch $HOME/.env_configs; fi
-source "$HOME/.env_configs"
+if [ ! -f $HOME/.env ]; then touch $HOME/.env; fi
+source "$HOME/.env"
 
 # Functions
 workon () {
+  # TODO: Maybe a faster way than actually starting up Python?
   local workonPath="$HOME/Dev/$(python3 -c "print('$1'.capitalize())")/$2"
   if [ ! -d $workonPath ]; then
     echo "Workon path does not exist."
@@ -30,6 +36,9 @@ workon () {
   source $initPath
 }
 
+# TODO: Move work related stuff to separate file.
+# Stem
+alias aws-login="aws --profile dev sso login"
 builder () {
   local venvDir="$HOME/Dev/Stem/Tools/builder"
 
@@ -59,6 +68,15 @@ builder () {
 
 }
 
+if [ "$OS_NAME" = "Darwin" ]; then
+  export CPATH=/opt/homebrew/include
+  export LIBRARY_PATH=/opt/homebrew/lib
+
+  # Translation libraries for work related stuff.
+  export PATH=$HOME/.local/bin:$(brew --prefix icu4c)/bin:$(brew --prefix icu4c)/sbin:$PATH
+  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(brew --prefix icu4c)/lib/pkgconfig"
+  export HDF5_DIR=$(brew --prefix hdf5)
+fi
 
 # Aliases
 alias vi="nvim";
@@ -66,7 +84,6 @@ alias vim="nvim";
 export EDITOR="nvim";
 
 alias ks="kubectl"
-alias aws-login="aws --profile dev sso login"
 
 alias gits="git status"
 alias gita="git add"
@@ -79,16 +96,14 @@ alias gitco="git checkout"
 alias gitcb="git checkout -b"
 
 
-# Paths updates
+# Node
+if ! command -v node &> /dev/null; then
+  brew install nvm
+  nvm install --lts
+fi
 export NVM_DIR="$HOME/.nvm"
 
 if [ "$OS_NAME" = "Darwin" ]; then
-  export CPATH=/opt/homebrew/include
-  export LIBRARY_PATH=/opt/homebrew/lib
-
-  export PATH=$HOME/.local/bin:$(brew --prefix icu4c)/bin:$(brew --prefix icu4c)/sbin:$PATH
-  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(brew --prefix icu4c)/lib/pkgconfig"
-  export HDF5_DIR=$(brew --prefix hdf5)
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 else
@@ -98,15 +113,30 @@ else
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-# Setups
+# Python
+if ! command -v uv &> /dev/null; then
+  brew install uv
+  uv python install
+fi
+
 if command -v pyenv >/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# Rust
+if ! command -v cargo &> /dev/null; then
+  # TODO: Make this run without user input.
+  # All defaults excpet adding cargo to env which is done below.
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
 if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
 
+# Go
+if ! command -v go &> /dev/null; then
+  brew install go
+fi
 export PATH=$PATH:$(go env GOPATH)/bin
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
