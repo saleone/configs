@@ -257,25 +257,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 })
 
--- Remove trailing whitespace
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*" },
-	command = [[%s/\s\+$//e]],
-})
-
--- Still doesn't work in default mac terminal.
--- vim.api.nvim_create_autocmd('OptionSet', {
---   group = vim.api.nvim_create_augroup('autobg', {}),
---   pattern = 'background',
---   callback = function()
---     if vim.o.background == 'dark' then
---       vim.cmd.colorscheme = "xcodehc"
---     else
---       vim.cmd.colorscheme = "xcodelighthc"
---     end
---   end,
--- })
-
 ----------------------
 --- DEFAULT KEYMAP --|
 ----------------------
@@ -378,9 +359,6 @@ vim.keymap.set('n', '<F7>', dap.step_into)
 
 --> neotree
 vim.keymap.set('n', '<leader>t', ":Neotree toggle<CR>")
-
---> copilot
--- require("copilot").setup()
 
 --> codecompantion
 require("codecompanion").setup({
