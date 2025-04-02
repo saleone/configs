@@ -36,38 +36,6 @@ workon () {
   source $initPath
 }
 
-# TODO: Move work related stuff to separate file.
-# Stem
-alias aws-login="aws --profile dev sso login"
-builder () {
-  local venvDir="$HOME/Dev/Stem/Tools/builder"
-
-  # Install builder if not already installed
-  if [ ! -d "$venvDir" ]; then
-    echo "Installing stem-builder"
-    mkdir -p $venvDir
-    python3.11 -m venv $venvDir
-	 $venvDir/bin/pip install --extra-index-url https://nexus.stem.com/repository/stem-pypi/simple stem-builder
-  fi
-
-  local dateFile="/tmp/stem-builder-update-date"
-  local today=$(date "+%Y-%m-%d")
-
-  # Update builder if not updated today. Updates also when the temp files are deleted.
-  if [[ ! -f "$dateFile" ]] || ! grep -q "$today" "$dateFile"; then
-    echo "Updating stem-builder"
-	 $venvDir/bin/pip install --extra-index-url \
-				https://nexus.stem.com/repository/stem-pypi/simple --upgrade stem-builder
-      echo "$today" > "$dateFile"
-  fi
-
-  # Need to activate venv to have tox available
-  source $venvDir/bin/activate;
-  stem-builder $@;
-  deactivate;
-
-}
-
 if [ "$OS_NAME" = "Darwin" ]; then
   export CPATH=/opt/homebrew/include
   export LIBRARY_PATH=/opt/homebrew/lib
