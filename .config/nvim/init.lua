@@ -18,19 +18,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"numToStr/Comment.nvim",
-		opts = {},
-		tag = "v0.8.0"
-	},
-	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		tag = "0.1.4",
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		tag = "v0.9.1",
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -50,29 +43,27 @@ require("lazy").setup({
 		},
 	},
 	"mbbill/undotree",
-	{ "williamboman/mason.nvim",           tag = "v1.8.3" },
-	{ "williamboman/mason-lspconfig.nvim", tag = "v1.20.0" },
+	{ "williamboman/mason.nvim",          },
+	{ "williamboman/mason-lspconfig.nvim",},
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
 		dependencies = {
-			{ "L3MON4D3/LuaSnip", tag = "v2.1.1", build = "make install_jsregexp" }
+			{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" }
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }
+			{ "j-hui/fidget.nvim", opts = {} }
 		},
 	},
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
 	"arzg/vim-colors-xcode",
 	"vimpostor/vim-lumen",
-	{ "folke/neodev.nvim", opts = {}, tag = "v2.5.2" },
 	{
 		"mfussenegger/nvim-dap",
-		tag = "0.7.0",
 		config = function(_, _)
 			local dap = require("dap")
 			dap.configurations.python = {
@@ -124,7 +115,6 @@ require("lazy").setup({
 	},
 	{
 		"rcarriga/nvim-dap-ui",
-		tag = "v3.9.0",
 		dependencies = { "mfussenegger/nvim-dap", },
 		opts = {
 			layouts = {
