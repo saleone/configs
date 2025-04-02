@@ -1,6 +1,0 @@
-#!/bin/sh
-BASEDIR=$(dirname $(realpath $0))
-
-. "$BASEDIR/status_lib"
-
-echo "    $(cpu)  $(ram)  $(current_volume)  $(battery)  $(current_datetime)"

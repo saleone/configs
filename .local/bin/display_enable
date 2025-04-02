@@ -1,9 +1,0 @@
-#!/bin/bash
-
-SELECTED_DISPLAY=$(xrandr | grep " connected " | awk '{print $1;}' | dmenu)
-COMMAND=$(echo -e "auto\noff" | dmenu)
-
-xrandr --output $SELECTED_DISPLAY --$COMMAND
-feh --bg-scale ~/.wallpaper.png
-feh --bg-scale ~/.wallpaper.jpg
-feh --bg-scale ~/.wallpaper.jpeg
