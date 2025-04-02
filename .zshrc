@@ -97,12 +97,7 @@ alias gitcb="git checkout -b"
 
 
 # Node
-if ! command -v node &> /dev/null; then
-  brew install nvm
-  nvm install --lts
-fi
 export NVM_DIR="$HOME/.nvm"
-
 if [ "$OS_NAME" = "Darwin" ]; then
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
@@ -111,6 +106,10 @@ else
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+if ! command -v nvm &> /dev/null; then
+  brew install nvm
+  nvm install --lts
 fi
 
 # Python
@@ -124,13 +123,13 @@ if command -v pyenv >/dev/null 2>&1; then
 fi
 
 # Rust
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 if ! command -v cargo &> /dev/null; then
   # TODO: Make this run without user input.
   # All defaults excpet adding cargo to env which is done below.
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-fi
-if [ -f "$HOME/.cargo/env" ]; then
-  . "$HOME/.cargo/env"
 fi
 
 # Go
