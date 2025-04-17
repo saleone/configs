@@ -25,23 +25,6 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
-	{
-		"nvim-lualine/lualine.nvim",
-		opts = {
-			options = {
-				component_separators = "|",
-				section_separators = " ",
-			},
-			sections = {
-				lualine_c = {
-					{
-						'filename',
-						path = 1,
-					}
-				},
-			},
-		},
-	},
 	"mbbill/undotree",
 	{ "williamboman/mason.nvim",          },
 	{ "williamboman/mason-lspconfig.nvim",},
