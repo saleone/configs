@@ -50,18 +50,11 @@ require("lazy").setup({
 		config = function(_, _)
 			local dap = require("dap")
 			dap.configurations.python = {
-				-- Only current file for global config
 				{
 					type = 'python',
 					request = 'launch',
 					name = "Current file",
-
 					program = "${file}",
-					pythonPath = function()
-						-- TODO: Write a lua function that recursively searches for folder
-						-- named .venv-* and returns the path to the python executable
-						return os.getenv("DAP_PY_PATH")
-					end
 				},
 			}
 
@@ -83,8 +76,6 @@ require("lazy").setup({
 				else
 					cb({
 						type = 'executable',
-						-- TODO: Works on my computer! :D
-						-- command = '/Users/saleone/Dev/Me/Tools/venvs/venv-dap/bin/python',
 						command = "python",
 						args = { '-m', 'debugpy.adapter' },
 						options = {
