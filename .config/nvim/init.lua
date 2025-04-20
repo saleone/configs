@@ -89,7 +89,7 @@ require("lazy").setup({
 	},
 	{
 		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap", },
+		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 		opts = {
 			layouts = {
 				{
@@ -127,6 +127,8 @@ require("lazy").setup({
 			dap.listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open()
 			end
+
+			-- We may want to actually keep it open to state (such as logs at closing time)
 			dap.listeners.before.event_terminated["dapui_config"] = function()
 				dapui.close()
 			end
