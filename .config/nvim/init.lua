@@ -271,7 +271,7 @@ vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diag
 -- to allow opening specific files fast (nvim %file%)
 vim.defer_fn(function()
 	require('nvim-treesitter.configs').setup {
-		ensure_installed = { "javascript", "python", "lua", "html", "rust", "json", "go", "markdown" },
+		ensure_installed = { "javascript", "typescript", "python", "lua", "html", "rust", "json", "go", "markdown" },
 		sync_install = false,
 		highlight = { enable = true },
 		indent = { enable = true },
@@ -312,6 +312,7 @@ require('mason-lspconfig').setup({
 		'html',
 		'gopls',
 		'lemminx',
+		'ts_ls',
 	},
 	handlers = {
 		lsp.default_setup,
