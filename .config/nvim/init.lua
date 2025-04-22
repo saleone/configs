@@ -128,13 +128,6 @@ require("lazy").setup({
 				dapui.open()
 			end
 
-			-- We may want to actually keep it open to state (such as logs at closing time)
-			dap.listeners.before.event_terminated["dapui_config"] = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited["dapui_config"] = function()
-				dapui.close()
-			end
 			dapui.setup(opts)
 		end
 	},
@@ -322,12 +315,16 @@ require('mason-lspconfig').setup({
 
 --> nvim-dap
 local dap = require('dap')
+local dapui = require('dapui')
 vim.keymap.set('n', '<leader>bb', dap.toggle_breakpoint)
 vim.keymap.set('n', '<leader>bc', dap.continue)
 vim.keymap.set('n', '<leader>bn', dap.step_over)
 vim.keymap.set('n', '<leader>bi', dap.step_into)
 vim.keymap.set('n', '<leader>br', dap.repl.open)
-vim.keymap.set('n', '<leader>bs', function() dap.disconnect({ terminateDebuggee = true }) end)
+vim.keymap.set('n', '<leader>bs', function() 
+	dap.disconnect({ terminateDebuggee = true }) 
+	dapui.close()
+end)
 vim.keymap.set('n', '<leader>bl', require 'dap.ext.vscode'.load_launchjs)
 
 vim.keymap.set('n', '<F8>', dap.continue)
