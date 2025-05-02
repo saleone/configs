@@ -5,150 +5,164 @@ vim.g.maplocalleader = ' '
 -- Plugin Manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-	},
-	"mbbill/undotree",
-	{ "williamboman/mason.nvim",          },
-	{ "williamboman/mason-lspconfig.nvim",},
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		dependencies = {
-			{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" }
-		},
-	},
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "j-hui/fidget.nvim", opts = {} }
-		},
-	},
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/nvim-cmp" },
-	"arzg/vim-colors-xcode",
-	"vimpostor/vim-lumen",
-	{
-		"mfussenegger/nvim-dap",
-		config = function(_, _)
-			local dap = require("dap")
-			dap.configurations.python = {
-				{
-					type = 'python',
-					request = 'launch',
-					name = "Current file",
-					program = "${file}",
-				},
-			}
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
+  "mbbill/undotree",
+  { "williamboman/mason.nvim",          },
+  { "williamboman/mason-lspconfig.nvim",},
+  {
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
+    dependencies = {
+      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" }
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "j-hui/fidget.nvim", opts = {} }
+    },
+  },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/nvim-cmp" },
+  "arzg/vim-colors-xcode",
+  "vimpostor/vim-lumen",
+   {
+      "mfussenegger/nvim-dap",
+      config = function(_, _)
+         local dap = require("dap")
+         dap.configurations.python = {
+            {
+               type = 'python',
+               request = 'launch',
+               name = "Current file",
+               program = "${file}",
+            },
+         }
 
-			dap.adapters.python = function(cb, config)
-				if config.request == 'attach' then
-					---@diagnostic disable-next-line: undefined-field
-					local port = (config.connect or config).port
-					---@diagnostic disable-next-line: undefined-field
-					local host = (config.connect or config).host or '127.0.0.1'
-					cb({
-						type = 'server',
-						port = assert(port,
-							'`connect.port` is required for a python `attach` configuration'),
-						host = host,
-						options = {
-							source_filetype = 'python',
-						},
-					})
-				else
-					cb({
-						type = 'executable',
-						command = "python",
-						args = { '-m', 'debugpy.adapter' },
-						options = {
-							source_filetype = 'python',
-						},
-					})
-				end
-			end
-		end
+         dap.adapters.python = function(cb, config)
+            if config.request == 'attach' then
+               ---@diagnostic disable-next-line: undefined-field
+               local port = (config.connect or config).port
+               ---@diagnostic disable-next-line: undefined-field
+               local host = (config.connect or config).host or '127.0.0.1'
+               cb({
+                  type = 'server',
+                  port = assert(port,
+                     '`connect.port` is required for a python `attach` configuration'),
+                  host = host,
+                  options = {
+                     source_filetype = 'python',
+                  },
+               })
+            else
+               cb({
+                  type = 'executable',
+                  command = "python",
+                  args = { '-m', 'debugpy.adapter' },
+                  options = {
+                     source_filetype = 'python',
+                  },
+               })
+            end
+         end
+      end
 
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-		opts = {
-			layouts = {
-				{
-					elements = {
-						{
-							id = "console",
-							size = 0.5
-						},
-						{
-							id = "repl",
-							size = 0.5
-						}
-					},
-					position = "bottom",
-					size = 10
-				},
-				{
-					elements = {
-						{
-							id = "watches",
-							size = 0.8
-						},
-						{
-							id = "breakpoints",
-							size = 0.2
-						},
-					},
-					position = "left",
-					size = 30
-				},
-			},
-		},
-		config = function(_, opts)
-			local dapui, dap = require("dapui"), require('dap')
-			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open()
-			end
+   },
+     -- Sets up adapters for javascript debugging
+     -- {
+     --   'mxsdev/nvim-dap-vscode-js',
+     --   opts = {
+     --     debugger_path = vim.fn.resolve(vim.fn.stdpath('data') .. '/lazy/vscode-js-debug'),
+     --     adapters = {'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost'},
+     --   },
+     -- },
 
-			dapui.setup(opts)
-		end
-	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-		}
-	},
-	"tpope/vim-sleuth",
-	{
-		"olimorris/codecompanion.nvim",
-		config = true,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"github/copilot.vim",
-		},
-	},
+     -- vscode-js-debug (so, javascript) adapter
+     -- {
+     --     "microsoft/vscode-js-debug",
+     --     build = "npm ci --loglevel=error && npx gulp vsDebugServerBundle && mv dist out",
+     -- },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    opts = {
+      layouts = {
+        {
+          elements = {
+            {
+              id = "console",
+              size = 0.5
+            },
+            {
+              id = "repl",
+              size = 0.5
+            }
+          },
+          position = "bottom",
+          size = 10
+        },
+        {
+          elements = {
+            {
+              id = "watches",
+              size = 0.8
+            },
+            {
+              id = "breakpoints",
+              size = 0.2
+            },
+          },
+          position = "left",
+          size = 30
+        },
+      },
+    },
+    config = function(_, opts)
+      local dapui, dap = require("dapui"), require('dap')
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+
+      dapui.setup(opts)
+    end
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    }
+  },
+  "tpope/vim-sleuth",
+  {
+    "olimorris/codecompanion.nvim",
+    config = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "github/copilot.vim",
+    },
+  },
 })
 
 -- Use system clipboard
@@ -206,6 +220,11 @@ vim.opt.wrap = false
 
 -- Set colorscheme
 vim.cmd [[colorscheme xcodehc]]
+vim.defer_fn(function()
+  -- Ghostty seems to not apply the theme on neovim load. Deffering 
+  -- the command makes it work
+  vim.cmd [[colorscheme xcodehc]]
+end, 0)
 
 -- Tabs to three spaces (to notice when I use tabs)
 vim.opt.tabstop = 3
@@ -219,11 +238,11 @@ vim.opt.expandtab = true
 -- Highlight yanked text
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = '*',
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
 })
 
 ----------------------
@@ -263,15 +282,15 @@ vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diag
 -- Borrowed from Kickstarter, defers treesitter execution
 -- to allow opening specific files fast (nvim %file%)
 vim.defer_fn(function()
-	require('nvim-treesitter.configs').setup {
-		ensure_installed = { "javascript", "typescript", "python", "lua", "html", "rust", "json", "go", "markdown" },
-		sync_install = false,
-		highlight = { enable = true },
-		indent = { enable = true },
-		auto_install = false,
-		modules = {},
-		ignore_install = {},
-	}
+  require('nvim-treesitter.configs').setup {
+    ensure_installed = { "javascript", "typescript", "python", "lua", "html", "rust", "json", "go", "markdown" },
+    sync_install = false,
+    highlight = { enable = true },
+    indent = { enable = true },
+    auto_install = false,
+    modules = {},
+    ignore_install = {},
+  }
 end, 0)
 
 --> Telescope
@@ -289,28 +308,28 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 local lsp = require('lsp-zero')
 
 lsp.on_attach(function(_, bufnr)
-	-- see :help lsp-zero-keybindings
-	-- to learn the available actions
-	lsp.default_keymaps({ buffer = bufnr })
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp.default_keymaps({ buffer = bufnr })
 
-	vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
-	vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+  vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
+  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 end)
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-	ensure_installed = {
-		'rust_analyzer',
-		'pyright',
-		'html',
-		'gopls',
-		'lemminx',
-		'ts_ls',
-	},
-	handlers = {
-		lsp.default_setup,
-	},
-	automatic_installation = true
+  ensure_installed = {
+    'rust_analyzer',
+    'pyright',
+    'html',
+    'gopls',
+    'lemminx',
+    'ts_ls',
+  },
+  handlers = {
+    lsp.default_setup,
+  },
+  automatic_installation = true
 })
 
 --> nvim-dap
@@ -322,8 +341,8 @@ vim.keymap.set('n', '<leader>bn', dap.step_over)
 vim.keymap.set('n', '<leader>bi', dap.step_into)
 vim.keymap.set('n', '<leader>br', dap.repl.open)
 vim.keymap.set('n', '<leader>bs', function() 
-	dap.disconnect({ terminateDebuggee = true }) 
-	dapui.close()
+  dap.disconnect({ terminateDebuggee = true }) 
+  dapui.close()
 end)
 vim.keymap.set('n', '<leader>bl', require 'dap.ext.vscode'.load_launchjs)
 
@@ -336,7 +355,7 @@ vim.keymap.set('n', '<leader>t', ":Neotree toggle<CR>")
 
 --> codecompantion
 require("codecompanion").setup({
-	adapters = {
+  adapters = {
         copilot = function()
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
@@ -346,5 +365,5 @@ require("codecompanion").setup({
             },
           })
         end,
-	}
+  }
 })
