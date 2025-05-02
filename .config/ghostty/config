@@ -1,1 +1,9 @@
 theme = light:xcodelighthc,dark:xcodedarkhc
+font:
+  family: "Fira Code"
+  size: 14
+  style: "Regular"
+
+bold_font:
+  family: "Fira Code"
+  style: "Bold"
