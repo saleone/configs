@@ -1,9 +1,11 @@
 theme = light:xcodelighthc,dark:xcodedarkhc
-font:
-  family: "Fira Code"
-  size: 14
-  style: "Regular"
 
-bold_font:
-  family: "Fira Code"
-  style: "Bold"
+# 0oO 1Il
+font-family = "Cascadia Code"
+font-family = "Fira Code Medium"
+font-family = "Source Code Pro Medium"
+
+
+font-size = 18
+font-thicken = true
+font-thicken-strength = 200
