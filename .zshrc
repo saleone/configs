@@ -1,8 +1,13 @@
 OS_NAME="$(uname -s)"
 
+# ENV variables
+export NEXT_TELEMETRY_DISABLED=1
+
 # Brew
-if ! command -v brew &> /dev/null; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [ "$OS_NAME" = "Darwin" ]; then
+  if ! command -v brew &> /dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
 fi
 
 # Ensure we have out local binaries dir
@@ -36,16 +41,6 @@ workon () {
   source $initPath
 }
 
-if [ "$OS_NAME" = "Darwin" ]; then
-  export CPATH=/opt/homebrew/include
-  export LIBRARY_PATH=/opt/homebrew/lib
-
-  # Translation libraries for work related stuff.
-  export PATH=$HOME/.local/bin:$(brew --prefix icu4c)/bin:$(brew --prefix icu4c)/sbin:$PATH
-  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(brew --prefix icu4c)/lib/pkgconfig"
-  export HDF5_DIR=$(brew --prefix hdf5)
-fi
-
 # Aliases
 alias vi="nvim";
 alias vim="nvim";
@@ -75,19 +70,24 @@ else
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
+
 if ! command -v nvm &> /dev/null; then
-  brew install nvm
+  if [ "$OS_NAME" = "Darwin" ]; then
+    brew install nvm
+  else
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+  fi
   nvm install --lts
 fi
 
 # Python
 if ! command -v uv &> /dev/null; then
-  brew install uv
+  if [ "$OS_NAME" = "Darwin" ]; then
+    brew install uv
+  else
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+  fi
   uv python install
-fi
-
-if command -v pyenv >/dev/null 2>&1; then
-  eval "$(pyenv init -)"
 fi
 
 # Rust
@@ -102,10 +102,15 @@ fi
 
 # Go
 if ! command -v go &> /dev/null; then
-  brew install go
+  if [ "$OS_NAME" = "Darwin" ]; then
+    brew install go
+  else
+    rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.3.linux-amd64.tar.gz
+  fi
 fi
 export PATH=$PATH:$(go env GOPATH)/bin
 
+# Start up SSH agent
 if [ -z "$SSH_AUTH_SOCK" ]; then
   eval $(ssh-agent -s) > /dev/null 2>&1
 fi
