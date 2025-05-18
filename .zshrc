@@ -46,8 +46,11 @@ alias vi="nvim";
 alias vim="nvim";
 export EDITOR="nvim";
 
-alias ks="kubectl"
+# Kubernetes
+alias kubep="kubectl -n homelab-prod"
+alias kubed="kubectl -n homelab-dev"
 
+# Git
 alias gits="git status"
 alias gita="git add"
 alias gitc="git commit"
