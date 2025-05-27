@@ -87,20 +87,6 @@ require("lazy").setup({
       end
 
    },
-     -- Sets up adapters for javascript debugging
-     -- {
-     --   'mxsdev/nvim-dap-vscode-js',
-     --   opts = {
-     --     debugger_path = vim.fn.resolve(vim.fn.stdpath('data') .. '/lazy/vscode-js-debug'),
-     --     adapters = {'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost'},
-     --   },
-     -- },
-
-     -- vscode-js-debug (so, javascript) adapter
-     -- {
-     --     "microsoft/vscode-js-debug",
-     --     build = "npm ci --loglevel=error && npx gulp vsDebugServerBundle && mv dist out",
-     -- },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -154,15 +140,6 @@ require("lazy").setup({
     }
   },
   "tpope/vim-sleuth",
-  {
-    "olimorris/codecompanion.nvim",
-    config = true,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "github/copilot.vim",
-    },
-  },
 })
 
 -- Use system clipboard
@@ -359,18 +336,3 @@ vim.keymap.set('n', '<F7>', dap.step_into)
 
 --> neotree
 vim.keymap.set('n', '<leader>t', ":Neotree toggle<CR>")
-
---> codecompantion
-require("codecompanion").setup({
-  adapters = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            schema = {
-              -- model = {
-              --   default = "gpt-4o",
-              -- },
-            },
-          })
-        end,
-  }
-})
