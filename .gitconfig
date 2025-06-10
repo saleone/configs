@@ -1,9 +1,12 @@
 [user]
-	email = sasa@savic.one
+	email = sasa@savic.ba
 	name = Saša Savić
 
 [push]
 	default = simple
+
+[includeIf "gitdir:~/Dev/Powerline/"]
+	path = ~/Dev/Powerline/.gitconfig
 
 [includeIf "gitdir:~/Dev/Stem/"]
 	path = ~/Dev/Stem/.gitconfig
