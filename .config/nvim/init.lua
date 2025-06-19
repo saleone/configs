@@ -140,6 +140,7 @@ require("lazy").setup({
     }
   },
   "tpope/vim-sleuth",
+  "leafOfTree/vim-svelte-plugin",
 })
 
 -- Use system clipboard

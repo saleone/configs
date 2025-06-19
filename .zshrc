@@ -61,6 +61,9 @@ alias gitf="git fetch"
 alias gitco="git checkout"
 alias gitcb="git checkout -b"
 
+# Containers
+alias docker="podman"
+
 
 # Node
 export NVM_DIR="$HOME/.nvm"
