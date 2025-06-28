@@ -3,4 +3,4 @@ name = Saša Savić
 email = ssavic@drivepowerline.com
 
 [core]
-sshCommand = ssh -i ~/.ssh/id_ed25519_powerline
+sshCommand = ssh -i ~/.ssh/id_powerline
