@@ -116,6 +116,12 @@ if ! command -v go &> /dev/null; then
 fi
 export PATH=$PATH:$(go env GOPATH)/bin
 
+
+# Android Java
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # Start up SSH agent
 if [ -z "$SSH_AUTH_SOCK" ]; then
   eval $(ssh-agent -s) > /dev/null 2>&1
