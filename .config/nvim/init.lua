@@ -55,6 +55,7 @@ require("lazy").setup({
                request = 'launch',
                name = "Current file",
                program = "${file}",
+               envFile = "${workspaceFolder}/.env",
             },
          }
 
