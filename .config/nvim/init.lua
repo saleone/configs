@@ -138,6 +138,16 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
+    },
+    opts = {
+  default_component_configs = {
+      icon = {
+        -- Maybe 📂
+        folder_closed = "+",
+        folder_open = "-",
+        folder_empty = "~",
+      }
+    }
     }
   },
   "tpope/vim-sleuth",
