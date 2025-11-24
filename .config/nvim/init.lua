@@ -273,7 +273,7 @@ vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diag
 -- to allow opening specific files fast (nvim %file%)
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { "javascript", "typescript", "python", "lua", "html", "rust", "json", "go", "markdown" },
+    ensure_installed = { "javascript", "typescript", "python", "lua", "html", "rust", "json", "go", "markdown", "svelte" },
     sync_install = false,
     highlight = { enable = true },
     indent = { enable = true },
@@ -304,6 +304,7 @@ require('mason-lspconfig').setup({
     'gopls',
     'lemminx',
     'ts_ls',
+    'svelte',
   },
   automatic_installation = true
 })
@@ -354,6 +355,13 @@ vim.lsp.config('ts_ls', {
   capabilities = capabilities,
 })
 
+vim.lsp.config('svelte', {
+  cmd = { 'svelteserver', '--stdio' },
+  filetypes = { 'svelte' },
+  root_markers = { 'package.json', 'svelte.config.js', '.git' },
+  capabilities = capabilities,
+})
+
 -- Enable all configured language servers
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('pyright')
@@ -361,6 +369,7 @@ vim.lsp.enable('html')
 vim.lsp.enable('gopls')
 vim.lsp.enable('lemminx')
 vim.lsp.enable('ts_ls')
+vim.lsp.enable('svelte')
 
 -- LSP keymaps (set up for all buffers with LSP attached)
 vim.api.nvim_create_autocmd('LspAttach', {
