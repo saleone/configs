@@ -26,15 +26,8 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
   "mbbill/undotree",
-  { "williamboman/mason.nvim",          },
-  { "williamboman/mason-lspconfig.nvim",},
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
-    dependencies = {
-      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" }
-    },
-  },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -43,6 +36,7 @@ require("lazy").setup({
   },
   { "hrsh7th/cmp-nvim-lsp" },
   { "hrsh7th/nvim-cmp" },
+  { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
   "arzg/vim-colors-xcode",
   "vimpostor/vim-lumen",
    {
@@ -300,18 +294,7 @@ vim.keymap.set('n', '<leader>fh', tbin.help_tags, {})
 --> Undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
---> LSP zero
-local lsp = require('lsp-zero')
-
-lsp.on_attach(function(_, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp.default_keymaps({ buffer = bufnr })
-
-  vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename)
-  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
-end)
-
+--> Mason setup
 require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {
@@ -322,10 +305,143 @@ require('mason-lspconfig').setup({
     'lemminx',
     'ts_ls',
   },
-  handlers = {
-    lsp.default_setup,
-  },
   automatic_installation = true
+})
+
+--> LSP configuration using native Neovim v0.11+ functions
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- Configure each language server using vim.lsp.config
+vim.lsp.config('rust_analyzer', {
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  root_markers = { 'Cargo.toml', 'rust-project.json' },
+  capabilities = capabilities,
+})
+
+vim.lsp.config('pyright', {
+  cmd = { 'pyright-langserver', '--stdio' },
+  filetypes = { 'python' },
+  root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', 'pyrightconfig.json' },
+  capabilities = capabilities,
+})
+
+vim.lsp.config('html', {
+  cmd = { 'vscode-html-language-server', '--stdio' },
+  filetypes = { 'html' },
+  root_markers = { 'package.json', '.git' },
+  capabilities = capabilities,
+})
+
+vim.lsp.config('gopls', {
+  cmd = { 'gopls' },
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+  root_markers = { 'go.work', 'go.mod', '.git' },
+  capabilities = capabilities,
+})
+
+vim.lsp.config('lemminx', {
+  cmd = { 'lemminx' },
+  filetypes = { 'xml', 'xsd', 'xsl', 'xslt', 'svg' },
+  root_markers = { '.git' },
+  capabilities = capabilities,
+})
+
+vim.lsp.config('ts_ls', {
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+  root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
+  capabilities = capabilities,
+})
+
+-- Enable all configured language servers
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('pyright')
+vim.lsp.enable('html')
+vim.lsp.enable('gopls')
+vim.lsp.enable('lemminx')
+vim.lsp.enable('ts_ls')
+
+-- LSP keymaps (set up for all buffers with LSP attached)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    
+    -- Default LSP keymaps
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    
+    -- Custom keymaps
+    vim.keymap.set('n', '<leader>lR', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, opts)
+
+    vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<leader>ll', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, opts)
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+
+    -- Workspace management
+    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<leader>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+
+  end,
+})
+
+--> Completion setup
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  }, {
+    { name = 'buffer' },
+  })
 })
 
 --> nvim-dap
