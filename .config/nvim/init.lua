@@ -305,6 +305,7 @@ require('mason-lspconfig').setup({
     'lemminx',
     'ts_ls',
     'svelte',
+    'jsonls',
   },
   automatic_installation = true
 })
@@ -362,6 +363,13 @@ vim.lsp.config('svelte', {
   capabilities = capabilities,
 })
 
+vim.lsp.config('jsonls', {
+  cmd = { 'vscode-json-language-server', '--stdio' },
+  filetypes = { 'json', 'jsonc' },
+  root_markers = { 'package.json', '.git' },
+  capabilities = capabilities,
+})
+
 -- Enable all configured language servers
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('pyright')
@@ -370,6 +378,7 @@ vim.lsp.enable('gopls')
 vim.lsp.enable('lemminx')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('svelte')
+vim.lsp.enable('jsonls')
 
 -- LSP keymaps (set up for all buffers with LSP attached)
 vim.api.nvim_create_autocmd('LspAttach', {
