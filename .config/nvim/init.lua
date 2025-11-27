@@ -397,7 +397,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
     
     -- Custom keymaps
-    vim.keymap.set('n', '<leader>lR', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, opts)
 
     vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, opts)
@@ -406,7 +406,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>lR', vim.lsp.buf.references, opts)
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
 
     -- Workspace management
