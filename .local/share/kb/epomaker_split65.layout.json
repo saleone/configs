@@ -295,7 +295,7 @@
       "KC_EQL",
       "KC_NO",
       "KC_BSPC",
-      "KC_MUTE",
+      "KC_MPLY",
       "KC_Y",
       "KC_U",
       "KC_I",
@@ -668,7 +668,7 @@
     [
       ["KC_VOLD", "KC_VOLU"],
       ["KC_VOLD", "KC_VOLU"],
-      ["KC_VOLD", "KC_VOLU"],
+      ["KC_BRID", "KC_BRIU"],
       ["KC_VOLD", "KC_VOLU"],
       ["KC_VOLD", "KC_VOLU"],
       ["KC_VOLD", "KC_VOLU"]
