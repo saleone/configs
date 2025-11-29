@@ -185,7 +185,7 @@
       "KC_F12",
       "KC_NO",
       "QK_CLEAR_EEPROM",
-      "KC_MUTE",
+      "RGB_TOG",
       "KC_Y",
       "KC_U",
       "KC_I",
@@ -667,7 +667,7 @@
   "encoders": [
     [
       ["KC_VOLD", "KC_VOLU"],
-      ["KC_VOLD", "KC_VOLU"],
+      ["RGB_RMOD", "RGB_MOD"],
       ["KC_BRID", "KC_BRIU"],
       ["KC_VOLD", "KC_VOLU"],
       ["KC_VOLD", "KC_VOLU"],
