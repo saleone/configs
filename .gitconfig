@@ -11,6 +11,15 @@
 [includeIf "gitdir:~/Dev/Stem/"]
 	path = ~/Dev/Stem/.gitconfig
 
+[difftool]
+	prompt = true
+
+[diff]
+	tool = nvimdiff
+
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
 [alias]
     clean-branches = "!f(){\
         git branch | grep -v "master" | grep -v ^* | xargs git branch -d;\
