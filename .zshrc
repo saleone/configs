@@ -122,6 +122,10 @@ export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+# Postgres CLI
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+
 # Start up SSH agent
 if [ -z "$SSH_AUTH_SOCK" ]; then
   eval $(ssh-agent -s) > /dev/null 2>&1
