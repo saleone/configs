@@ -146,6 +146,12 @@ require("lazy").setup({
   },
   "tpope/vim-sleuth",
   "leafOfTree/vim-svelte-plugin",
+  {
+    "rest-nvim/rest.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    }
+  }
 })
 
 -- Use system clipboard
@@ -273,7 +279,7 @@ vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diag
 -- to allow opening specific files fast (nvim %file%)
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { "javascript", "typescript", "python", "lua", "html", "rust", "json", "go", "markdown", "svelte" },
+    ensure_installed = { "javascript", "typescript", "python", "lua", "html", "rust", "json", "go", "markdown", "svelte", "http" },
     sync_install = false,
     highlight = { enable = true },
     indent = { enable = true },
