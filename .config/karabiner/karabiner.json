@@ -37,14 +37,6 @@
                             "to": [{ "key_code": "grave_accent_and_tilde" }]
                         }
                     ]
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": true,
-                    "identifiers": {
-                        "device_address": "c0-06-91-9b-de-23",
-                        "is_keyboard": true,
-                        "is_pointing_device": true
-                    }
                 }
             ],
             "name": "Sasa",
