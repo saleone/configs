@@ -120,7 +120,7 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # Android Java
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Postgres CLI
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
