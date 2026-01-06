@@ -1,5 +1,3 @@
-theme = light:xcodelighthc,dark:xcodedarkhc
-
 # 0oO 1Il
 font-family = "Cascadia Code"
 font-family = "Fira Code Medium"
@@ -9,3 +7,6 @@ font-family = "Source Code Pro Medium"
 font-size = 18
 font-thicken = true
 font-thicken-strength = 200
+
+theme = dark:Xcode Dark hc,light:Xcode Light hc
+background-opacity = 0.9
