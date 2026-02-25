@@ -1,6 +1,6 @@
 # 0oO 1Il
-font-family = "Cascadia Code NF"
-font-size = 20
+font-family = "Google Sans Code"
+font-size = 18
 font-thicken = true
 font-thicken-strength = 100
 theme = dark:Xcode Dark hc,light:Xcode Light hc
