@@ -83,6 +83,12 @@ require("lazy").setup({
 
    },
   {
+    "ravsii/nvim-dap-envfile",
+    version = "*", -- use latest stable release
+    dependencies = { "mfussenegger/nvim-dap" },
+    opts = {},
+  },
+  {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     opts = {
