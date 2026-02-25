@@ -188,5 +188,7 @@ build_prompt () {
   echo "$prompt"
 }
 
+alias opencode-powerline='XDG_DATA_HOME=~/.local/share/opencode-powerline opencode'
+
 # Set the prompt
 export PS1="$(build_prompt)"
