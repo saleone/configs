@@ -174,6 +174,11 @@ require("lazy").setup({
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
     end,
+  },
+  {
+    "yousefhadder/markdown-plus.nvim",
+    ft = "markdown",
+    opts = {},
   }
 })
 
