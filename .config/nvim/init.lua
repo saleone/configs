@@ -153,12 +153,6 @@ require("lazy").setup({
   "tpope/vim-sleuth",
   "leafOfTree/vim-svelte-plugin",
   {
-    "rest-nvim/rest.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    }
-  },
-  {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
       { 'tpope/vim-dadbod', lazy = true },
