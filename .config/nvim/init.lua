@@ -295,7 +295,7 @@ vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diag
 -- Borrowed from Kickstarter, defers treesitter execution
 -- to allow opening specific files fast (nvim %file%)
 vim.defer_fn(function()
-  require('nvim-treesitter.configs').setup {
+  require('nvim-treesitter.config').setup {
     ensure_installed = { "javascript", "typescript", "python", "lua", "html", "rust", "json", "go", "markdown", "svelte", "http" },
     sync_install = false,
     highlight = { enable = true },
