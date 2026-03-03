@@ -54,7 +54,7 @@ alias kubed="kubectl -n homelab-dev"
 alias gits="git status"
 alias gita="git add"
 alias gitc="git commit"
-alias gitl="git log --oneline --graph --decorate"
+alias gitl='git log --graph --decorate --pretty=format:"%C(auto)%h %Cgreen%ad %Creset%d %s" --date=format:"%Y-%m-%d %H:%M"'
 alias gitb="git branch"
 alias gitd="git diff"
 alias gitf="git fetch"
