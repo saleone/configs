@@ -1,6 +1,3 @@
 [user]
 name = Saša Savić
 email = ssavic@drivepowerline.com
-
-[core]
-sshCommand = ssh -i ~/.ssh/id_powerline
