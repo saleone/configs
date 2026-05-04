@@ -5,6 +5,20 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "mouse5 ctrl when pressed",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "pointing_button": "button5"
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "to_if_alone": [{ "pointing_button": "button5" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Caps->Ctrl|Esc",
                         "manipulators": [
                             {
@@ -68,10 +82,6 @@
             "name": "Sasa",
             "selected": true,
             "simple_modifications": [
-                {
-                    "from": { "pointing_button": "button5" },
-                    "to": [{ "key_code": "left_control" }]
-                },
                 {
                     "from": { "key_code": "non_us_backslash" },
                     "to": [{ "key_code": "grave_accent_and_tilde" }]
