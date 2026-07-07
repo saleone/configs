@@ -190,5 +190,7 @@ build_prompt () {
 
 alias opencode-powerline='XDG_DATA_HOME=~/.local/share/opencode-powerline opencode'
 
+alias convert-book='podman run --rm -v "$PWD:/target" rappdw/ebook-convert'
+
 # Set the prompt
 export PS1="$(build_prompt)"
