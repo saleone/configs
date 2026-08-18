@@ -192,5 +192,9 @@ alias opencode-powerline='XDG_DATA_HOME=~/.local/share/opencode-powerline openco
 
 alias convert-book='podman run --rm -v "$PWD:/target" rappdw/ebook-convert'
 
+# disable podman compose warning
+export PODMAN_COMPOSE_WARNING_LOGS=false
+
 # Set the prompt
 export PS1="$(build_prompt)"
+
