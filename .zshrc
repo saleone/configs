@@ -41,6 +41,30 @@ workon () {
   source $initPath
 }
 
+# Restart Caddy in the background with the Powerline Caddyfile
+powerline-caddy-up () {
+  local config="$HOME/Dev/Powerline/Caddyfile"
+  local log="$HOME/.local/state/caddy.log"
+
+  if pgrep -x caddy > /dev/null; then
+    echo "Stopping running Caddy..."
+    caddy stop &> /dev/null || pkill -x caddy
+    while pgrep -x caddy > /dev/null; do sleep 0.2; done
+  fi
+
+  mkdir -p "$(dirname $log)"
+  nohup caddy run --config "$config" --adapter caddyfile &> "$log" &!
+  sleep 1
+
+  if pgrep -x caddy > /dev/null; then
+    echo "Caddy running (pid $(pgrep -x caddy)). Logs: $log"
+  else
+    echo "Caddy failed to start. Last log lines:"
+    tail -n 20 "$log"
+    return 1
+  fi
+}
+
 # Aliases
 alias vi="nvim";
 alias vim="nvim";
